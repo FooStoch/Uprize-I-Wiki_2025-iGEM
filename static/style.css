@@ -1,0 +1,328 @@
+/* ===========================
+   Full stylesheet (copy-paste)
+   Includes centered brand + hover image 30px -> 90px + longer transitions
+   =========================== */
+
+/* ---------------------------
+   Base / layout tweaks
+   --------------------------- */
+:root {
+    --navbar-height: 88px;
+}
+
+body {
+    padding-top: var(--navbar-height);
+} /* keeps navbar space (56 * 1.5 = 84px) */
+.left-aligned { margin-left: auto; }
+.bg-dark { background-color: #343a40 !important; }
+.bg-hero { background-color: #45b06cff; }
+
+/* ---------------------------
+   Knewave font (if available)
+   --------------------------- */
+@font-face {
+  font-family: 'Knewave';
+  src: url('https://static.igem.wiki/teams/5937/fonts/knewave-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chewy';
+    src: url("https://static.igem.wiki/teams/5937/fonts/chewy-regular.ttf");
+}
+
+/* ---------------------------
+   Brand image hover: crossfade + grow
+   - Keep width="72" height="72" in HTML.
+   - Hover image starts 30px -> grows to 90px (scale = 30/90 = 0.333333).
+   - Transitions lengthened to 480ms.
+   --------------------------- */
+#navbar {
+    background-color: rgba(97, 130, 83, 0.65);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-family: Chewy, "Comic Sans MS", cursive;
+    font-size: 20px;
+}
+
+#navbar span, #navbar .nav-link {
+    color: #f8f3e6;
+    font-size: 20px;
+}
+
+#navbar .dropdown-menu {
+    padding: 0;
+    overflow: hidden;
+    font-size: 20px;
+}
+
+#navbar .dropdown-item {
+    color: #618253;
+    background-color: #D6F4CC;
+    transition: linear 0.5s;
+}
+
+#navbar .dropdown-item:hover {
+    background-color: #697963;
+    color: white;
+}
+
+.navbar.fixed-top .navbar-brand {
+  position: relative;
+  display: flex;              /* ensure perfect vertical centering */
+  align-items: center;
+  height: 100%;
+  padding: 0 0.125rem;
+  /* no line-height:0 here — flex centering handles vertical alignment */
+}
+
+/* wrapper that contains the original img and the hover-image */
+.navbar.fixed-top .navbar-brand .brand-figure {
+  position: relative;
+  display: inline-block;   /* occupies only the logo area */
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* original image (keeps your original rules) */
+.navbar.fixed-top .navbar-brand .brand-figure > img {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-height: 72px !important;   /* visual cap for the original logo (matches HTML 72x72) */
+  margin: 0;
+  align-self: center;             /* explicit centering inside flex */
+  transition: opacity 480ms ease, transform 480ms cubic-bezier(.2,.9,.2,1);
+  transform-origin: center center;
+  z-index: 2;
+  pointer-events: none;          /* keep link clickable (let events pass to parent) */
+  backface-visibility: hidden;
+}
+
+/* Hover-image element (same as before) */
+.navbar.fixed-top .navbar-brand .brand-figure .hover-logo {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* start at 30px relative to final 90px: scale = 30/90 = 0.333333 */
+  transform: translate(-50%, -50%) scale(0.333333);
+  transform-origin: center center;
+  width: 90px;   /* final visual size (90px) */
+  height: 90px;
+  display: block;
+  background-image: url("https://static.igem.wiki/teams/5937/images/hovered-logo.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 480ms ease, transform 480ms cubic-bezier(.2,.9,.2,1);
+  z-index: 1;
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+/* ---- Hover rules ----
+   Only trigger when hovering the IMAGE AREA (.brand-figure)
+   This ensures hovering the "Uprize-I" text does nothing.
+*/
+
+/* image fades out when the image area is hovered */
+.navbar.fixed-top .navbar-brand .brand-figure:hover > img,
+.navbar.fixed-top .navbar-brand .brand-figure:focus > img {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* show hover-logo when the image area is hovered */
+.navbar.fixed-top .navbar-brand .brand-figure:hover .hover-logo,
+.navbar.fixed-top .navbar-brand .brand-figure:focus .hover-logo {
+  opacity: 1;
+  z-index: 3;
+  transform: translate(-50%, -50%) scale(1); /* grows to full 90px */
+}
+
+/* fade the text when the image area is hovered (sibling later in DOM) */
+.navbar.fixed-top .navbar-brand .brand-figure:hover ~ .brand-text,
+.navbar.fixed-top .navbar-brand .brand-figure:focus ~ .brand-text {
+  opacity: 0;
+  transition: opacity 480ms ease;
+}
+
+/* ---------------------------
+   Header / banner / title
+   --------------------------- */
+header.site-layout-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+header.site-layout-banner .banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+    background-color: #f8f3e6;
+}
+#title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Knewave', "Helvetica Neue", cursive;
+  font-size: clamp(40px, 8vw, 120px);
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  pointer-events: none;
+}
+@media (max-width: 520px) {
+  #title { font-size: clamp(28px, 12vw, 54px); padding: 0.2rem 0.6rem; }
+}
+
+#progress-container {
+    position: fixed;
+    top: 86px;
+    width: 100%;
+    height: 4px;
+    z-index: 500;
+}
+
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background-image: linear-gradient(to right, #365722, #538136, #a7d08c , #c5e0b3);
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    margin-right: auto;
+    border-radius: 0 10px 10px 0;
+}
+
+#progress-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    transform: translate(-50%, -50%);
+}
+
+#content {
+    width: 100%;
+    padding-bottom: 20px;
+    background-image: linear-gradient(to bottom, #F8F3E6, #DEEBDF, #D2E2E4);
+}
+
+/* ---------------------------
+   Footer
+   --------------------------- */
+footer #footer-bg {
+    width: 100%;
+    opacity: 0.6;
+}
+
+footer h4 {
+    font-weight: bold;
+}
+
+footer .container {
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+footer a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+#sponsor-container, #school-container {
+    overflow: hidden;
+}
+
+.scroll {
+    display: flex;
+    width: max-content;
+    gap: 2em;
+    animation: scroll-left 10s linear infinite;
+}
+
+.scroll:hover {
+    animation-play-state: paused;
+}
+
+#sponsor-container img, #school-container img {
+    display: block;
+    width: auto;
+    height: 80px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgba(255, 251, 229, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+footer #contact img {
+    width: 30px;
+    height: auto;
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+#loadingSplashScreen {
+    position: fixed;
+    top: 86px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 86px);
+    background-color: white;
+    z-index: 100;
+}
+
+#loadingSplashScreen img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*margin: 70px auto;*/
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: auto;
+    max-width: 90vw;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadein 1s forwards;
+    text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px;
+}

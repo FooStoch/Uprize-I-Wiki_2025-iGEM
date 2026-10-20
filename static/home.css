@@ -1,0 +1,141 @@
+@keyframes fadeInOut {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    10% {
+        visibility: visible;
+        opacity: 1;
+    }
+    90% {
+        visibility: visible;
+        opacity: 1;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@keyframes leftRight {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: calc(100% - 2304px);
+    }
+    100% {
+        left: 0;
+    }
+}
+
+:root {
+    --animation-distance: calc(100% - 2304.59px);
+    --caro-scale: 1.5;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#vine {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#para1-group {
+    top: 28%;
+    left: 0;
+    width: 100%;
+    height: 570px;
+}
+
+#seed {
+    top: -5%;
+    left: 10%;
+    width: 60%;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#para1-group.active > #seed {
+    animation: fadeInOut 2s forwards;
+}
+
+#vege {
+    /*top: 28%;*/
+    left: 10%;
+    width: 80%;
+    z-index: 2;
+    opacity: 0;
+    transition: ease 1.5s 2s;
+    transform-origin: 20% 80%;
+    transform: scale(0.4);
+}
+
+#para1-group.active > #vege {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#para1 {
+    top: -20%;
+    right: 13%;
+    width: 60%;
+    transition: ease 1.5s 3.5s;
+    opacity: 0;
+}
+
+#para1-group.active > #para1 {
+    opacity: 1;
+}
+
+#para2 {
+    top: 50%;
+    left: 15%;
+    width: 70%;
+}
+
+#para3 {
+    top: 75%;
+    left: 20%;
+    width: 60%;
+}
+
+#para2, #para3 {
+    opacity: 0;
+    transition: ease 3s;
+}
+
+#para2.active, #para3.active {
+    opacity: 1;
+}
+
+#sun {
+    top: 96%;
+    left: 10%;
+    width: 20%;
+}
+
+.hero-wrap {
+    width: 100%;
+    overflow: visible;
+}
+
+.carousel-wrapper {
+    position: relative;   /* 占位用 */
+    height: 400px;
+}
+
+#carousel {
+    position: absolute;   /* 相对 wrapper 定位 */
+    top: 0;
+    left: 0;
+    height: 400px;
+    transform-origin: 0 50%;
+    transform: scale(var(--caro-scale));
+    animation: leftRight 20s linear infinite;
+    z-index: 10;
+}

@@ -1,0 +1,33 @@
+@media only screen and (min-width: 768px) {
+    #page-content.awards-layout {
+        margin-left: 5%;
+        display: flex;
+        gap: 20px;
+    }
+
+    table#awards-list {
+        width: 300px;
+    }
+
+    table#awards-list tr {
+        padding: 20px 0;
+    }
+}
+
+#page-content.awards-layout {
+    padding-top: 50px;
+}
+
+table#awards-list {
+    width: 300px;
+    box-shadow: none;
+}
+
+table#awards-list th, table#awards-list td {
+    border: none;
+    text-align: left;
+}
+
+#awards-list tr > td:first-child img {
+    width: 80px;
+}

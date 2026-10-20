@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Shrikhand;
+    src: url("https://static.igem.wiki/teams/5937/fonts/shrikhand-regular.ttf");
+}
+
+#image-container {
+    position: relative;
+}
+
+#motto-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, 0);
+}
+
+#motto-container p {
+    text-align: center;
+    font-family: Shrikhand, "Times New Roman", serif;
+    font-size: min(2.5vw, 30px);
+    color: #46643f;
+    margin: 10% 0;
+}
+
+#motto-container img {
+    width: 100%;
+}
+
+#image-container > img {
+    position: fixed;
+    top: calc(50% + 43px);
+    left: 50%;
+    width: 60%;
+    /*max-width: 100%;*/
+    transform: translate(-50%, -50%);
+    transition: ease 1s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+}
+
+#image-container > img.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* For test only, comment out later */
+#image-container rect {
+    fill: transparent;
+    /*stroke: red;*/
+    /*stroke-width: 2;*/
+}
+
+h1 {
+    text-align: center;
+    font-family: Knewave, "Helvetica Neue", cursive;
+    font-size: calc(30px + 2vw);
+    font-weight: bold;
+    margin: 100px 0;
+}
+
+.teachers-img {
+    display: block;
+    width: 80%;
+    margin: 80px auto;
+}

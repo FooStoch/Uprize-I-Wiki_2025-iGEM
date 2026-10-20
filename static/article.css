@@ -1,0 +1,219 @@
+@media only screen and (max-width: 768px) {
+    #page-content {
+        margin: 0 10%;
+    }
+
+    #sidebar-wrapper {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #page-content {
+        margin-left: 30%;
+        margin-right: 5%;
+    }
+}
+
+#sidebar-wrapper {
+    pointer-events: none;
+}
+
+.masked {
+    overflow: hidden;
+}
+
+.masked img {
+    width: 100%;
+    --webkit-mask-image: linear-gradient(to right, transparent 50%, black 50%);
+    --webkit-mask-size: 200% 100%;
+    --webkit-mask-position: left;
+    mask-image: linear-gradient(to right, transparent 50%, black 50%);
+    mask-size: 200% 100%;
+    mask-position: 50%;
+    transition: linear 1.5s;
+}
+
+.masked img.active {
+    --webkit-mask-position: right;
+    mask-position: right;
+}
+
+#sidebar-bg {
+    width: 100%;
+    height: 100vh;
+}
+
+#sidebar-bg.fixed {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    z-index: 50;
+}
+
+#sidebar {
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    width: 20%;
+    height: 70vh;
+    font-size: 16px;
+    background-color: transparent;
+    white-space: pre-wrap;
+    overflow-y: scroll;
+    scorllbar-width: none;
+    -ms-overflow-style: none;
+    pointer-events: initial;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar.sidebar-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#sidebar .accordion-body, #sidebar .accordion-button {
+    padding: 0;
+}
+
+#sidebar .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#sidebar .side-item {
+    padding: 15px 5px;
+    font-size: calc(6px + 1vw);
+    font-weight: bold;
+    color: black;
+    transition: all ease 0.5s;
+}
+
+#sidebar .side-item:hover {
+    color: #375623;
+    background-color: #C5E0B3;
+    cursor: pointer;
+}
+
+#sidebar .side-item-active {
+    border-left: 5px solid #375623;
+}
+
+.section-wrapper {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: gray 0 0 10px;
+    transition: ease 0.2s;
+}
+
+.section-wrapper:hover {
+    transform: scale(1.01);
+}
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+    margin-top: 5%;
+    white-space: pre-wrap;
+}
+
+section:first-child h1 {
+    margin-top: 0;
+    padding-top: 10%;
+}
+
+.section-wrapper h2:first-child {
+    margin-top: 0;
+}
+
+section p, ol, ul, table {
+    font-size: calc(5px + 1vw);
+    line-height: 1.8;
+}
+
+section p, ol, ul, #ref-table {
+    text-align: justify;
+}
+
+section p {
+    text-indent: 2em;
+}
+
+div.img > img {
+    display: block;
+    margin: 30px auto 5px auto;
+    text-align: center;
+    max-width: 90%;
+}
+
+div.img > .caption {
+    text-indent: 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    padding: 5px 0;
+}
+
+table:not(#ref-table) {
+    max-width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 4px 6px 3px #0000001a;
+}
+
+table:not(#ref-table) th {
+    background-color: #A8DCAB;
+}
+
+table:not(#ref-table) th, table:not(#ref-table) td {
+    border: 1px solid #0000001a;
+    padding: 10px;
+}
+
+table caption {
+    color: black;
+    text-align: center;
+    caption-side: top;
+}
+
+table ol, table ul {
+    text-align: left;
+}
+
+object {
+    display: block;
+    width: 90%;
+    height: 100vh;
+    margin: 20px auto;
+}
+
+#ref-table {
+    text-align: justify;
+}
+
+#ref-table * {
+    border: none;
+}
+
+div[id^="ref"]:before {
+    content: "";
+    display: block;
+    height: var(--navbar-height); /* Adjust based on header height */
+    margin-top: calc(-1 * var(--navbar-height)); /* Adjust based on header height */
+    visibility: hidden;
+}
+
+#ref-table tr td:first-child {
+    vertical-align: top; /* Adjust the numbers of ref. */
+}
