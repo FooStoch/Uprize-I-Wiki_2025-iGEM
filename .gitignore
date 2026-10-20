@@ -1,6 +1,4 @@
-env
-venv
-.vscode
-__pycache__
-public
-.idea
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea/
