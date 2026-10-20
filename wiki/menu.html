@@ -1,0 +1,98 @@
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+
+    <!-- TEAM NAME -->
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+      <!-- wrapper around logo + hover image -->
+      <span class="brand-figure" aria-hidden="false">
+        <img src="https://static.igem.wiki/teams/5937/images/igem-uprize-i-logo.webp"
+             alt="Logo" width="72" height="72" class="d-inline-block align-text-top">
+        <span class="hover-logo" aria-hidden="true"></span>
+      </span>
+      <span class="brand-text" style="margin-left: 10px">Uprize-I</span>
+    </a>
+
+    <!-- SMALL SCREEN MENU ICON -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto left-aligned">
+
+        <!-- HOME -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+
+        <!-- TEAM -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Team
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-team">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='members') }}">Members</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
+          </ul>
+        </li>
+
+        <!-- PROJECT -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-project" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Project
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-project">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='description') }}">Description</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='contribution') }}">Contribution</a></li>
+          </ul>
+        </li>
+
+        <!-- WET LAB -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-wet-lab" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Wet Lab
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-wet-lab">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='engineering') }}">Engineering</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='measurement') }}">Measurement</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='experiments') }}">Experiments</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='proof-of-concept') }}">Proof of Concept</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='parts') }}">Parts</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
+          </ul>
+        </li>
+
+        <!-- DRY LAB -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pages', page='model') }}">Model</a>
+        </li>
+
+        <!-- SAFETY -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pages', page='safety-and-security') }}">Safety</a>
+        </li>
+
+        <!-- ENGAGEMENT -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-engagement" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Human Practices
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-engagement">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='human-practices') }}">Integrated Human Practices</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='entrepreneurship') }}">Entrepreneurship</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='sustainable') }}">SDGs</a></li>
+          </ul>
+        </li>
+
+        <!-- AWARDS -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pages', page='awards') }}">Awards</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+    <img id="progress-img" src="https://static.igem.wiki/teams/5937/images/farmer-progress.webp" alt="">
+  </div>
+</nav>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://static.igem.wiki/teams/5937/images/igem-uprize-i-logo.webp"/>
+    <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
+    <link rel="icon" href="https://static.igem.wiki/teams/5937/images/igem-uprize-i-logo.webp"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename = 'bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet">
+
+    {% if self.title() == "Home" %}
+    <link href="{{ url_for('static', filename = 'home.css') }}" rel="stylesheet">
+    {% elif self.title() == "Meet Our Team" %}
+    <link href="{{ url_for('static', filename = 'team.css') }}" rel="stylesheet">
+    {% elif self.title() != "Attributions" %}
+    <link href="{{ url_for('static', filename = 'article.css') }}" rel="stylesheet">
+    {% endif %}
+
+    {% if self.title() == "Awards" %}
+    <link href="{{ url_for('static', filename = 'awards.css') }}" rel="stylesheet">
+    {% endif %}
+
+    <title>{% block title %}{% endblock %} | Uprize-I - iGEM 2025</title>
+    <script src="{{ url_for('static', filename = 'progress.js') }}"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    {% include 'menu.html' %}
+
+    <div id="loadingSplashScreen">
+      <img src="https://static.igem.wiki/teams/5937/home/loading.webp" alt="Loading...">
+    </div>
+
+    <!-- Header -->
+    {% if self.title() != "Home"%}
+    <header class="site-layout-banner">
+      <img src="https://static.igem.wiki/teams/5937/images/banner-new.webp" alt="Banner" class="banner-img">
+      <div id="title">{{ self.title() }}</div>
+    </header>
+    {% endif %}
+
+    {% set is_article = self.title() != "Home" and self.title() != "Meet Our Team" and self.title() != "Attributions" and self.title() != "Awards" %}
+
+    <!-- Page Content -->
+    <div id="content">
+      {% if is_article %}
+      <div id="sidebar-wrapper" class="position-relative">
+        <div class="position-absolute masked">
+          <img src="https://static.igem.wiki/teams/5937/images/vine-1.webp" alt="" id="vine">
+        </div>
+        <div id="sidebar-bg" class="position-absolute">
+          <div id="sidebar"></div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div id="page-content" class="{% if self.title() == 'Awards' %}awards-layout{% endif %}">
+        {% block page_content %}{% endblock %}
+      </div>
+    </div>
+
+    <!-- Footer: MUST mention license AND have a link to team wiki's repository on gitlab.igem.org -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="{{ url_for('static', filename = 'bootstrap.bundle.min.js') }}"></script>
+    <script>
+        // 监听页面加载事件
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // 获取加载动画元素
+                const splashScreen = document.getElementById('loadingSplashScreen');
+
+                // 添加loaded类触发淡出动画
+                document.body.classList.add('loaded');
+
+                // 动画结束后完全隐藏加载界面
+                setTimeout(function () {
+                    splashScreen.style.display = 'none';
+                }, 500); // 这个时间需要与CSS中的过渡时间匹配
+            }, 3000);
+        });
+    </script>
+    <script>
+        const speed = 200;
+      window.onload = () => {
+          const sponsors = document.querySelector('#sponsor-container > .scroll');
+          const schools = document.querySelector('#school-container > .scroll');
+          sponsors.style.animationDuration = (sponsors.offsetWidth / speed) + 's';
+          schools.style.animationDuration = (schools.offsetWidth / speed) + 's';
+      }
+    </script>
+    <script>
+        window.addEventListener('load', () => {
+            const title = document.getElementById('title')
+            const title_text = title.innerText
+            title.innerText = ''
+            for (let idx = 0;idx < title_text.split('').length;idx++) {
+                const span = document.createElement('span')
+                span.classList.add('anime')
+                span.style.animationDelay = `${3 + idx * 0.1}s`
+                span.innerHTML = (title_text[idx] === ' ')?'&nbsp;':title_text[idx]
+                title.appendChild(span)
+            }
+        });
+    </script>
+    {% if is_article %}
+    <script src="{{ url_for('static', filename = 'sidebar.js') }}"></script>
+    <script>
+        window.addEventListener('load', () => {
+            // 获取所有section元素
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                // 找到section中的第一个h1元素
+                const firstH1 = section.querySelector('h1:first-child');
+
+                if (!firstH1) {
+                    return; // 如果没有h1，跳过这个section
+                }
+
+                // 检查是否已经包装过
+                if (section.querySelector(`.section-wrapper`)) {
+                    return; // 如果已经包装过，跳过
+                }
+
+                // 创建一个新的包装div
+                const wrapper = document.createElement('div');
+                wrapper.className = 'section-wrapper';
+
+                // 将第一个h1之后的所有内容移动到包装div中
+                let currentNode = firstH1.nextSibling;
+
+                while (currentNode) {
+                    const nextNode = currentNode.nextSibling;
+                    wrapper.appendChild(currentNode);
+                    currentNode = nextNode;
+                }
+
+                // 将包装div添加到section中
+                section.appendChild(wrapper);
+            });
+            document.querySelectorAll('table').forEach(table => {
+                if (table.id === 'ref-table')
+                    return;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'table-wrapper';
+
+                // 将 wrapper 插入到 table 的位置
+                table.parentNode.insertBefore(wrapper, table);
+                // 把 table 移动进 wrapper 中
+                wrapper.appendChild(table);
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const sidebarWrapper = document.getElementById('sidebar-wrapper');
+            const sidebar = document.getElementById('sidebar-bg');
+            const footer = document.getElementById('footer');
+            const maskedImg = document.getElementById('vine');
+
+            if (maskedImg.getBoundingClientRect().top <= 0.75 * window.innerHeight)
+                maskedImg.classList.add('active')
+            if (sidebarWrapper.getBoundingClientRect().top <= 86) {
+                sidebar.classList.remove('position-absolute')
+                sidebar.classList.add('fixed')
+                // sidebar.style.top = 'calc(86px - 10%)'
+            } else {
+                sidebar.classList.add('position-absolute')
+                sidebar.classList.remove('fixed')
+                // sidebar.style.top = '0'
+            }
+            if (footer.getBoundingClientRect().top <= window.innerHeight)
+                sidebar.style.visibility = 'hidden';
+            else
+                sidebar.style.visibility = 'visible';
+        })
+    </script>
+    {% endif %}
+  </body>
+</html>
