@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}Meet Our Team{% endblock %}
+
+{% block lead %}
+This page is dedicated to introducing the individuals who made our iGEM project possible. Here, you'll find information about our team members, instructors, and advisors.
+{% endblock %}
+
+{% block page_content %}
+<div id="image-container">
+  <div id="motto-container">
+    <p>Our team is a 21-student group of curious learners, researchers, and organizers united by a LOVE OF SYNTHETIC BIOLOGY! Featuring members from the US, China, and Canada, we collaborate across disciplines to design, build, and test ideas that solve real-world problems.</p>
+    <img src="https://static.igem.wiki/teams/5937/team/team-photo.webp" alt="">
+    <p>“Every person is like a plant — unique, rooted, and reaching for the sun in their own way” <br/> CLICK THE PLANTS :)</p>
+  </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" class="w-100 h-auto">
+    <image href="https://static.igem.wiki/teams/5937/team/student-bg.webp" x="0" y="0" width="1080" height="1920"/>
+    <rect x="589" y="1417" width="88" height="108" onclick="show('abigail')" />
+    <rect x="640" y="1771" width="91" height="136" onclick="show('cathy')" />
+    <rect x="776" y="1305" width="124" height="176" onclick="show('daniel')" />
+    <rect x="378" y="1400" width="85" height="66" onclick="show('forest')" />
+    <rect x="803" y="1590" width="122" height="137" onclick="show('haosiheng')" />
+    <rect x="965" y="1775" width="93" height="141" onclick="show('helen')" />
+    <rect x="506" y="1523" width="77" height="120" onclick="show('hexincheng')" />
+    <rect x="867" y="1761" width="93" height="91" onclick="show('houleran')" />
+    <rect x="337" y="1571" width="102" height="120" onclick="show('jinzhiting')" />
+    <rect x="809" y="1729" width="56" height="85" onclick="show('linda')" />
+    <rect x="728" y="1729" width="60" height="71" onclick="show('liyuxuan')" />
+    <rect x="583" y="1601" width="55" height="134" onclick="show('mafanya')" />
+    <rect x="660" y="1690" width="71" height="78" onclick="show('miya')" />
+    <rect x="769" y="1829" width="70" height="82" onclick="show('molly')" />
+    <rect x="340" y="1280" width="82" height="117" onclick="show('victor')" />
+    <rect x="13" y="1513" width="138" height="126" onclick="show('wangyuxin')" />
+    <rect x="716" y="1573" width="69" height="113" onclick="show('wujiayi')" />
+    <rect x="985" y="1491" width="91" height="101" onclick="show('youdengyuan')" />
+    <rect x="181" y="1390" width="112" height="156" onclick="show('zhangyuechao')" />
+    <rect x="938" y="1599" width="100" height="111" onclick="show('zhangzhan')" />
+    <rect x="892" y="1487" width="87" height="63" onclick="show('zhuzhaojia')" />
+  </svg>
+  <img src="https://static.igem.wiki/teams/5937/team/intro/abigail.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/cathy.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/daniel.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/forest.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/haosiheng.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/helen.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/hexincheng.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/houleran.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/jinzhiting.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/linda.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/liyuxuan.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/mafanya.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/miya.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/molly.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/victor.avif" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/wangyuxin.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/wujiayi.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/youdengyuan.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/zhangyuechao.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/zhangzhan.webp" alt="" class="intro">
+  <img src="https://static.igem.wiki/teams/5937/team/intro/zhuzhaojia.webp" alt="" class="intro">
+</div>
+<h1 style="color: #46643f">PI & Instructors & Advisors</h1>
+<img src="https://static.igem.wiki/teams/5937/team/ins-2.webp" alt="" class="teachers-img">
+<img src="https://static.igem.wiki/teams/5937/team/ins-1.webp" alt="" class="teachers-img" style="margin-bottom: 50px">
+
+<script>
+  function show(name) {
+      const images = document.querySelectorAll('#image-container > img')
+      for (let img of images) {
+          console.log(img)
+          if (img.src.includes(name)) {
+              img.classList.add('active')
+              setTimeout(() => {img.classList.remove('active')}, 3000)
+              break
+          }
+      }
+  }
+</script>
+{% endblock %}

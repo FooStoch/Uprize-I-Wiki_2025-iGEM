@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+  
+{% block title %}Experiments{% endblock %}
+{% block lead %}Describe the research, experiments, and protocols you used in your project. It is designed to provide sufficient information for other teams to replicate our work.{% endblock %}
+
+{% block page_content %}
+
+<section>
+  <h1>Experimental Overview</h1>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/experiment/overview.webp" alt="">
+  </div>
+  <p>After designing the fragments and primers, we utilized Gibson assembly for DNA construction: linearized vectors and target fragments were assembled to generate circular recombinant plasmids. These assembled products were then transformed into <i>E. coli</i> DH5α.</p>
+  <p>Subsequently, we performed a series of functional verification experiments divided into multiple modules:</p>
+  <ul>
+    <li>In the signal peptide function test, methods like fluorescence observation and fluorescence detection were used</li>
+    <li>For the chitinase activity test, techniques including SDS-PAGE and enzyme activity assays were conducted</li>
+    <li>Within the β-amyrin synthesis module, analyses such as LC-MS were employed to determine product yield</li>
+    <li>For the antagonistic test, approaches like fluorescence detection with microplate reader and flow cytometry were adopted to assess antagonistic effects.</li>
+  </ul>
+</section>
+
+<section>
+  <h1>Protocols</h1>
+  <ul class="list-group">
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/agarose-gel-electrophoresis.pdf" target="_blank">Agarose Gel Electrophoresis</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/chemical-transformation-of-e-coli.pdf" target="_blank">Chemical Transformation of <i>E. coli</i></a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/chitinase-activity-assay.pdf" target="_blank">Chitinase Activity Assay</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/colony-pcr.pdf" target="_blank">Colony PCR</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/cryopreservation.pdf" target="_blank">Cryopreservation</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/gibson-assembly.pdf" target="_blank">Gibson Assembly</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/protocol/protocol-of-a-semi-quantitative-antagonistic-assay-based-on.pdf" target="_blank">Semi-quantitative Antagonistic Assay (Extracellular Fluorescent Protein, Microplate Reader)</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/protocol/protocol-of-colloidal-chitin-plate-hydrolysis-assay-new.pdf" target="_blank">Colloidal Chitin Plate Hydrolysis Assay</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/induction-of-protein-expression.pdf" target="_blank">Induction of Protein Expression</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/lb-culture-media.pdf" target="_blank">LB Culture Media</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/pcr.pdf" target="_blank">PCR</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/plasmid-extraction.pdf" target="_blank">Plasmid Extraction</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/preparation-of-competent-e-coli-cells.pdf" target="_blank">Preparation of Competent <i>E. coli</i> Cells</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/renamedprotocol/sds-page.pdf" target="_blank">SDS-PAGE</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/protocol/measure-protocol-of-a-quantitative-mass-spectrometry-method.pdf" target="_blank">Quantitative Mass Spectrometry for Amyrin</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/protocol/protocol-of-a-quantitative-antagonistic-assay-based-on-pi-st.pdf" target="_blank">Quantitative Antagonistic Assay (PI Stain, Flow Cytometry)</a></li>
+    <li class="list-group-item"><a href="https://static.igem.wiki/teams/5937/protocol/protocol-of-a-quantitative-secretion-efficacy-assay-for-sign.pdf" target="_blank">Quantitative Secretion Efficacy Assay for Signal Peptides</a></li>
+  </ul>
+</section>
+
+{% endblock %}

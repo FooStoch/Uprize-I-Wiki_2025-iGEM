@@ -1,0 +1,375 @@
+{% extends "layout.html" %}
+  
+{% block title %}Project Description{% endblock %}
+{% block lead %}Describe how and why you chose your iGEM project.{% endblock %}
+
+{% block page_content %}
+
+
+
+<section>
+  <h1>Abstract</h1>
+  <p>
+    Soybeans root rot, a destructive soil-borne disease primarily caused by Fusarium fungi (Figure 1), has become a major challenge for soybean cultivation—especially in China, where the government has been advancing soybean industry revitalization plan since 2019 to improve self-sufficiency, yet major producing regions such as Heilongjiang suffer annual yield losses of over 50,000 tons. Current strategies against root rot, including agricultural measures (rational rotation, soil disinfection—slow-acting and weak in late outbreaks), chemical control (pesticides like fludioxonil—risky for residues and pathogen resistance), and biological control (Bacillus—environmentally sensitive with unstable efficacy), cannot fully address the issue.
+  </p>
+  <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/description/1.webp" alt="">
+        <p class="caption">Figure 1. <i>Fusarium Oxysporum</i></p>
+    </div>
+
+  <p>
+    In this project, we aim to eliminate soybeans root rot by 2030 through the application of synthetic biology. Our goal is to reduce the incidence of soybeans root rot by 40%, and cut associated yield losses by at least 30%. We want to produce biological protective bacterial agents with stronger antagonistic effects, and these agents can act against soybean root rot caused by <i>Fusarium spp</i>.
+  </p>
+  <p>
+    Hence, our team worked across Wetlab, Drylab, and Human Practices. Together, we achieved the following:
+  </p>
+  <ol>
+    <li>Developed <strong>a workflow capable of predicting the secretion efficiency of different secretory peptides.</strong> We tested 2000 secretory peptides <i>in silico</i> and selected the signal peptide with the strongest secretory capacity in model organisms.</li>
+    <li>Testing the <strong>secretion efficiency of chitinases from different genera</strong> with the optimal signal peptide identified.</li>
+    <li>After comparing different enzyme activity assay protocols, we identified an <strong>enzyme activity assay with wider application scenarios.</strong> Successfully demonstrated that the chitinases Blchi and Bschi have the ability to degrade chitin.</li>
+    <li>Successfully reconstructed a strain capable of producing the plant-derived component <strong>β-amyrin</strong> targeting chitin synthase and further <strong>improved the strain's yield through strain optimization</strong>.</li>
+    <li>Confirming that <strong>β-amyrin can bind to chitin synthase in pathogenic fungi through docking experiments</strong>.</li>
+    <li>Successfully developed a <strong>biosafety screening tool</strong>. Based on protein structure similarity and homology, this tool <strong>identifies alternative proteins from whitelist organisms</strong> that are structurally similar to specific proteins from non-whitelist pathogens, providing safer options for iGEM projects.</li>
+    <li>Developed a measurement tool based on safer antifungal indicator strains. The modified and sensitive <i>Saccharomyces cerevisiae</i> can
+      <strong>replace <i>Fusarium spp</i></strong>. (the most important pathogenic fungi causing root rot) that are not on the <strong>official iGEM whitelist</strong> for our antagonism experiments, thereby facilitating the conduct of experiments, and successfully solved the problem that GEMS Taiwan in iGEM 2022 could not establish an antagonism system in yeast.</li>
+    <li>Successfully demonstrated that <strong>both chitinases and β-amyrin exhibit an antagonistic effect against yeast</strong>.</li>
+  </ol>
+  <p>
+    We initiated this project to address the severe threat of soybean root rot by developing efficient, cost-effective, and biosafty-compliant tools. We aimed to leverage molecular engineering and microbial technology to enhance the efficacy of biocontrol agents targeting root rot pathogens (e.g.,
+    <i>Fusarium</i> spp.). Our integrated approach encompasses multiple innovative strategies—from optimizing the secretion efficiency of chitin-degrading enzymes through
+    <i>in silico</i> screening of signal peptides to pathogen inhibiting microbial agent development. Furthermore, we established a biosafety-compliant screening platform and developed alternative antifungal assessment tools using modified yeast models, ensuring both efficacy and environmental safety.
+  </p>
+  <p>
+    The culmination of these efforts is a novel, biosafe microbial inoculant designed for practical field application. This solution not only meets the urgent need for effective root rot control but also contributes to the sustainable development of the soybean industry by reducing reliance on chemical pesticides, enhancing crop resilience, and safeguarding yield stability. We anticipate that our strategy will provide a scalable and ecologically sound alternative to conventional practices, supporting long-term agricultural health and food security.
+  </p>
+</section>
+<section>
+  <h1>Issue</h1>
+  <p>
+    Soybeans are the grain and oilseed crops with the highest economic value globally. Soybean seeds are rich in oil, protein, vitamins, and various mineral nutrients, serving as an important source of vegetable oil and nutritious plant protein <a href="#ref1">[1]</a>. China is the world's largest consumer of soybeans (<a href="https://www.moa.gov.cn/ztzl/ymksn/jjrbbd/202411/t20241122_6466746.htm">https://www.moa.gov.cn/ztzl/ymksn/jjrbbd/202411/t20241122_6466746.htm</a>), with an annual soybean consumption of approximately 100 million tons over the past five years. However, only 10% of this consumption is met by domestic production in China <a href="#ref2">[2]</a>. To improve the soybean self-sufficiency rate, the Chinese government has planned to revitalize the soybean industry since 2019 (<a href="http://www.moa.gov.cn/nybgb/2019/0201903/201905/t20190525_6315395.htm">http://www.moa.gov.cn/nybgb/2019/0201903/201905/t20190525_6315395.htm</a>), and the total soybean cultivation area in China has been increasing in recent years. Heilongjiang Province is China's largest soybean-producing province, with a soybean cultivation area of about 5 million hectares, accounting for nearly half of the national total soybean cultivation area. This is because the black soil (Figure 2) in Heilongjiang is dark in color, loose in texture, and renowned for its fertility and rich nutrient content—nutrients accumulated over thousands of years of organic matter breakdown <a href="#ref3">[3]</a>.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/2n.avif" alt="">
+    <p class="caption">Figure 2. Black Soil in Heilongjiang</p>
+  </div>
+  <p>  
+    Despite being rich in nutrients and microorganisms, Heilongjiang's soil has suffered severe degradation over the years, mainly due to the monocropping system and the excessive use of chemical fertilizers and pesticides <a href="#ref4">[4]</a>. This has led to soil compaction and a decline in biodiversity, allowing certain soil-borne pathogens to become rampant <a href="#ref5">[5]</a> and resulting in the occurrence of soybean root rot.
+  </p>
+  <p>
+    Soybean root rot is a global soil-borne fungal disease that threatens soybean production, resulting in billions of dollars in yield losses annually <a href="#ref6">[6]</a>. In Heilongjiang, its damage to soybean-producing areas is particularly prominent: over the past 10 years, the annual average occurrence area and control area have been around 667,000 hectares, with potential yield losses exceeding 50,000 tons, accounting for 1/5 to 1/4 of the total soybean diseases and pests in the province. In 2011, a year of severe occurrence, both the occurrence area and control area exceeded 14 million mu, with total losses surpassing 300,000 tons. In recent years, the incidence rate in fields with severe recurring infections has exceeded 50%. (<a
+          href="https://www.moa.gov.cn/xw/zxfb/202302/t20230213_6420352.htm">https://www.moa.gov.cn/xw/zxfb/202302/t20230213_6420352.htm</a>)
+  </p>
+  <p>
+    Fusarium is widely recognized as the most common pathogenic fungus, causing significant declines in soybean yield and quality <a href="#ref7">[7,8]</a>. Fusarium species are often distinct concerning various factors in different soybean-producing regions. More than 20
+    <i>Fusarium</i> species have been reported, among which <i>Fusarium oxysporum</i> (<i>F. oxysporum</i>) is one of the main species <a href="#ref9">[9,10]</a>. In the early stage of the disease, the color of root tips undergoes noticeable changes, and eventually, dark spots appear on the taproot. These lesions do not shrink but gradually expand, accompanied by the darkening of the cortical layer, which eventually leads to rot and necrosis <a href="#ref11">[11]</a>.
+  </p>
+</section>
+<section>
+  <h1>Traditional Solutions & Problems</h1>
+  <p>
+    Traditional control strategies include agricultural measures (e.g., crop rotation, Figure 3), organic fertilizer application), chemical control (e.g., fludioxonil, propiconazole). However, these methods have limitations: agricultural measures are often slow-acting, whereas chemical control entails risk of pesticide residues and the development of pathogen resistance
+    <a href="#ref16">[16]</a>.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/3.webp" alt="">
+    <p class="caption">Figure 3. Crop Rotation</p>
+  </div>
+  <p>
+    <table>
+      <thead>
+        <tr>
+          <th>Types of Strategy</th>
+          <th>Strategy/Function</th>
+          <th>Strength</th>
+          <th>Weakness</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Agricultural measures for prevention and control</td>
+          <td>
+            <ol>
+              <li>Select suitable planting areas and high-quality seeds; disinfect soil before plant.</li>
+              <li>Balance water and fertilizer management (balanced application of nitrogen, phosphorus, and potassium; use of organic fertilizer) and optimize drainage.</li>
+              <li>Rational crop rotation/intercropping (e.g., Panax ginseng rotated with corn/cowpea) and green manure planting.</li>
+            </ol>
+          </td>
+          <td>
+            <ol>
+              <li>Environmentally friendly: no risk of damaging soil and plant ecology.</li>
+              <li>Maintains the stability of agricultural ecosystems.</li>
+              <li>Meets the needs of sustainable cultivation.</li>
+            </ol>
+          </td>
+          <td>
+            <ol>
+              <li>Slow-acting and dependent on long-term practical experience.</li>
+              <li>Ineffective in controlling the middle and late stages of root rot outbreaks.</li>
+              <li>Limited effectiveness in intervention of severe infection.</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Chemical Control</td>
+          <td>
+            <ol>
+              <li>Treat seeds with fungicides such as carbendazim and fludioxonil (Figure 4). In China, the number of registered fungicides for controlling Fusarium root rot is very limited, with fludioxonil and carbendazim being the main ones <a href="#ref12">[12]</a> <a href="http://www.chinapesticide.org.cn/">http://www.chinapesticide.org.cn/</a></li>
+              <li>Apply triazole compounds (e.g., benzoyl propiconazole) and mancozeb (Figure 5) to inhibit Fusarium pathogens</li>
+            </ol>
+          </td>
+          <td>
+            <ol>
+              <li>Fast-acting, easy to apply, and provides direct and clear control effects.</li>
+              <li>Capable of rapidly minimizing losses during times of acute disease outbreaks.</li>
+            </ol>
+          </td>
+          <td>
+            <ol>
+              <li>Prone to pesticide residues that will in turn reduce the quality of soybeans.</li>
+              <li>Pathogens can easily develop resistance, leading to decreased long-term efficacy. For example, carbendazim has been proven to pose a high risk of resistance in Fusarium species <a href="#ref13">[13]</a>.</li>
+              <li>Chemical use can lead to environmental pollution. Due to the lack of professional knowledge, farmers are prone to overuse and misuse of such chemicals.</li>
+            </ol>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/4.webp" alt="">
+    <p class="caption">Figure 4. Product of Carbendazim and Fludioxonil</p>
+  </div>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/5.webp" alt="">
+    <p class="caption">Figure 5. Product of Benzoyl Propiconazole and Mancozeb</p>
+  </div>
+</section>
+<div></div>
+<section>
+  <h1>Microbial Fertilizers and Organic Agriculture</h1>
+  <p>
+    Due to <strong>the strengthening of agricultural sustainable development initiatives</strong>, the shift towards <strong>organic agriculture</strong>, and <strong>the fact that organic agriculture prohibits the use of chemical pesticides</strong>, the <strong>global microbial fertilizer market</strong> is experiencing a surge in global demand. In 2024, over 83 million hectares of farmland worldwide used biofertilizers for cultivation, representing a significant increase compared to 70 million hectares in 2020. Global Microbial Fertilizer market size is anticipated to be valued at USD 6.58 Billion in 2024, with a projected growth to USD 19.26 Billion by 2033 at a CAGR of 14.37%.
+  </p>
+  <p>
+    The Asia-Pacific region leads in the adoption of microbial fertilizers, with China and India accounting for 38% of the total global microbial fertilizer consumption. In 2024, the global consumption of microbial fertilizers reached approximately 29 million metric tons, primarily used for legumes, cereals, and vegetable crops.
+  </p>
+  <p>
+    This strong demand is supported by government subsidies in regions such as Europe, where 210 million euros have been allocated for green agricultural practices, including the use of microbial fertilizers. Due to its high cost-effectiveness, strong sustainability, and soil health improvement capabilities, the microbial fertilizer market continues to grow—over 61% of organic farms use microbial fertilizers as their primary nutrient source.
+  </p>
+  <p>
+    Currently, compared with traditional control methods, microbial fertilizers targeting root rot not only have unique advantages but also face pending issues to be addressed. Based on this, we summarize the biological control methods for root rot.
+  </p>
+  <p>
+    <table>
+      <thead>
+        <tr>
+          <th>Types of Strategy</th>
+          <th>Strategy/Function</th>
+          <th>Strength</th>
+          <th>Weakness</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Biological Control (Figure 6)</td>
+          <td>
+            <ol>
+              <li>Release biocontrol agents (e.g., <i>Trichoderma harzianum</i>, <i>Bacillus subtilis</i>, Streptomyces, and arbuscular mycorrhizal fungi) <a href="#ref14">[14-16]</a>.</li>
+              <li>Regulate rhizosphere microbiome through microbiome engineering.</li>
+            </ol>
+          </td>
+          <td>
+            <ol>
+              <li>Minimal impact on the environment and maintains the balance of soil microbial communities.</li>
+              <li>Protects the stability of agricultural ecosystems.</li>
+              <li>No risk of chemical residues, which is in line with green planting needs.</li>
+            </ol>
+          </td>
+          <td>
+            <ol>
+              <li>Biological agents (e.g., <i>Bacillus subtilis</i>) are used in organic farming, but such biological agents <i>have weak efficacy.</i></li>
+            </ol>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/6.webp" alt="">
+    <p class="caption">Figure 6. <i>Trichoderma harzianum</i>, <i>Bacillus subtilis</i>, Streptomyces, and Arbuscular Mycorrhizal Fungi</p>
+  </div>
+</section>
+
+<section>
+  <h1>Our Synergistic Solution</h1>
+  <p>
+    To address the limitation of weak efficacy in existing biological agents (e.g., <i>Bacillus subtilis</i>) used in organic farming for root rot control, there is an urgent need to optimize the action mechanisms of biocontrol agents or develop novel functional strains with enhanced performance. Against this backdrop, the specific goals and design of this project are as follows:
+  </p>
+  <p>
+    The goal of this project is to develop <strong>engineered bacterial strains that can treat soybeans with root rot disease</strong>. By constructing two functional engineered strains with complementary mechanisms—both targeting chitin, the main structural component of root rot fungal cell walls—we aim to establish an efficient biological control strategy for root rot. Specifically, one strain degrades the fungal cell wall, while the other blocks fungal cell wall synthesis. Ultimately, we aim to formulate these strains into a <strong>dual-strain synergistic biocontrol agent</strong> as the final product, providing a practical and effective solution for soybean cultivation.
+  </p>
+  <p>
+    <strong>Engineered Chitinase-Expressing Bacterial Strain (Figure 7): Degrading Existing Fungal Cell Walls</strong>. 
+  </p>
+  <p>  
+    This strain is designed to <strong>secrete active chitinase in the plant rhizosphere (in the root-surrounding soil)</strong>. The secreted chitinase will hydrolyze chitin, thereby destroying the integrity of the fungal cell wall, leading to fungal cell lysis and ultimately inhibiting or killing root rot pathogens.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/7.webp" alt="">
+    <p class="caption">Figure 7. Engineered Chitinase-Expressing Bacterial Strain Method</p>
+  </div>
+  <p>
+    <strong>Engineered β-Amyrin-Synthesizing Bacterial Strain (Figure 8): Blocking Fungal Cell Wall Synthesis (Targeting Chitin Synthase)</strong>. This strain is designed to <strong>synthesize and release β-amyrin</strong>. β-amyrin acts as a <strong>specific inhibitor of fungal chitin synthase</strong>—a key enzyme that catalyzes the synthesis of chitin and a component of fungal cell walls). By targeting this enzyme, β-amyrin blocks chitin synthesis, preventing the formation of intact fungal cell walls. This inhibition leads to abnormal fungal cell development (e.g., fragile cell membranes, inability to maintain cell shape) and ultimately inhibits pathogen growth and infection, complementing the chitinase strain’s cell wall-degrading function.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/8.webp" alt="">
+    <p class="caption">Figure 8. Engineered β-Amyrin-Synthesizing Bacterial Strain Method</p>
+  </div>
+  <p>
+    In summary, the two engineered strains form a <strong>synergistic dual-target strategy (Figure 9)</strong> against root rot pathogens</strong>:
+  </p>
+  <ul>
+    <li>The chitinase-expressing strain degrades the <strong>existing chitin</strong> in fungal cell walls, destroying mature pathogens.</li>
+    <li>The β-amyrin-synthesizing strain blocks <strong>new chitin synthesis</strong> by inhibiting chitin synthase, suppressing pathogen proliferation and infection.</li>
+  </ul>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/description/9n.webp" alt="">
+    <p class="caption">Figure 9. Our Synergistic Solution</p>
+  </div>
+  <p><table>
+    <thead>
+      <tr>
+        <th>Types of Strategy</th>
+        <th>Strategy</th>
+        <th>Function</th>
+        <th>Strength</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enhanced Biological Control</td>
+          <td>The two engineered strains form a synergistic dual-target strategy against root rot pathogens.</td>
+          <td><ol>
+            <li>The chitinase-expressing strain degrades the existing chitin in fungal cell walls, destroying mature pathogens.</li>
+            <li>The β-amyrin-synthesizing strain blocks new chitin synthesis by inhibiting chitin synthase, thus suppressing pathogen proliferation and infection.</li>
+          </ol></td>
+          <td>The biological activity of traditional biological agents has been enhanced: It can release functional active components that target the chitin of Fusarium, thereby inhibiting the growth of pathogenic bacteria.</td>
+        </tr>
+      </tbody>
+    </table>
+</section>
+<section>
+  <h1>Our Project</h1>
+  <p>
+    Our project provides significant advancements over current root rot control methods for soybeans by directly addressing the key limitations of existing strategies. Traditional agricultural controls (e.g., crop rotation, soil disinfection) are slow-acting and ineffective in the middle-to-late stages of root rot outbreaks—failing to curb severe infections that cause 30%-50% incidence (over 70% in extreme cases) in soybeans. Chemical controls (e.g., fludioxonil, propiconazole) risk pesticide residues drive pathogen resistance in <i>Fusarium spp</i>. (the primary root rot pathogens). Meanwhile, conventional biological controls (e.g., <i>Bacillus subtilis</i>) compete with pathogens for nutrients and are environmentally sensitive, leading to limited and unstable efficacy.
+  </p>
+  <p>
+    In contrast, our solution <strong>leverages a synergistic dual-strain biocontrol agent</strong>—targeting chitin (the core component of fungal cell walls) through two complementary mechanisms—to <strong>enhance the antagonistic ability and tackle root rot comprehensively</strong>: one strain secretes chitinase to degrade existing fungal cell walls, and the other synthesizes β-amyrin to block new chitin synthesis by inhibiting fungal chitin synthase. This dual-target strategy ensures effective control of both mature pathogens and proliferating ones, addressing the inefficiency of single-mechanism methods. Additionally, our project resolves the critical issue of sustainability in root rot control by <strong>integrating synthetic biology innovations</strong>. Unlike chemical controls that fuel pathogen resistance, our approach avoids selective pressure on <i>Fusarium spp</i>. through non-chemical mechanisms. To further enhance efficacy, we developed an algorithm to predict secretory peptide efficiency—screening 2000 peptides to select the optimal signal peptide for chitinase secretion—and optimizing β-amyrin-producing strains to boost yield, thus ensuring consistent performance across different soil conditions.</strong>
+  </p>
+  <p>
+    Unlike chemical controls that pose risks to human health and the environment, our approach prioritizes safety. Our biocontrol agent contains no toxic chemicals: chitinases and β-amyrin are non-toxic to humans. In addition, we constructed a biosafety tool that identifies whitelist proteins with structural similarity to non-whitelist pathogenic proteins, providing safe alternatives and ensuring experimental and application safety. These approaches avoid the environmental pollution and soybean quality degradation associated with chemical pesticides.
+  </p>
+  <p>
+    In conclusion, we aim to accelerate the goal of eliminating soybean root rot by 2030 through our synergistic biocontrol agent. By reducing root rot incidence by 40% in soybean, we will secure the supply of soybean and support the sustainable development of the soybean industry.
+  </p>
+</section>
+
+<section>
+  <h1>References</h1>
+    <table id="ref-table">
+      <tr>
+        <td>
+          <div id="ref1">[1]</div>
+        </td>
+        <td>Patil G, Vuong TD, Kale S, et al. Dissecting genomic hotspots underlying seed protein, oil, and sucrose content in an interspecific mapping population of soybean using high-density linkage mapping. <i>Plant Biotechnol J</i>. 2018;16(11):1939-1953.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref2">[2]</div>
+        </td>
+        <td>Zhang L, Zhu L, Yu M, Zhong M. Warming decreases photosynthates and yield of soybean (<i>Glycine max</i> (L.) Merrill) in the North China plain. <i>Crop J</i>. 2016;4(2):139-146.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref3">[3]</div>
+        </td>
+        <td>Zhao J, Ni T, Li Y, et al. Responses of bacterial communities in arable soils in a rice-wheat cropping system to different fertilizer regimes and sampling times. <i>PLoS One</i>. 2014;9:e85301.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref4">[4]</div>
+        </td>
+        <td>Mei L, Zhang N, Wei Q, Cao Y, Li D, Cui G. Alfalfa modified the effects of degraded black soil cultivated land on the soil microbial community. <i>Front Plant Sci</i>. 2022;13:938187.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref5">[5]</div>
+        </td>
+        <td>Cai H, Yu N, Liu Y, Wei X, Guo C. Meta-analysis of fungal plant pathogen <i>Fusarium oxysporum</i> infection-related gene profiles using transcriptome datasets. <i>Front Microbiol</i>. 2022;13:970477.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref6">[6]</div>
+        </td>
+        <td>Wrather A, Shannon G, Balardin R, et al. Effect of diseases on soybean yield in the top eight producing countries in 2006. <i>Plant Health Prog</i>. 2010;11:29.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref7">[7]</div>
+        </td>
+        <td>Arias MMD, Leandro LF, Munkvold GP. Aggressiveness of Fusarium species and impact of root infection on growth and yield of soybeans. <i>Phytopathology</i>. 2013;103(8):822-832.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref8">[8]</div>
+        </td>
+        <td>Zhang JX, Xue AG, Cober ER, et al. Prevalence, pathogenicity and cultivar resistance of <i>Fusarium</i> and <i>Rhizoctonia</i> species causing soybean root rot. <i>Can J Plant Sci</i>. 2013;93(2):221-236.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref9">[9]</div>
+        </td>
+        <td>Barros GG, Zanon MSA. Pathogenicity of phylogenetic species in the <i>Fusarium graminearum</i> complex on soybean seedlings in Argentina. <i>Eur J Plant Pathol</i>. 2014;138:215-222.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref10">[10]</div>
+        </td>
+        <td>Chang XL, Dai H, Wang DP, et al. Identification of <i>Fusarium</i> species associated with soybean root rot in Sichuan Province, China. <i>Eur J Plant Pathol</i>. 2018;151:563-577.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref11">[11]</div>
+        </td>
+        <td>Arias MD, Munkvold G, Ellis M, Leandro LJPD. Distribution and frequency of <i>Fusarium</i> species associated with soybean roots in Iowa. <i>Plant Dis</i>. 2013;97(12):1557-1562.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref12">[12]</div>
+        </td>
+        <td>Wang LY, Xie YS, Cui YY, et al. Conjunctively screening of biocontrol agents against <i>Fusarium</i> root rot and <i>Fusarium</i> head blight caused by <i>Fusarium graminearum</i>. <i>Microbiol Res</i>. 2015;177:34-42.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref13">[13]</div>
+        </td>
+        <td>Yi L, Yang M, Waalwijk C, et al. Dynamics of carbendazim-resistance frequency of pathogens associated with the epidemic of <i>Fusarium</i> head blight. <i>Plant Dis</i>. 2023;107(6):1690-1696.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref14">[14]</div>
+        </td>
+        <td>Bae H, Roberts D, Lim H, Strem M, Park S. Endophytic <i>Trichoderma</i> isolates from tropical environments delay disease onset and induce resistance against <i>Phytophthora capsici</i> in hot pepper using multiple mechanisms. <i>Mol Plant Microbe Interact</i>. 2011;24:336-351.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref15">[15]</div>
+        </td>
+        <td>Park Y, Mishra R, Yoon S, et al. Endophytic <i>Trichoderma citrinoviride</i> isolated from mountain-cultivated ginseng (<i>Panax ginseng</i>) has great potential as a biocontrol agent against ginseng pathogens. <i>J Ginseng Res</i>. 2019;43:408-420.</td>
+      </tr>
+      <tr>
+        <td>
+          <div id="ref16">[16]</div>
+        </td>
+        <td>Tudi M, Daniel RH, Wang L, et al. Agriculture development, pesticide application and its impact on the environment. <i>Int J Environ Res Public Health</i>. 2021;18:1112.</td>
+      </tr>
+    </table>
+</section>
+{% endblock %}

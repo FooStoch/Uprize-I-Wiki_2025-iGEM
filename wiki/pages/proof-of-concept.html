@@ -1,0 +1,885 @@
+{% extends "layout.html" %}
+  
+{% block title %}Proof of Concept{% endblock %}
+{% block lead %}Present the results of your project, along with a detailed analysis and discussion of their significance. Also outline future plans and reflections on the impact of your project.{% endblock %}
+
+{% block page_content %}
+
+<section>
+  <h1>Signal Peptide Function Test</h1>
+    <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-1.webp" alt="">
+        <p class="caption">Figure 1. Experimental flowchart for functional testing of signal peptides.</p>
+    </div>
+  <h2>Construction of the secreted peptide model</h2>
+  <p>
+    To evaluate the ability of six signal peptides from different microbial sources  (<strong><i>Escherichia coli</i></strong> and <strong><i>Bacillus subtilis</i></strong>) (Table 1) to secrete heterologous proteins in <i>E. coli</i> BL21 (DE3), the following experiments were conducted in this study <a href="#ref1">[1-3]</a>:
+  </p>
+
+  <table class="scientific-table" border="1">
+    <caption>Table 1. Basic information of signal peptides</caption>
+      <thead>
+          <tr>
+              <th>Signal peptide</th>
+              <th>Species</th>
+              <th>Gene</th>
+              <th>UniProt</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr><td>ompA</td><td><i>E. coli</i></td><td>ompA gene</td><td>OMPA_ECOLI</td></tr>
+          <tr><td>FAEE</td><td><i>E. coli</i></td><td>Chaperone protein faeE</td><td>FAEE_ECOLX</td></tr>
+          <tr><td>LYS2</td><td><i>E. coli</i></td><td>Lysis protein for colicins E2 and E3</td><td>LYS2_ECOLX</td></tr>
+          <tr><td>TRAT3</td><td><i>E. coli</i></td><td>TraT complement resistance protein</td><td>TRAT3_ECOLX</td></tr>
+          <tr><td>Amy</td><td><i>B. licheniformis</i> 584</td><td>alpha-amylase gene</td><td>AMY_BACLI</td></tr>
+          <tr><td>ydhT</td><td><i>B. subtilis</i></td><td>DNA for phoB-rrnE-groESL region, ydhT gene</td><td>MANB1_BACSU</td></tr>
+      </tbody>
+  </table>
+
+  <p> The protein sfGFP (super folding green fluorescent protein) was selected as the model heterologous protein. Each signal peptide was respectively linked to the N-terminal of sfGFP through a linker (amino acid sequence GSGSGS) to form a signal peptide-linker-sfGFP fusion fragment. Subsequently, the fusion fragment was cloned into the pET28a plasmid vector, and the lac/T7 expression system was utilized to precisely regulate the expression of the fusion protein (Figure 2). Eventually, seven fusion protein expression strains carrying different signaling peptides (including one control strain without a signaling peptide) were constructed.
+  </p>
+
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-2.webp" alt="">
+      <p class="caption">Figure 2. Gene expression modules of different signal peptides and sfGFP.</p>
+  </div>
+
+  <h2>Measurements</h2>
+  <p>
+    During the experiment, each strain was inoculated respectively in M9 minimal media for culture. When the strain grew to the exponential growth phase, IPTG (isopropyl-β-D-thiogalactopyranoside) was added to induce the expression of sfGFP. After induction, the supernatant of the culture medium was collected by centrifugation. The intensity of green fluorescence in the supernatant was used as the core indicator to evaluate the ability of the signal peptide to secrete heterologous proteins–the stronger the fluorescence, the higher the efficiency of the corresponding signal peptide in mediating the secretion of heterologous proteins outside the cell (Figure 1).
+  </p>
+  <p>
+    The results were verified through two detection methods: direct observation under blue light (Figure 3), which can visually distinguish the difference in fluorescence intensity in the supernatant, and quantitative detection by a microplate reader (Figure 4), which can precisely quantify the fluorescence intensity value. Both methods clearly demonstrated significant differences in the fluorescence intensity of secreted fluorescent proteins mediated by different signal peptides, providing a clear basis for the subsequent functional evaluation of signal peptides.
+    
+  </p>
+
+  <h3>1. Direct observation under blue light</h3>
+    
+  
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-3.webp" alt="">
+      <p class="caption">Figure 3. The secretion effects of sfGFP from different signal peptides under blue light.</p>
+  </div>
+
+  <h3>2. Quantitative detection by microplate reader</h3>
+  <p>
+    Meanwhile, we used microplate reader to visualize the fluorescence intensity of the aforementioned visible secretion effects to the naked eye. The relative fluorescence intensities are shown in the following table (Table 2):
+  </p>
+  <table class="scientific-table" border="1">
+    <caption>Table 2. Measurement of the transport effects of different signal peptides on sfGFP by microplate reader (Excitation wavelength: 485 nm, emission wavelength: 510 nm)</caption>
+      <thead>
+          <tr>
+              <th>Strain</th>
+              <th>Relative fluorescence intensity</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-sfGFP (control)</td><td>2962</td></tr>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-ompA-sfGFP</td><td><strong>16365</strong></td></tr>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-FAEE-sfGFP</td><td>1178</td></tr>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-LYS2-sfGFP</td><td>1472</td></tr>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-TRAT3-sfGFP</td><td>425</td></tr>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-amy-sfGFP</td><td>7212</td></tr>
+          <tr><td>BL21(DE3)  pET28a-Kan-lacI/T7-ydhT-sfGFP</td><td>12066</td></tr>
+      </tbody>
+  </table>
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-4.webp" alt="">
+      <p class="caption">Figure 4. Measurement of the transport effects of different signal peptides on sfGFP by microplate reader.  (excitation wavelength: 485 nm, emission wavelength: 510 nm)</p>
+  </div>
+
+  <h2>Results and Discussion</h2>
+  <p>
+    According to the quantitative detection results of fluorescence intensity in the supernatant of M9 medium (compared with the control strain without signal peptides), three types of signal peptides demonstrated superior sfGFP secretion efficiency in <i>E. coli</i> BL21 (DE3): signal peptide ompA derived from the ompA gene of <i>E. coli</i>, signal peptide amy derived from the 584α-amylase gene of <i>B. licheniformis</i>, and signal peptide ydhT derived from the DNA of the phoB-rrnE-groESL region of <i>B. subtilis</i>.
+  </p>
+  <p>
+    In contrast, the endogenous signal peptides FAEE, LYS2 and TRAT3 from <i>E. coli</i> have significantly poorer effects on the secretion of sfGFP mediated by them, even lower than the fluorescence signal levels produced by the control strains due to leakage expression (i.e., the amount of protein passively released outside the cell when there are no signal peptides).
+  </p>
+  <p>
+    Based on the above results, to ensure the stability and optimality of secretion efficiency in subsequent experiments, we ultimately selected the ompA signal peptide with the best secretion effect as the core tool signal peptide for the subsequent experiments.
+  </p>
+</section>
+
+<section>
+  <h1>Chitinase Activity Test</h1>
+
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-5.webp" alt="">
+      <p class="caption">Figure 5. Experimental flowchart for protein expression and enzyme activity test of chitinase.</p>
+  </div>
+
+  <h2>Verification of Chitinase secretion effect in <i>E. coli</i></h2>
+  <p>
+    To enhance the extracellular secretion efficiency and activity of chitinase, we first screened out four chitinase genes derived from different microorganisms through literature research <a href="#ref4">[4-6]</a>(for specific sources and gene information, refer to Table 3), and plan to systematically evaluate their heterologous expression ability and secretion characteristics in <i>E. coli</i>. Previously, through functional tests of signal peptides (using the green fluorescent protein sfGFP as the reporter gene to evaluate the efficiency of protein secretion mediated by different signal peptides), it was determined that the signal peptide ompA of <i>E. coli</i> outer membrane protein A is the optimal choice–this signal peptide can efficiently mediate the transmembrane transport of target proteins to the periplasmic space through the Sec secretion pathway. It is then released into the extracellular space through non-specific channels on the outer membrane, and imposes a relatively small burden on the host's growth.
+  </p>
+
+  <table class="scientific-table" border="1">
+    <caption>Table 3. Chitinase information</caption>
+      <thead>
+          <tr>
+              <th>Chitinase name</th>
+              <th>Species</th>
+              <th>Gene</th>
+              <th>NCBI GenBank</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr><td>BlJ24</td><td><i>B. licheniformis</i> J24</td><td>chitinase (gh18A)</td><td>MF765958</td></tr>
+          <tr><td>Blchi</td><td><i>B. licheniformis</i> DMS 13</td><td>chitinase</td><td>CP000002.3</td></tr>
+          <tr><td>Bschi</td><td><i>B. subtilis</i></td><td>chitinase</td><td>AF069131.1</td></tr>
+          <tr><td>Smchi</td><td><i>Serratia marcescens</i> GEI</td><td>chitinase A</td><td>GQ855217.1</td></tr>
+      </tbody>
+  </table>
+  <p>
+    Based on this, we constructed the "ompA signal peptide-chitinase gene" fusion expression module: The ompA signal peptide sequence (including the start codon and the signal peptide cleavage site) was seamlessly linked to four chitinase genes (Blchi, Bschi, BlJ24, and Smchi) through overlapping extension PCR to ensure the correct folding and cleavage of the signal peptide with the mature enzyme protein. The fusion gene was subsequently cloned to the polyclonal site of the pET28a vector (containing the T7 promoter, His₆ tag and kanamycin resistance gene). Recombinant plasmids pET28a-ompA-Blchi, pET28a-ompA-Bschi, pET28a-ompA-BlJ24, and pET28a-ompA-Smchi were constructed (Figure 6). The aforementioned recombinant plasmids were respectively transformed into <i>E. coli</i> BL21 (DE3) (containing the T7 RNA polymerase gene, which can respond to IPTG induction). After confirming the correctness of colony PCR and sequencing, four candidate engineering strains were obtained by selecting single colonies.
+  </p>
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-6.webp" alt="">
+      <p class="caption">Figure 6. Gene expression modules of different signal peptides and chitinases.</p>
+  </div>
+  <p>
+    To induce chitinase expression, the verified correct strain was inoculated into LB medium containing 50 μg/mL kanamycin and shaken at 37 °C until OD600=0.6-0.8 (early logarithmic growth phase), and IPTg with a final concentration of 0.5 mM was added for induction. It continued to culture at 25 ℃ (to reduce the risk of protein misfolding) for 16 hours. After induction, 10 mL of the fermentation broth was centrifuged at 4 °C and 8000 rpm for 10 minutes. The supernatant (containing extracellular proteins) was collected and analyzed by 12% SDS-PAGE electrophoresis (Coomassie brilliant blue staining) to verify the protein secretion (Figure 5).
+  </p>
+  <p>
+    The results show (Figure 7) that using the empty vector transformation strain (containing only sfGFP and with little butenase gene) as the negative control, specific protein bands consistent with the theoretical molecular weight (approximately 65 kDa and 62 kDa, respectively) appeared in the supernatants of the culture media corresponding to Blchi and Bschi. It indicates that the ompA signaling peptide successfully mediates the extracellular secretion of these two chitinases.
+  </p>
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-7.webp" alt="">
+      <p class="caption">Figure 7. SDS-PAGE gel diagram of protein expression in the supernatant of fermentation medium.</p>
+  </div>
+
+  <p>
+      However, the target bands were not detected in the lanes corresponding to BlJ24 and Smchi, suggesting that they did not achieve effective expression or secretion. The possible reasons for the undetected expression of BlJ24 and Smchi can be analyzed from multiple levels of gene expression:
+  </p>
+  <ol>
+    <li><b>Codon preference differences</b>: The source microorganisms of BlJ24 and Smchi (possibly Gram-positive bacteria or fungi) have significant differences in codon usage frequency from <i>E. coli</i>. Their genes contain a large number of rare codons in <i>E. coli</i> (such as AGG/AGA encoding arginine, with a usage frequency of less than 1% in <i>E. coli</i>), which may lead to ribosomal translation arrest or even termination of translation in advance.</li>
+    <li><b>Insufficient mRNA stability</b>: The transcripts of these two genes may form complex secondary structures (such as stem-loop structures), or lack stable elements of <i>E. coli</i> mRNA (such as stem-loop structures in the 5' untranslated region), leading to rapid degradation of mRNA by endogenous nucleases and making it unable to serve as an effective template for translation.</li>
+    <li><b>Protein folding and degradation</b>: The amino acid sequences of BlJ24 and Smchi may be more prone to misfolding within <i>E. coli</i> cells (especially during heterologous expression), and can be recognized and degraded by the host's proteases (such as Lon protease and Clp protease). Even if some proteins fold correctly, immature proteins may remain intracellular and be degraded due to poor compatibility with ompA signal peptides (such as amino acid sequences near the cleavage site of the signal peptide interfering with the recognition of cleavage enzymes).</li>
+    <li><b>Low transcriptional initiation efficiency</b>: Despite the use of the T7 strong promoter, the distance and sequence of the ribosome binding sites (RBS) upstream of the BlJ24 and Smchi genes from the start codon may not be optimal, or the secondary structure at the 5' end of the gene coding region may mask the RBS, making it difficult for ribosomes to bind and initiate translation.</li>
+  </ol>
+  <p>
+      Considering that the subsequent research does not need to conduct a horizontal comparison of the effects of different chitinases, and the core objective is merely to screen out one engineered strain with the best effect, we will no longer delve into the specific mechanisms by which BlJ24 and Smchi have not achieved effective expression. Based on the results of the previous experiments, the subsequent work will focus on the evaluation of the antagonistic effects of Blchi and Bschi against fungi. Through systematic testing of their inhibitory activities against the target fungi, a strain with better performance will be ultimately determined for subsequent research.
+  </p>
+
+  <h2>Verification of Chitinase Activity in <i>E. coli</i></h2>
+  <p>
+    To further verify whether the successfully secreted chitinase has biological activity, we designed a colloidal chitin plate hydrolysis experiment: The engineered strain bacterial liquid (recombinant strain containing Blchi and Bschi) induced overnight by IPTG was dipped in a sterile coating rod and seeded onto a colloidal chitin plate containing 50 μg/mL kanamycin (for maintaining plasmid stability) and 0.2 mM IPTG (for continuously inducing enzyme expression). Then it was incubated at 37℃ for 3 to 5 days. Lastly, we evaluated the catalytic activity of the enzyme by observing whether a transparent circle appears around the colonies (Figure 5).
+  </p>
+
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-8.webp" alt="">
+      <p class="caption">Figure 8. Effect diagrams of chitin decomposition by different secreted chitin enzymes.</p>
+  </div>
+
+  <p>
+    The experimental results (Figure 8) showed that obvious transparent hydrolytic circles were formed around the colonies of <i>E. coli</i> expressing Blchi and Bschi, while no transparent circles appeared around the negative control (empty vector strain). The principle of this phenomenon lies in the fact that chitin is a linear polysaccharide formed by N-acetylglucosamine linked by β-1,4-glycosidic bonds. Due to its huge molecular weight and strong intermolecular hydrogen bond interaction, it appears as insoluble milky white colloidal particles, making the entire culture medium turbid. The Blchi and Bschi secretions of <i>E. coli</i> can specifically recognize and cleave the β-1,4-glycosidic bonds of chitin, gradually hydrolyzing it into soluble chitooligosaccharide small molecule products, leading to the degradation of insoluble chitin particles around the colonies and forming a transparent circle that contrast sharply with the surrounding turbid background.
+  </p>
+  <p>
+    The above results not only confirmed that the ompA signal peptide-mediated secreted Blchi and Bschi have the correct spatial folding (a key to maintaining enzyme activity), but also directly demonstrated their efficient catalytic function for chitin decomposition, providing an opportunity for their subsequent synergistic application with β-amyrin in fungal antagonism tests (fungal cell walls are rich in chitin). Chitinase can destroy its structural integrity, laying an important experimental foundation.
+  </p>
+</section>
+
+<section>
+  <h1>β-amyrin Synthesis</h1>
+
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-9.webp" alt="">
+      <p class="caption">Figure 9. Experimental flowchart for the synthesis and detection of β-amyrin in <i>E. coli</i>.</p>
+  </div>
+
+  <h2>Reasons for choosing β-amyrin</h2>
+  <p>
+    The construction of a chitinase biosynthetic factory in <i>E. coli</i> is an important application of synthetic biology in the field of agricultural biological control. Through literature research, we found that the study by Granada and Skariyachan <a href="#ref7">[7]</a> demonstrated that the endophytic <i>Bacillus velezensis</i> strain <i>B. velezensis</i> CBMB205 exhibited significant antifungal activity against <i>Fusarium oxysporum</i>. One of the key factors is precisely the effect of the metabolite β-amyrin. The multi-factor synergistic antibacterial mechanism it expounded provides profound inspiration for introducing β-amyrin into the design of engineered bacteria. The introduction of β-amyrin not only holds scientific significance but also provides strong support at the application level in terms of enhancing the overall antifungal efficacy and environmental adaptability of engineered bacteria from multiple dimensions in a coordinated manner.
+  </p>
+  <p>
+    The research by Granada and Skariyachan elucidated the antifungal potential of β-amyrin through two dimensions: in vitro experiments and in silico molecular simulation. The results show that β-amyrin has a strong binding ability with two key enzymes related to the synthesis of fungal cell walls: chitin synthase-1 (CS-1) and 1,3-β-glucan synthase (1,3-GS/Fks1). The binding energy to CS-1 can reach -10.17 kcal/mol.
+  </p>
+  <p>
+    These results indicate that β-amyrin can exert antifungal effects by inhibiting the synthesis of cell wall polysaccharides and disrupting the structural stability of fungi. This mechanism forms a complementary relationship with the mode of action of chitinase. The synergy of the two can significantly enhance the antifungal effect. In conclusion, we speculate that β-amyrin has the function of inhibiting chitin synthesis.
+  </p>
+
+  <h2>Constructing the β-amyrin strain</h2>
+  <p>
+    To enhance the antagonistic effect against fungi, we plan to construct a synthesis pathway of β-amyrin in <i>E. coli</i>. <i>E. coli</i> has become an ideal host for the construction of heterologous metabolic pathways due to its clear genetic background, convenient gene manipulation and low fermentation cost. Further literature research revealed that the endogenous methylerythritol phosphate (MEP) pathway exists in <i>E. coli</i> <a href="#ref8">[8,9]</a>. This pathway can synthesize farnesyl pyrophosphate (FPP), the key precursor of β-amyrin, through multiple enzymatic reactions (Figure 10).
+  </p>
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-10.webp" alt="">
+      <p class="caption">Figure 10. Endogenous FPP metabolic pathways in <i>E. coli</i>.</p>
+  </div>
+  <p>
+    Based on this, we do not need to reconstruct the complete precursor synthesis pathway. We only need to introduce the three key enzyme genes downstream of β-amyrin synthesis to complete the synthesis link from FPP to β-amyrin: the Homo sapiens farnesyl-diphosphate farnesyltransferase 1 gene (hSQS), which catalyzes FPP dimerization to squalene, the Arabidopsis thaliana squalene monooxygenase gene (AtSQE), which catalyzes squalene oxidation to 2,3-oxidosqualene, and the Euphorbia tirucalli β-amyrin synthase gene (EtAS), which catalyzes 2,3-oxidosqualene cyclization to β-amyrin (Figure 11).
+  </p>
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-11.webp" alt="">
+      <p class="caption">Figure 11. Metabolic pathway of β-amyrin synthesis in <i>E. coli</i>.</p>
+  </div>
+  <p>
+    To achieve efficient and coordinated expression of the three key genes, we selected the pTac promoter to construct the expression cassette. Through enzymatic ligation, hSQS, AtSQE, and EtAS were successively inserted into the plasmid vector. Meanwhile, the kanamycin (Kan) resistance gene was introduced as a screening marker, and finally the recombinant plasmid pTYT(Kan-pTac-hSQS-AtSQE-EtAS) was constructed. Subsequently, the plasmid was introduced into <i>E. coli</i> DH5α competent cells respectively by thermal shock conversion method. After confirming the successful introduction of the plasmid, the β-amyrin synthetic engineered strains <i>E. coli</i> DH5α with pTYT (Kan-pTac-hSQS-AtSQE-EtAS) was obtained (Figure 12).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-13.webp" alt="">
+    <p class="caption">Figure 12. DH5α with pTYT(Kan-pTac-hSQS-AtSQE-EtAS)</p>
+  </div>
+
+  <h2>Detection of the β-amyrin product</h2>
+  <p>
+    
+        To obtain an adequate amount of β-amyrin for subsequent detection, we conducted fermentation culture and product extraction on the engineered strain (Figure 9):<br><br>
+        
+        a. <b>Fermentation culture:</b> We selected the verified correct single colonies of <i>E. coli</i> and inoculated them into LB liquid medium containing 50 μg/mL kanamycin. Then they were shaken and cultured at 37 °C and 200 rpm for 12 hours until the OD<sub>600</sub> of the seed liquid was 1.0–1.2. The seed liquid was transferred at a 1% inoculation volume to a 500 mL conical flask (with a liquid capacity of 100 mL), and then shaken and cultured under the same conditions. We took samples regularly to monitor OD<sub>600</sub> (once every 6 hours), and stopped the fermentation when the strain entered the stable period (culture for 48 hours, OD<sub>600</sub> ≈ 3.5–4.0).<br><br>
+        
+        b. <b>Supernatant collection:</b> The fermentation broth was placed in a 50 mL centrifuge tube and centrifuged at 8,000 rpm and 4 °C for 10 minutes, after which the supernatant was collected.<br><br>
+        
+        c. <b>Product extraction:</b> We added 20 mL of ethyl acetate (β-amyrin is a liposoluble substance, and ethyl acetate is the optimal extraction solvent). After crushing, we centrifuged at 4 °C and 12,000 rpm for 15 minutes. The upper organic phase (containing β-amyrin) was collected, and the lower bacterial residue was extracted twice with 10 mL of ethyl acetate. We combined the organic phases three times to increase the recovery rate.<br><br>
+        
+        d. <b>Concentration and purification:</b> The combined organic phase was transferred to a rotary evaporator and concentrated to nearly dryness under vacuum conditions of 40 °C and 0.08 MPa. Then, 1 mL of chromatographic-grade methanol was added to dissolve the residue. The residue was filtered through a 0.22 μm organic-phase filter membrane (to remove impurity particles and avoid clogging the chromatographic column), and the filtrate was collected as the β-amyrin sample to be tested. It was stored at 4 °C away from light for future use.<br><br>
+        
+        e. <b>β-amyrin product detection:</b> To accurately verify whether the engineered strain successfully synthesized β-amyrin, we established a liquid chromatography–mass spectrometry (LC-MS) detection method for β-amyrin through literature research and optimization <a href="#ref10">[10,11]</a> (Table 4).
+        
+  </p>
+
+
+  <table class="scientific-table" border="1">
+    <caption>Table 4. Parameters of LC-MS detection method for β-amyrin</caption>
+      <thead>
+          <tr><th colspan="2">UPLC conditions</th><th colspan="2">MS conditions</th></tr>
+      </thead>
+      <tbody>
+          <tr><td>Chromatographic column</td><td>ACQUITY UPLC BEH C18 1.7μm 2.1×100mm Column</td><td>Runtime</td><td>0-15 min</td></tr>
+          <tr><td>Mobile phase</td><td>A: 0.1% aq formic acid,<br/> B: Methanol (0.1% formic acid)</td><td>Polarity</td><td>positive</td></tr>
+          <tr><td>Gradient elution procedure</td><td>0-8 minutes: 60% B<br/>8-12 minutes: 100% B<br/>12-15 minutes: 60% B</td><td>Full MS</td><td>Resolution: 120000<br/>
+AGC target: 3e6<br/>
+Maximum IT: 200 ms<br/>
+Scan range: 150 to 2000 m/z
+</td></tr>
+          <tr><td>Flow velocity</td><td>0.3 mL/min</td>
+            <td></td>
+            <td></td></tr>
+          <tr><td>Column oven temperature</td><td>45 ℃</td><td></td><td></td></tr>
+      </tbody>
+  </table>
+
+  <p>
+    The results showed that a specific chromatographic peak appeared at a retention time of 12.18 min, and the characteristic target ion peak of β-amyrin (m/z 427.39389) was clearly detected in the corresponding mass spectrum (Figure 13). This value is in complete agreement with the m/z corresponding to the hydrogenated exact molecular weight (m/z = 427.39417 for [M+H]⁺ ions) of β-amyrin (molecular formula: C<sub>30</sub>H<sub>50</sub>O). Meanwhile, parallel detection was performed using the β-amyrin standard substance, and its retention time and characteristic ion peak were completely matched with those of the sample (Figure 14). This further confirms that we have successfully constructed an engineered <i>Escherichia coli</i> strain (pTYT group: pTYT plasmid with Kan-pTac-hSQS-AtSQE-EtAS) capable of efficiently synthesizing β-amyrin.
+  </p>
+
+ 
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-13n.webp" alt="">
+    <p class="caption">Figure 13. Mass spectrum of β-amyrin in positive ion mode</p>
+  </div>
+  <div class="img">
+       <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-14n.webp" alt="">
+      <p class="caption">Figure 14. Extracted Ion Chromatogram (EIC) of β-amyrin, including the following groups: Control group, pTYT group, and β-amyrin standard group</p>
+  </div>
+
+  <p> 
+    Because the endogenous methylerythritol phosphate (MEP) pathway in <i>E. coli</i> mainly provides precursors for the synthesis of necessary terpenoids (such as quinones, isoprene, etc.) by the cells themselves, and its metabolic flow distribution is oriented towards meeting basic physiological needs, the endogenous accumulation of farnesyl pyrophosphate (FPP) is relatively low (usually only at the microgram level per liter of fermentation liquid). It has become a key bottleneck restricting the synthesis of β-amyrin.
+  </p>
+  <p>
+    To break through this limitation, through systematic literature research, we found that the mevalonate (MVA) pathway in eukaryotes (such as yeast) has a stronger ability to synthesize terpene precursors—this pathway uses acetyl-CoA as the starting material <a href="#ref12">[12,13]</a>. Through multi-step enzymatic reactions, isopentenyl pyrophosphate (IPP) and dimethylallyl pyrophosphate (DMAPP) can be efficiently generated. Further polymerization of the two can produce FPP, and its metabolic flow can be directionally enhanced by regulating the expression of key enzymes. Therefore, we plan to introduce the complete key enzyme genes of the endogenous MVA pathway of yeast (<i>Saccharomyces cerevisiae</i>) into the constructed β-amyrin synthesis engineering strain, and construct a metabolic network of the synergistic effect of the "MEP+MVA" dual pathway, significantly increasing the intracellular accumulation of FPP, and thereby enhancing the synthetic efficiency of β-amyrin.
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-15.webp" alt="">
+    <p class="caption">Figure 15. Endogenous FPP synthesis pathway in <i>S. cerevisiae</i>.</p>
+  </div>
+
+  <p>
+    Specifically, the core enzyme genes of the yeast MVA pathway include:
+  </p>
+  <ol>
+    <li>the acetyl-CoA acetyltransferase gene (<i>atoB</i>), which catalyzes the condensation of 2 acetyl-CoA molecules to form acetoacetyl-CoA;</li>
+    <li>the HMG-CoA synthase gene (<i>HMGS</i>), which catalyzes the combination of acetoacetyl-CoA with another acetyl-CoA molecule to form 3-hydroxy-3-methylglutaryl-CoA (HMG-CoA);</li>
+    <li>the HMG-CoA reductase gene (<i>tHMGR</i>, the truncated catalytic form lacking the N-terminal membrane), which catalyzes the reduction of HMG-CoA to mevalonate to avoid feedback inhibition of the full-length protein;</li>
+    <li>the mevalonate kinase gene (<i>ERG12</i>), which catalyzes the phosphorylation of mevalonate to mevalonate-5-phosphate;</li>
+    <li>the phosphomevalonate kinase gene (<i>ERG8</i>), which catalyzes the generation of mevalonate-5-pyrophosphate;</li>
+    <li>the mevalonate pyrophosphate decarboxylase gene (<i>MVD1</i>), which catalyzes the decarboxylation of mevalonate-5-pyrophosphate to isopentenyl pyrophosphate (IPP);</li>
+    <li>the isopentenyl pyrophosphate isomerase gene (<i>IDI1</i>), which catalyzes the mutual transformation of IPP and dimethylallyl pyrophosphate (DMAPP) (Figure 15).</li>
+  </ol>
+  <p>
+    The aforementioned seven genes can efficiently flow from acetyl-CoA to IPP/DMAPP through a cascade reaction, providing sufficient precursors for FPP synthesis (Figure 8).
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-16n.webp" alt="">
+    <p class="caption">Figure 16. β-amyrin synthetic pathway in our system</p>
+  </div>
+
+  <p>
+    To achieve the co-expression of the MVA pathway and the original β-amyrin synthesis pathway (Figure 16), we designed a dual-plasmid co-expression system:
+  </p>
+  <p>
+    1) Retain the original plasmid <i>pTYT(Kan-PTac-hSQS-AtSQE-EtAS)</i> with kanamycin resistance to ensure the stable expression of the downstream pathways of β-amyrin synthesis. 2) Construct new recombinant plasmids <i>pMevT(Cm-Plac-atoB-HMGS-tHMGR)</i> with chloramphenicol resistance and <i>pMBIS(TcR-Plac-ERG12-ERG8-MVD1-idi-ispA)</i> with tetracycline resistance, and 3) Express the seven MVA pathway genes in tandem in the metabolic flow sequence. Also, <i>rrnBT1</i> terminators are added downstream of the gene cluster to ensure complete transcription.</li>
+  </p>
+  <p>
+    This three-plasmid design not only avoids the problem of unstable replication caused by overly large single plasmids but also ensures the stable coexistence of the three plasmids through screening with three antibiotics (kanamycin, chloramphenicol, and tetracycline).
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-17n.webp" alt="">
+    <p class="caption">Figure 17. DH5α with pTYT + pMevT + pMBIS</p>
+  </div>
+  <p>
+    After the construction is completed (Figure 17), we will conduct fermentation on the new engineered strain DH5α with pTYT plasmid (Kan-pTac-hSQS-AtSQE-EtAS) , pMevT plasmid (Cm-Plac-atoB-HMGS-tHMGR) and pMBIS plasmid (TcR-Plac-ERG12-ERG8-MVD1-idi-ispA)
+  </p>
+  <p>
+    Consistent with this design, our data demonstrated that the introduction of
+    <b>the MVA pathway (pMevT-pMBIS-pTYT group) resulted in a 4-fold increase in β-amyrin production compared to the single-plasmid group</b> (pTYT group) (Figure 18 and 19).
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-18n.webp" alt="">
+    <p class="caption">Figure 18. Extracted Ion Chromatogram (EIC) of β-amyrin, including the following groups: Control group, pTYT group, pMevT-pMBIS-pTYT group, and β-amyrin standard group</p>
+  </div>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-19n.webp" alt="">
+    <p class="caption">Figure 19. Relative abundance comparison diagram of β-amyrin product peaks</p>
+  </div>
+
+  <p>
+    This finding further confirms that the exogenous yeast MVA pathway can effectively enhance the supply of FPP in engineered <i>Escherichia coli</i>, and in turn, significantly improve the efficiency of heterologous β-amyrin synthesis—validating the rationality of our metabolic engineering strategy for boosting β-amyrin yield.
+  </p>
+
+</section>
+
+<section>
+  <h1>Antagonism Test</h1>
+  <p>
+    To test whether the chitinase obtained from secretion and the synthesized β-amyrin have antagonistic effects on yeast, we developed a
+    <b>semi-quantitative method</b> and a <b>quantitative method</b>.
+  </p>
+  <h2>Semi-quantitative method: Establishment of a Semi-quantitative Antagonistic Assay based on Extracellular Fluorescent Protein with Microplate Reader</h2>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-20n.webp" alt="">
+    <p class="caption">Figure 20. Workflow for Semi-quantitative Antagonistic Assay based on Extracellular Fluorescent Protein with Microplate Reader</p>
+  </div>
+
+  <h3>1. Method development process</h3>
+  <p>
+    During the CCiC Conference, we obtained a strain of <i>S. cerevisiae</i> capable of producing red fluorescent protein (RFP) from the <a href="https://2025.igem.wiki/tsinghua-m/index.html" target="_blank">Tsinghua-M</a> team and designed the following experimental protocol based on this. During the fermentation process of <i>S. cerevisiae</i>, two key substances will be simultaneously added to the fermentation broth–one is the secretion supernatant solution containing chitinase secreted by <i>E. coli</i> (with chitinase as the core active component), and the other is β-amyrin.
+  </p>
+  <p>
+    Our core speculative mechanism is as follows. On one hand, chitinase can directly break down chitin, the main component of the cell wall of <i>S. cerevisiae</i>, and on the other hand, β-amyrin can inhibit the process of chitin synthesis by <i>S. cerevisiae</i> itself. These two pathways of action will eventually jointly lead to a reduction in chitin content in the yeast cell wall, and the decrease in chitin will disrupt the structural integrity of the cell wall, thereby altering its permeability. When the permeability of the cell wall changes, the yeast protoplasts that have lost effective protection will be exposed to the hypotonic environment of the fermentation broth. Affected by the difference in osmotic pressure, the protoplasts will rupture, and the RFP within their cells will also be released into the fermentation broth.
+  </p>
+  <p>
+    Subsequently, the supernatant of the fermentation broth was collected through centrifugation. The fluorescence intensity of RFP in the supernatant was detected using a microplate reader, which could indirectly determine the experimental effect: if the detected fluorescence intensity was significantly higher than that of the control group, it indicated that the number of ruptured yeast cells was greater, and the antagonistic effect of chitinase and β-amyrin on yeast was stronger.
+  </p>
+  <p>
+    The experimental results show that when chitinase and β-amyrin are added respectively, an enhancement of the RFP fluorescence signal can be observed (Figure 21). However, for the control group, the extent of this enhancement is limited. <b>We speculate that this might be related to the fact that the chitinase content in <i>S. cerevisiae</i> only accounts for 1% of the cell wall. In other words, even if the chitin in <i>S. cerevisiae</i> completely disappears, it will not lead to death. Therefore, it is very difficult to observe an increase in the RFP signal.</b>
+  </p>
+ 
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-21n.webp" alt="">
+      <p class="caption">Figure 21. The comparison chart of fluorescence intensity in the supernatant of <i>S. cerevisiae</i> (RFP) culture medium after treatment with chitinase and β-amyrin</p>
+  </div>
+
+  <p>
+    <b>In the face of the inability to determine the antagonistic effects of chitinase and β-amyrin, we hope to modify the <i>S. cerevisiae</i> system to enable it to test the activity of our engineered bacteria.</b> Through literature research, we found that the cell wall of <i>S. cerevisiae</i> is mainly composed of 30-60% β-glucan, 20-40% mannan, 10-30% protein, 1-2% chitin and 5-20% lipids (including phospholipids, ergosterol, etc.) by its dry weight, and also contains trace amounts of inorganic salts, minerals and other auxiliary components <a href="#ref14">[14,15]</a>.
+  </p>
+  <p>
+    Snailase, a mixed enzyme extracted and prepared from the sacs and digestive tract of snails, contains over 20 enzymes such as cellulase, hemicellulase, pectinase, amylase, decarboxylase, and protease <a href="#ref16">[16,17]</a>.
+    <b>It can be used to dissolve the cell walls of yeast</b> and is widely applied in cell biology and genetic engineering research. We hypothesize that if <i>S. cerevisiae</i> is pretreated with snailase, <b>the overall strength of its cell wall will be reduced, and the cell wall’s sensitivity to chitin content will be increased. This may allow the structural importance of chitin in the cell wall to be manifested</b>, which in turn enables the yeast to respond to chitinase and β-amyrin—thus achieving an antagonistic effect against <i>S. cerevisiae</i>.
+  </p>
+  <h3>2. Snailase introduction</h3>
+  <p>
+    Based on this, we improved our experimental plan:
+  </p>
+  <p>
+    This experiment optimized the treatment steps based on the original plan: Firstly, snailase was used to pre-treat <i>S. cerevisiae</i>. Then, during the fermentation process of <i>S. cerevisiae</i>, two key substances–chitinase and β-amyrin–were simultaneously added to the fermentation broth.
+  </p>
+  <p>
+    To present the experimental effect more intuitively and accurately, we designed the method. The vertical axis measures fluorescence intensity difference (Δfluorescence intensity), and the fluorescence intensity value of the control group is set as the starting point of the vertical coordinate. The experimental effect is quantified through the increments of fluorescence intensity. The horizontal axis corresponds to the different treatment conditions of the experimental group.
+  </p>
+  <p>
+    The experimental results showed that the fluorescence intensity increment of the <i>S. cerevisiae</i> group pretreated with snailase was significantly increased compared with the original experimental step group. This result indicates that the "snailase pretreatment of <i>S. cerevisiae</i>" system is a superior detection system: it can effectively transform the originally insensitive <i>S. cerevisiae</i> strains to chitin into strains with chitin response capabilities, significantly enhancing the effectiveness of the detection system.
+  </p>
+  <p>
+    Meanwhile, the experimental results also confirmed the effect of the target substances: when chitinase or β-amyrin is added alone, both can exert antagonistic effects on <i>S. cerevisiae</i>. When chitinase and β-amyrin are added together, the antagonistic effects of the two are further superimposed, presenting a more significant inhibitory effect (Figure 22).
+  </p>
+
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-19.webp" alt="">
+      <p class="caption">Figure 22. Relative fluorescence intensities of RFP detected by the microplate reader under different antagonistic conditions</p>
+  </div>
+
+  <p>
+    We successfully pretreated <i>S. cerevisiae</i> with snailase to transform it into a chitin-sensitive strain, enabling it to respond to chitinase and β-amyrin. This detection method is easy to operate: it only requires the use of a conventional microplate reader. By detecting the content of red fluorescent protein (RFP) in the supernatant of the fermentation broth, the antagonistic effect of the target protein (such as chitinase) or metabolite (such as β-amyrin) can be directly evaluated. In addition, this method also has the advantages of a short testing cycle and low requirements for experimental equipment, providing potential application value for high-throughput screening of the efficacy of chitin-related proteins and metabolites.
+  </p>
+  <p>
+    However, during the actual testing process, we found that there were two problems in this system that might interfere with the detection results: First, even in the control group system, <i>S. cerevisiae</i> itself would still secrete RFP outward, resulting in the presence of basic fluorescence signals in the blank background; Secondly, the current RFP quantification relies on the specific wavelength detection of the microplate reader (excitation wavelength 585 nm, emission wavelength 610 nm), but the supernatant of the fermentation broth contains complex cellular metabolic products, which can cause background interference and directly affect the accuracy of the 610 nm emission wavelength detection. These two factors jointly lead to a higher detection background value, ultimately interfering with the accuracy of the RFP quantitative results.
+  </p>
+  <h2>Quantitative Method: Establishment of a quantitative antagonistic assay based on PI stain with flow cytometry. </h2>
+  <p>
+    To develop a more accurate detection method, we attempted to develop a set of detection methods based on flow cytometry (Figure 23).
+  </p>
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-20.webp" alt="">
+      <p class="caption">Figure 23. Workflow for a quantitative antagonistic assay based on PI stain with flow cytometry</p>
+  </div>
+
+  <p>
+    To eliminate the interference of other substances in the supernatant of the culture medium on the RFP fluorescence detection, we optimized the detection system. The specific plan and results are as follows:
+  </p>
+  <p>
+    We selected <i>S. cerevisiae</i> CEN.PK2-1C as the detection object for antagonism, and stained the treated yeast cells with PI dye (propidium iodide)–PI is a nuclear staining reagent that can specifically bind to DNA. It can only enter the dead cells with ruptured cell membranes and stain them, thereby precisely distinguishing the survival status of <i>S. cerevisiae</i>. Subsequently, we quantitatively analyzed the ratio and quantity of live/dead cells by flow cytometry to evaluate the antagonistic effect between chitinase and β-amyrin. Meanwhile, drawing on the previous development experience of the microplate reader detection method, we simultaneously introduced the system of "snailase pretreatment of <i>S. cerevisiae</i>" into the flow cytometry detection method. The experimental results are as follows:
+  </p>
+  <p>
+    1. When conducting flow cytometry analysis, the untreated control group was used as the reference standard to define the boundary between PI-stained positive dead cells and PI-stained negative live cells. The proportion of background particles (non-specific staining or impurities) in the negative control (without chitinase, β-amyrin, or pretreatment with snailase) was only 4.17%, so the background interference of the system was relatively low.
+  </p>
+  <p>
+    2. In the system without snailase pretreatment, after adding chitinase or β-amyrin alone to treat the cells, the proportion of dead cells in <i>S. cerevisiae</i> did not increase significantly. This result is consistent with our previous detection conclusion based on the microplate reader (Figure 24).
+  </p>
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-24n.webp" alt="">
+      <p class="caption">Figure 24. Histogram showing the distribution of the proportion of dead cells with no snailase stained by PI stain</p>
+  </div>
+
+
+  <p>
+    3. When "snailase pre-treated <i>S. cerevisiae</i>" was introduced into the detection system, the proportion of background particles in the system increased to 14.1% compared with the untreated control group. Further, in the snailase pre-treatment system, the antagonistic promoting effects of the three treatment combinations were compared: The proportion of dead cells in the chitinase alone treatment group was 26.2%, that in the β-amyrin alone treatment group was 32.4%, while the proportion of dead cells in the chitinase and β-amyrin combined treatment group significantly increased to 65.8%, clearly demonstrating the synergistic antagonistic effect (Figure 25 and 26).
+  </p>
+
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-25.webp" alt="">
+      <p class="caption">Figure 25. Flow cytometry distinguishes the proportion of live and dead cells with snailase after PI staining</p>
+  </div>
+  <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-26.webp" alt="">
+      <p class="caption">Figure 26. Percentage graph of dead cells stained with PI under different antagonistic conditions</p>
+  </div>
+
+</section>
+<section>
+  <h1>Product Form Exploration</h1>
+  <h2>Verification of chitinase secretion effect in <i>Bacillus subtilis</i></h2>
+  <p>
+    Previously, we have completed the functional screening of signal peptides in <i>E. coli</i> BL21 (DE3) — we identified the ompA signal peptide (derived from <i>E. coli</i> outer membrane protein A) as the optimal one because it can efficiently mediate the transmembrane secretion of target proteins while imposing minimal burden on the growth of host. Additionally, we successfully constructed an ompA signal peptide-chitinase fusion expression system. Through SDS-PAGE (sodium dodecyl sulfate-polyacrylamide gel electrophoresis), we verified the extracellular secretion efficiency of two chitinases (Blchi and Bschi); subsequently, via the colloidal chitin plate hydrolysis assay, we confirmed that these chitinases possess biological activity for effective chitin degradation. This work has laid a technical foundation for subsequent functional verification in other agriculturally suitable hosts.
+  </p>
+  <p>
+    Considering that <i>Bacillus subtilis</i> is the most widely used host strain in the field of agricultural microbial inoculants, it is more suitable for field application compared to the commonly used model organism <i>E. coli</i>. It not only exhibits stable and sustainable soil colonization in the rhizosphere microenvironment of crops but also has high stress tolerance (i.e., capable of withstanding complex field environments such as high temperatures, drought, and pH fluctuations). <i>Bacillus subtilis</i> is also recognized as a GRAS (Generally Recognized as Safe) strain, meaning it is harmless to crops, the environment, and humans. Furthermore, it can form spores under high stress conditions — this characteristic is highly compatible with the target product form of "powdered inoculant" we determined earlier. Spores facilitate powder processing, significantly extend product shelf life, and reduce transportation losses, which aligns with the green agriculture principle for inputs to be "easy to store and low in environmental loss."
+  </p>
+  <p>
+    Therefore, in exploring the final products’ form and commercial proof-of-concept, we plan to introduce the functionally verified chitinase genes (Blchi and Bschi) and the ompA signal peptide expression system (from <i>E. coli</i>) into <i>Bacillus subtilis</i>. We will attempt to verify the heterologous expression efficiency and extracellular secretion characteristics of chitinases in the host, aiming to provide experimental data for subsequent construction of engineered strains that are more suitable for agricultural application and the optimization of technical route for the "powdered inoculant" product.
+  </p>
+  <table>
+    <caption>Table 5: Chitinase information</caption>
+    <tr>
+      <th>Chitinase name</th>
+      <th>Species</th>
+      <th>Gene</th>
+      <th>NCBI GenBank</th>
+    </tr>
+    <tr>
+      <td>Blchi</td>
+      <td><i>Bacillus licheniformis</i> DMS 13</td>
+      <td>chitinase</td>
+      <td>CP000002.3</td>
+    </tr>
+    <tr>
+      <td>Bschi</td>
+      <td><i>Bacillus subtilis</i></td>
+      <td>chitinase</td>
+      <td>AF069131.1</td>
+    </tr>
+  </table>
+  <p>
+    Based on this, we constructed the "ompA signal peptide-chitinase gene" fusion expression module. The ompA signal peptide sequence was seamlessly linked to two chitinase genes (Blchi and Bschi,). The fusion gene was subsequently cloned to the polyclonal site of the pHT01 vector (containing the Pgrac promoter, 6-His tag and chloramphenicol resistance gene). Recombinant plasmids pHT01-ompA-Blchi, pHT01-ompA-Bschi, were constructed. (Figure 27) The aforementioned recombinant plasmids were respectively transformed into <i>Bacillus subtilis</i> BS168delta4. After confirming the correctness of colony PCR and sequencing, two candidate engineering strains were obtained by selecting single colonies.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-27.webp" alt="">
+    <p class="caption">Figure 27. The engineered strain was successfully constructed</p>
+  </div>
+  <p>
+    To induce chitinase expression, the verified correct strain was inoculated into LB medium containing chloramphenicol and shaken at 37 °C until OD600=0.6-0.8 (early logarithmic growth phase), and IPTG with a final concentration of 0.5 mM was added for induction. It continued to culture at 25 ℃ (to reduce the risk of protein misfolding) for 16 hours. After induction, 10 mL of the fermentation broth was centrifuged at 4 °C and 8000 rpm for 10 minutes. The supernatant (containing extracellular proteins) was collected and analyzed by 12% SDS-PAGE electrophoresis (Coomassie brilliant blue staining) to verify the protein secretion.
+  </p>
+  <p>
+    The results demonstrate that when using the empty vector-transformed strain as a negative control, specific protein bands matching the theoretical molecular weights (approximately 65 kDa and 62 kDa, respectively) were detected in the culture supernatants of the Blchi- and Bschi-expressing strains (Figure 28). In contrast, no such specific bands were observed in the supernatant of the negative control strain. This finding indicates that the ompA signal peptide successfully mediates the extracellular secretion of these two chitinases, and both
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/proof-of-concept/fig-28.webp" alt="">
+    <p class="caption">Figure 28. SDS-PAGE gel diagram of protein expression in the supernatant of fermentation medium</p>
+  </div>
+  <h2>Gaining Practical Experience with Advanced Fermentation and Pilot-Scale Spray-Drying Equipment at Shanghai Bluepha Co., Ltd.</h2>
+  <p>
+    Based on in-depth exchanges with experts from Bluepha, we not only obtained a valuable opportunity to gain experience with their advanced fermentation and pilot-scale spray-drying equipment, but also clarified the core direction of "taking green agricultural needs as the guide to promote the transformation of engineered bacterial strains into commercial products" — this key insight has directly become an important starting point for us to launch the "Product Form Exploration" .
+  </p>
+  <p>
+    In light of the practical demands of green agriculture for agricultural inputs, such as "easy storage, easy application, low transportation costs, and low environmental loss," we finalized the "powdered inoculant" as the ultimate target product form after multiple discussions. Subsequently, following the transformation logic of "from engineered bacterial strains to powder products," we carried out phased and systematic exploration of shake flask fermentation, 75L tank fermentation, and spray-drying processes under the guidance of Bluepha’s experts.
+  </p>
+  <h3>1. Shake flask fermentation experiments</h3>
+  <p>
+    In the early stage of exploring and confirming the product form, shake flask fermentation experiments played a core role in the "screening of basic formulations."
+  </p>
+  <h4>1. Result</h4>
+  <p>
+    In this experiment, shaking flask fermentation cultures of <i>Bacillus subtilis</i> were used to determine the optimal conditions for the bacterium’s sporulation. Three formulas were tested.
+  </p>
+  <table class="left-align-first-col">
+    <caption>Table 6. Components of the Three Formulations</caption>
+    <tr>
+      <th colspan="2">Formula 1</th>
+      <th colspan="2">Formula 2</th>
+      <th colspan="2">Formula 3</th>
+    </tr>
+    <tr>
+      <th>Ingredient</th>
+      <th>Concentration g/L</th>
+      <th>Ingredient</th>
+      <th>Concentration g/L</th>
+      <th>Ingredient</th>
+      <th>Concentration g/L</th>
+    </tr>
+    <tr>
+      <td>Peptone</td>
+      <td>10</td>
+      <td>Peptone</td>
+      <td>10</td>
+      <td>Tryptone</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Glucose</td>
+      <td>12.5</td>
+      <td>Glucose</td>
+      <td>12.5</td>
+      <td>YEF</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Beef extract</td>
+      <td>4</td>
+      <td>Beef extract</td>
+      <td>4</td>
+      <td>Dibasic Sodium Phosphate</td>
+      <td>5.6</td>
+    </tr>
+    <tr>
+      <td>Yeast extract</td>
+      <td>1</td>
+      <td>Yeast extract</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>YEF</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>pH</td>
+      <td>7.0</td>
+      <td>pH</td>
+      <td>7.0</td>
+      <td>pH</td>
+      <td>7.3</td>
+    </tr>
+  </table>
+  <table>
+    <caption>Table 7. Sporulation Efficiency of the Bacterial Strain Under Different Formulations</caption>
+    <tr>
+      <td>Time</td>
+      <td>61h</td>
+    </tr>
+    <tr>
+      <td colspan="2">Results</td>
+    </tr>
+    <tr>
+      <td>Formula 1</td>
+      <td>Sporulation occurs, very few</td>
+    </tr>
+    <tr>
+      <td>Formula 2</td>
+      <td>No spores observed</td>
+    </tr>
+    <tr>
+      <td>Formula 3</td>
+      <td>>90% sporulation</td>
+    </tr>
+  </table>
+  <h4>2. Conclusion</h4>
+  <ol>
+    <li>
+      Comparing Formula 1 and 2, the addition of yeast powder at the shake flask level is not conducive to spore production.
+    </li>
+    <li>
+      As of 61 hours, Formula 3 produced the most spores. Formula 1 began sporulation. Therefore, we selected Formula 3 to stop fermentation, as it had the highest spore count.
+    </li>
+  </ol>
+  <h4>3. Significance</h4>
+  <p>
+    Through these experiments, we focused on verifying the compatibility of different formulation combinations with the growth status of bacterial strains and spore production efficiency, initially eliminating components that are detrimental to the retention of bacterial strain activity, and screening out potential directions for basic formulations. This step not only defined the focus scope for subsequent scale-up experiments, but also gave us a preliminary understanding of the "rules for matching formulations with bacterial strain characteristics," helping us avoid ineffective paths in future explorations.
+  </p>
+  <p>More details: see <a href="https://static.igem.wiki/teams/5937/proof-of-concept/shake-flask-trial-for-bacillus-subtilis-fermentation-formula.pdf" target="_blank">here</a>.</p>
+  <h3>2. 75L tank fermentation experiment</h3>
+  <p>
+    The core goal of this phase was to achieve "transformation and verification of laboratory formulations for pilot-scale production." 75L tank fermentation experiment phase under the guidance of Bluepha’s experts.
+  </p>
+  <h4>1. Result</h4>
+  <h4>OD Curve</h4>
+  <table>
+    <caption>Table 8. Fermentor OD measurements</caption>
+    <tr>
+      <th>Time (h)</th>
+      <th>0</th>
+      <th>4</th>
+      <th>8</th>
+      <th>12</th>
+      <th>16</th>
+      <th>20</th>
+      <th>22</th>
+    </tr>
+    <tr>
+      <td>OD value</td>
+      <td>4.62</td>
+      <td>5.07</td>
+      <td>23.9</td>
+      <td>24.8</td>
+      <td>34.4</td>
+      <td>35.2</td>
+      <td>37.8</td>
+    </tr>
+  </table>
+  <p>Fermentation broth diluted 10^6 and 10^7 times, 100ul plated in 2 and 3 parallel plates respectively, counted after incubation.</p>
+  <table class="left-align-first-col">
+    <caption>Table 9. Spore Plate Counting Data</caption>
+    <tr>
+      <th>Dilute</th>
+      <th>Before water bath</th>
+      <th>After water baths</th>
+    </tr>
+    <tr>
+      <td rowspan="3">10^7 times</td>
+      <td>66</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <td>Average in 100 million /ml</td>
+      <td>63</td>
+      <td>58.3</td>
+    </tr>
+  </table>
+  <h4>2. Conclusion</h4>
+  <p>
+    Finally, the spore count for our experimental Fermenter A full-soluble formula reached 5.83 billion/mL.
+  </p>
+  <h4>3. Significance</h4>
+  <p>
+    Compared with shake flask experiments, 75L tank fermentation is closer to actual production scenarios. Through this phase, we focused on verifying the stability of the initially screened formulations under scaled-up culture conditions, as well as the growth consistency and production efficiency of bacterial strains in batch culture. This effectively bridged the technical gap between laboratory research and industrial production, and provided more reference-worthy practical data for subsequent process optimization.
+  </p>
+  <p>More details: see <a href="https://static.igem.wiki/teams/5937/proof-of-concept/75l-fermenter-formula-trial-protocol-for-bacillus-subtilis.pdf" target="_blank">here</a>.</p>
+  <h3>3. The spray-drying process</h3>
+  <p>
+    After completing the preliminary verification of the fermentation phase, experts from Bluepha, in conjunction with the spray-drying process plan, launched the exploration of "transforming liquid fermentation products into powder form."
+  </p>
+  <h4>1. Formula design</h4>
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Vector</th>
+      <th>Vector content (%)</th>
+      <th>Protectant</th>
+      <th>Protectant concentration(DWT) (%)</th>
+      <th>Antioxidants</th>
+      <th>Antioxidants cotent (%)</th>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>maltodextrin</td>
+      <td>2</td>
+      <td>D-Trehalose anhydrous</td>
+      <td>10</td>
+      <td>VC</td>
+      <td>0.1</td>
+    </tr>
+  </table>
+  <h4>2. Spray Drying Conditions</h4>
+  <p>
+    Inlet air temperature: 175 ± 5°C, outlet air temperature: 80 ± 5°C, feed rate: 24, atomization speed: 350 Hz, air velocity and air volume: ensure thorough drying of the material (moisture content ≤ 5%) in order to avoid agglomeration.
+  </p>
+  <h4>3. Results</h4>
+  <ul>
+    <li>Product morphology: Loose powder with good flowability.</li>
+    <li>Product moisture content: ≤ 5%.</li>
+  </ul>
+  <h4>4. Significance</h4>
+  <p>
+    The spray-drying process is a crucial step in achieving the target form of "powdered inoculant." This process can convert liquid fermentation products into powder with controllable moisture content and good fluidity — it not only addresses the pain points of liquid formulations (such as short storage periods and high transportation costs), but also fully aligns with the demand for "convenient and long-acting" inputs in green agriculture. This transformed the technical concept of "converting bacterial strains into practically usable products" into a preliminary physical form, marking the first solid step toward commercialization.
+  </p>
+  <p>More details: see <a href="https://static.igem.wiki/teams/5937/proof-of-concept/bacillus-subtilis-spray-drying-protocol.pdf" target="_blank">here</a>.</p>
+  
+  <h3>Summary</h3>
+  <p>
+    This preliminary exploration of product form not only clearly established the technical pathway of "shake flask fermentation screening","75L tank fermentation scale-up"," spray-drying process finalization" but also allowed us to verify, through practice, the high compatibility between "powdered inoculants" and the needs of green agriculture.
+  </p>
+  <p>
+    The advancement of each phase has been closely aligned with the transformation goal of "from technology to product," laying a solid preliminary foundation for subsequent efforts to further optimize process parameters, ensure biosafety and compliance, and even promote the product’s entry into the market.
+  </p>
+  <p>
+    This experiment was conducted and completed by experts from Bluepha Co., Ltd., while members of Uprize-I participated in recording the experiment data/process.
+  </p>
+</section>
+<section>
+  <h1>References</h1>
+  <table id="ref-table">
+    <tr>
+      <td>
+        <div id="ref1">[1]</div>
+      </td>
+      <td>
+        Lobo MDP, Silva GM, Santos DS, et al. Expression and efficient secretion of a functional chitinase from <i>Chromobacterium violaceum</i> in <i>Escherichia coli. BMC Biotechnol.</i> 2013;13:46.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref2">[2]</div>
+      </td>
+      <td>
+        Kim YH, Park SK, Hur JY, Kim YC. Purification and characterization of a major extracellular chitinase from a biocontrol bacterium, <i>Paenibacillus elgii</i> HOA73. <i>Plant Pathol J.</i> 2017;33(4):318-328.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref3">[3]</div>
+      </td>
+      <td>
+        Yamabhai M, Emrat S, Sukasem S, et al. Secretion of recombinant <i>Bacillus</i> hydrolytic enzymes using <i>Escherichia coli</i> expression systems. <i>J Biotechnol.</i> 2008;133(1):50-57.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref4">[4]</div>
+      </td>
+      <td>
+        Essghaier B, Zouaoui M, Najjari A, Sadfi N. Potentialities and characterization of an antifungal chitinase produced by a halotolerant <i>Bacillus licheniformis. Curr Microbiol.</i> 2021;78(2):513-521.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref5">[5]</div>
+      </td>
+      <td>
+        Bouqellah NA, Abdel-Hafez LJM, Mostafa IY, Faraag AHI. Investigating the antifungal potential of genetically modified hybrid chitinase enzymes derived from <i>Bacillus subtilis</i> and <i>Serratia marcescens. Int Microbiol.</i> 2024;28(1):177-194.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref6">[6]</div>
+      </td>
+      <td>
+        Yamabhai M, Emrat S, Sukasem S, et al. Secretion of recombinant <i>Bacillus</i> hydrolytic enzymes using <i>Escherichia coli</i> expression systems. <i>J Biotechnol.</i> 2008;133(1):50-57.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref7">[7]</div>
+      </td>
+      <td>
+        R V, Granada DL, Skariyachan S, et al. In vitro and in silico investigation deciphering novel antifungal activity of endophyte <i>Bacillus velezensis</i> CBMB205 against <i>Fusarium oxysporum. Sci Rep.</i> 2025;15:684.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref8">[8]</div>
+      </td>
+      <td>
+        Wang C, Park JE, Choi ES, Kim SW. Farnesol production in <i>Escherichia coli</i> through the construction of a farnesol biosynthesis pathway: application of PgpB and YbjG phosphatases. <i>Biotechnol J.</i> 2016;11(10):1291-1297.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref9">[9]</div>
+      </td>
+      <td>
+        Zhang J, Li Y, Wang X, et al. Sesquiterpene synthase engineering and targeted engineering of α-santalene overproduction in <i>Escherichia coli. J Agric Food Chem.</i> 2022;70(17):5377-5385.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref10">[10]</div>
+      </td>
+      <td>
+        Lobo MDP, Silva GM, Santos DS, et al. Expression and efficient secretion of a functional chitinase from <i>Chromobacterium violaceum</i> in <i>Escherichia coli. BMC Biotechnol.</i> 2013;13:46.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref11">[11]</div>
+      </td>
+      <td>
+        Kim YH, Park SK, Hur JY, Kim YC. Purification and characterization of a major extracellular chitinase from a biocontrol bacterium, <i>Paenibacillus elgii</i> HOA73. <i>Plant Pathol J.</i> 2017;33(4):318-328.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref12">[12]</div>
+      </td>
+      <td>
+        Yu Y, Li J, Zhang Y, et al. Engineering <i>Saccharomyces cerevisiae</i> for high-yield production of α-amyrin via synergistic remodeling of α-amyrin synthase and expanding the storage pool. <i>Metab Eng.</i> 2020;62:72-83.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref13">[13]</div>
+      </td>
+      <td>
+        Yu Y, Zhang Y, Li J, et al. Productive amyrin synthases for efficient α-amyrin synthesis in engineered <i>Saccharomyces cerevisiae. ACS Synth Biol.</i> 2018;7(9):2391-2402.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref14">[14]</div>
+      </td>
+      <td>
+        Lesage G, Shapiro J, Specht CA, et al. An interactional network of genes involved in chitin synthesis in <i>Saccharomyces cerevisiae. BMC Genet.</i> 2005;6:8.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref15">[15]</div>
+      </td>
+      <td>
+        Klis FM, Mol P, Hellingwerf K, Brul S. Dynamics of cell wall structure in <i>Saccharomyces cerevisiae. FEMS Microbiol Rev.</i> 2002;26(3):239-256.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref16">[16]</div>
+      </td>
+      <td>
+        You JY, Peng C, Liu X, et al. Enzymatic hydrolysis and extraction of arachidonic acid rich lipids from <i>Mortierella alpina. Bioresour Technol.</i> 2011;102(11):6088-6094.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="ref17">[17]</div>
+      </td>
+      <td>
+        National Center for Biotechnology Information. PubChem patent summary for CN-103669006-B: a kind of method utilizing Snailase that cotton fabrics is carried out bio-pretreatment. <i>PubChem.</i> 2025.
+      </td>
+    </tr>
+  </table>
+</section>
+{% endblock %}

@@ -1,0 +1,933 @@
+{% extends "layout.html" %}
+{% block title %}Engineering{% endblock %}
+
+{% block page_content %}
+
+<section>
+  <h1>Overview of the DBTL Loop</h1>
+  <p>This study uses the <b>Design-Build-Test-Learn (DBTL) cycle</b> as its core framework, covering four key 
+    processes: clone construction, enzyme activity detection, metabolic engineering modification, and 
+    antagonistic tool development. Through the closed-loop logic of target design → experimental construction 
+    → effect testing → problem analysis and optimization, we can gradually solve the core bottlenecks in the 
+    experiment. The specific usage directions include:
+  </p>
+  <ol type="1">
+    <li>Screening for highly efficient <i>Escherichia coli</i> (<i>E. coli</i>) signal peptides to achieve extracellular
+      expression of target proteins.</li>
+    <li>Establishing and optimizing the detection method for chitinase activity, and verifying the functions
+      of different chitinases.</li>
+    <li>Modifying the metabolic pathways of <i>E. coli</i> to enhance the accumulation of FPP, a precursor for the
+      synthesis of β-amyrin, thereby increasing the yield of the target product.</li>
+    <li>Iterating over the detection tools for the antagonistic effect of yeast, from "unable to observe
+      antagonism" to "achieved quantitative antagonism", to clarify the synergistic effect of chitinase
+      and β-amyrin.</li>
+  </ol>
+</section>
+
+<section>
+  <h1>DBTL Cycle One: Screening and Validation of Highly Efficient Secreted Peptides</h1>
+  <h2>1. Design 1-1: Design of secretory peptide-reporter gene fusion vector</h2>
+  <h3>Design objective:</h3>
+  <p>
+    To construct a recombinant plasmid containing the secretory peptide SFGFP (reporter
+    protein) fusion gene and screen for secretory peptides that can achieve protein secretion in <i>E. coli</i>.
+  </p>
+
+  <h3>Design basis and scheme:</h3>
+  <ul type="disc">
+    <li>Vector selection: pET-28a was used as the cloning vector, which contains the strong T7 promoter (driving
+      efficient transcription), ribosome binding site (RBS, ensuring translation initiation efficiency), and Lac
+      operon (enabling IPTG-induced expression), and is compatible with the <i>E. coli</i> protein expression system(Figure 1).</li>
+    <li>Assembly strategy: Gibson Assembly primers and gene fragments were designed using the SnapGene software,
+      and seamless assembly of secreted peptides (initially selected TRAT3), sfGFP and linearized pET-28a vectors
+      was achieved through homologous recombination to ensure the correct fusion gene framework.</li>
+  </ul>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig1.webp" alt="">
+    <p class="caption">Figure 1. Gene expression modules of TRAT3 and sfGFP</p>
+  </div>
+
+  <h2>2. Build 1-1: Construction and validation of recombinant plasmids</h2>
+  <h3>Experimental operation:</h3>
+  <ol type="1">
+    <li>Vector linearization: The pET-28a vector was linearized by PCR amplification using the designed Gibson
+    primers (ensuring that both ends contain homologous arms matching the target fragment).</li>
+    <li>Gibson assembly: The overlapping extended fragments of TRAT3-sfGFP were mixed with the linearized pET-28a
+    vector according to the optimized system, and the assembly was completed under the action of recombinase.</li>
+    <li>Transformation and screening: The recombinant plasmid was transformed into DH5α <i>E. coli</i> competent cells.
+    Positive colonies were screened by colony PCR, and the size of the amplification bands was further verified
+    by agarose gel electrophoresis (consistent with the theoretical value). Finally, the fusion gene sequence
+    was confirmed to be correct by DNA sequencing.</li>
+    <li><b>Construction results</b>: The recombinant plasmid pET28a-TRAT3-sfGFP was successfully obtained, and
+    the accuracy rate of the transformation subsequence reached 100%(Figure 2).</li>
+  </ol>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig2-2.webp" alt="">
+    <p class="caption">Figure 2. The recombinant plasmid pET28a-TRAT3-sfGFP was successfully obtained</p>
+  </div>
+
+  <h2>3. Test 1-1: Expression verification of secreted peptide function</h2>
+  <h3>Test plan:</h3>
+  <ol type="1">
+    <li>Protein expression induction: Extract the correct recombinant plasmid, transform it into BL21 (DE3)
+      <i>E. coli</i> (containing T7 RNA polymerase, adapted to pET-28a vector), and add IPTG (final concentration 0.2
+      mM, induction at 37°C for 16 hours) to trigger recombinant protein expression.</li>
+    <li>Secretion effect detection: Collect the fermentation supernatant and the lysis buffer of the bacteria,
+      isolate the protein by SDS-polyacrylamide gel electrophoresis (SDS-PAGE), and observe the target band
+      (the theoretical molecular weight of TRAT3-sfGFP is approximately 30 kDa) after Coomassie Brilliant Blue
+      staining.</li>
+  </ol>
+  <h3>Test results:</h3>
+  <p>
+    Only weak target bands were observed in the lysis buffer of the bacterial cells, and no 
+    sfGFP signal was detected in the fermentation supernatant, indicating that the TRAT3 secreted peptide could 
+    not effectively mediate protein secretion(Figure 3).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig2-3.webp" alt="">
+    <p class="caption">Figure 3. SDS-PAGE diagram of the extracellular secretion effect of TRAT3</p>
+  </div>
+
+  <h2>4. Learn 1-1: </h2>
+  <h3>Problem analysis</h3>
+  <p>
+    The matching degree of the “signal sequence-transporter protein” of <i>E. coli</i> signal peptides
+    is the key to protein secretion. The poor secretion effect of TRAT3 may be due to its insufficient compatibility with 
+    the Sec transport system of <i>E. coli</i>. Therefore, we need to find signal peptides with better secretion effects.
+  </p>
+
+  <h2>5. Design 1-2 & Build 1-2: Optimization Strategy and Verification</h2>
+  <ol type="1">
+    <li><b>Signal peptide prediction model</b>: To identify signal peptides with better secretion effects, we attempted
+      to design a machine learning algorithm. Based on the secretion efficiency data of 2,000 known <i>E. coli</i> signal
+      peptides, we constructed a "signal peptide sequence features
+      -secretion efficiency" prediction model(Figure 4).
+      <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig4-new.webp" alt="">
+        <p class="caption">Figure 4. Pipeline overview diagram</p>
+      </div>
+    </li>
+
+    <li><b>Wet test verification</b>: Six signal peptides (ompA, Amy, ydhT, TRAT3, FAEE, LYS2) were randomly selected
+      from the secretion efficiency candidate library predicted by the model, and the Design-Build-Test process was
+      repeated with sfGFP as the reporter protein. The quantitative secretion effect of the supernatant fluorescence
+      intensity was observed through a fluorescence microscope(Figure 5).
+      <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig5.webp" alt="">
+        <p class="caption">Figure 5. Gene expression modules of different signal peptides and sfGFP</p>
+      </div>
+    </li>
+  </ol>
+
+  <h2>6. Test 1-2:</h2>
+    <h3>1. Signal peptide prediction model:</h3>
+  <p>
+    According to the signal peptide prediction model result, we selected three high-ranked signal peptides and 
+    three relatively low-ranked ones as representative <b>controls for subsequent wet-lab validation</b>.
+  </p>
+  <table>
+    <tr>
+      <th>ID</th> <th>n-charge</th> <th>h-hydrophobicity</th> <th>c-motif</th> <th>D-score</th> <th>CS-prob</th> <th>Final score</th>
+    </tr>
+
+    <tr>
+      <td>E.coli_OmpA_</td> <td>0.5</td> <td>0</td> <td>1</td> <td>1</td> <td>0.97</td> <td>0.84</td>
+    </tr>
+
+    <tr>
+      <td>ydhT</td> <td>0.87</td> <td>0.55</td> <td>0</td> <td>1</td> <td>0.98</td> <td>0.84</td>
+    </tr>
+
+    <tr>
+      <td>B.lichen8785Amy</td> <td>0.5</td> <td>0</td> <td>0</td> <td>1</td> <td>0.98</td> <td>0.74</td>
+    </tr>
+
+    <tr>
+      <td>FAEE</td> <td>0.25</td> <td>1</td> <td>0</td> <td>0.51</td> <td>0.57</td> <td>0.49</td>
+    </tr>
+
+    <tr>
+      <td>TRAT3</td> <td>0.65</td> <td>1</td> <td>0</td> <td>0.06</td> <td>0.88</td> <td>0.37</td>
+    </tr>
+
+    <tr>
+      <td>LYS2</td> <td>0.87</td> <td>0</td> <td>0</td> <td>0.09</td> <td>0.86</td> <td>0.3</td>
+    </tr>
+  </table>
+  <p>
+    This design allows us to not only test the predictive accuracy of the pipeline for high-confidence candidates
+    but also assess the discriminative capacity of the scoring system through the performance of low-scoring ones. 
+    All selected signal peptides were fused to sfGFP and expressed in <i>E. coli</i>, where secretion efficiency was
+    evaluated based on measurable fluorescence differences, directly reflecting the secretion potential of each 
+    peptide.
+  </p>
+  <h3>2. Wet test verification</h3>
+  <p>
+    The extracellular effects of sfGFP from different signal peptides under blue light and the visualization effect
+    of the microplate reader.
+  </p>
+  <p>
+    The results are verified through two detection methods: one is direct observation under a blue light lamp, which can
+    visually distinguish the difference in fluorescence brightness in the supernatant (Figure 6). The second is quantitative
+    detection by a microplate reader (as shown in the Figure 7), which can precisely quantify the fluorescence intensity value. 
+    Both methods clearly demonstrated that there were significant differences in the fluorescence intensity of secreted 
+    fluorescent proteins mediated by different signal peptides, providing a clear basis for the subsequent functional evaluation 
+    of signal peptides.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig2-4-2.webp" alt="">
+    <p class="caption">Figure 6. The extracellular effects of sfGFP from different signal peptides under blue light</p>
+  </div>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig2-4-2-2.webp" alt="">
+    <p class="caption">Figure 7. Measurement of the transport effects of different signal peptides on sfGFP by microplate reader
+      (excitation wavelength: 485 nm, emission wavelength: 510 nm)</p>
+  </div>
+  <h3>Conclusion:</h3>
+  <p>
+    The fluorescence intensity of sfGFP in the supernatant of ompA, Amy and ydhT signal peptides was significantly higher than that 
+    of other candidates (5 to 8 times that of TRAT3), and the secretion effect was excellent.The secretion efficiency of TRAT3, FAEE 
+    and LYS2 was low, <b>which was completely consistent with the model prediction results, and also explaining the phenomenon of "no 
+    extracellular expression" in Test 1-1.</b>
+  </p>
+  
+  <h2>7. Learn 1-2:</h2>
+  <p>Ultimately, ompA was selected as the signal peptide for subsequent chitinase secretion. Based on the above results, to ensure the 
+    stability and optimality of secretion efficiency in subsequent experiments, we ultimately selected the ompA signal peptide with the best 
+    secretion effect as the core tool signal peptide for the subsequent experiments.</p>
+</section>
+
+<section>
+  <h1>DBTL Cycle Two: Establishment and Optimization of Chitinase Activity Detection Method</h1>
+  <h2>1. Design 2-1: Design of chitinase activity detection method</h2>
+
+  <h3>Design objective:</h3>
+  <p>To establish a quantification method for chitinase activity based on a color
+    reaction, and to achieve a comparison of the activities of different chitinases (Blchi, Bschi).
+  </p>
+  <h3>Design principle:</h3>
+  <p>Chitinase can hydrolyze chitin polymers to generate N-acetylglucosamine (NAG).
+    The intermediate product (glucosamine) generated by heating NAG with a strong base can undergo a color 
+    reaction with p-dimethylaminobenzaldehyde (DMAB) to form an orange-red substance. This substance has a 
+    characteristic absorption peak at 585 nm, and the absorbance value is linearly and positively correlated 
+    with the NAG concentration (i.e., enzyme activity) <a href="#ref1">[1]</a> (Figure 8).
+  </p>
+  <h3>Scheme design:</h3>
+  <p>By preparing NAG standard substances to draw a standard curve, substituting the absorbance
+    value of the sample to calculate the NAG generation amount, the chitinase activity is indirectly 
+    characterized.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig3-1.webp" alt="">
+    <p class="caption">Figure 8. The principle of chitinase activity detection method</p>
+  </div>
+
+
+  <h2>2. Build 2-1: Process construction of the detection system</h2>
+  <h3>Experimental process construction:</h3>
+  <ol type="1">
+    <li>Preparation of standard (ready for immediate use) : Prepare a 5000 μg/mL NAG stock solution and dilute
+      it in a gradient with ultrapure water to 60, 40, 20, 10, 5, and 2.5 μg/mL to obtain standard diluents of
+      six concentration gradients.</li>
+    <li>Reaction system construction: In a 1.5 mL centrifuge tube, add standard solution/sample solution (50 μL)
+      → 0.5 M NaOH (100 μL, 95 °C water bath for 10 min) → DMAB chromogenic solution (800 μL, 60 ° C water bath
+      for 15 min) in sequence. After cooling to room temperature, it is ready for testing.</li>
+    <li>Absorbance value determination: Transfer the reaction solution into a 1 mL glass cuvette and measure the
+      absorbance value at 585 nm using a UV spectrophotometer. Here are some definitions:</li>
+      <ul type="disc">
+        <li>ΔA<sub>measured</sub> = A<sub>measured</sub> (sample the reaction solution) - A<sub>control</sub>
+          (sample the unreacted solution)</li>
+        <li>ΔA<sub>standard</sub> = A<sub>standard</sub> (sample the standard reaction solution) - A<sub>blank</sub>
+          (samples the reaction solution using ultrapure water instead of the standard solution) (Note: The sampling
+          is repeated 3 times, and the standard solution and blank are each repeated 2 times. The test should be
+          completed within 30 minutes after the reaction to avoid color attenuation).</li>
+      </ul>
+    <li>Establishment of the calibration curve: Taking NAG concentration (μg/mL, x-axis) as the independent
+      variable and ΔA<sub>standard</sub> (y-axis) as the dependent variable, the standard equation y = kx + b (R² > 0.99)
+      was fitted using linear regression.</li>
+  </ol>
+
+  <h2>3. Test 2-1: Feasibility of the detection method and enzyme activity verification</h2>
+  <h3>Test content:</h3>
+  <ol type="1">
+    <li>Method feasibility verification: Test ΔA<sub>standard</sub> of six NAG standard solutions of different
+      concentrations to verify the linear relationship of the standard curves</li>
+    <li>Sample enzyme activity detection: The fermentation supernatants of Blchi and Bschi (after concentration
+      and purification) were used as samples and substituted into the detection system to determine ΔA<sub>measured</sub>. The level of NAG production was calculated using the calibration curve trendline.</li>
+  </ol>
+  <h3>Test result:</h3>
+  <ol type="1">
+    <li>All the standard samples showed clear characteristic absorption peaks at 585 nm, and the calibration
+      curve's R² value was 0.998, confirming the scientific nature of the detection method.</li>
+    <li>The ΔA<sub>measured</sub> of the Blchi and Bschi sample groups was close to A<sub>blank</sub>, and the
+      calculated NAG production was lower than the detection limit(< 2.5μg/mL), making it impossible to
+      quantify the enzyme activity (Figure 9).</li>
+  </ol>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig3-3.webp" alt="">
+    <p class="caption">Figure 9. The result of chitinase activity method</p>
+  </div>
+
+  <h2>4. Learn 2-1: Analysis of causes of failure of enzyme activity detection and method iteration</h2>
+  <p><b>Data analysis</b>: We speculate that the detection relies on NAG production, but the sample shows 
+  no NAG signal, suggesting that chitinase cannot generate NAG-the analysis needs to start from the mechanism 
+  of action of the enzyme.
+  </p>
+  <p><b>The following reasons can explain this</b>:</p>
+  <ol type="1">
+    <li>Differences in chitinase classification:
+      <ul type="disc">
+        <li>Endochitinase: It acts on random sites within the chitin chain, and its degradation products are 
+          chitooligosaccharides (such as chitotriose and chitotetraose), without generating NAG.</li>
+        <li>Exochitinase: It acts on the non-reducing end of the chitin chain, cleft the glycosidic bonds one 
+          by one, and the product is mainly NAG.</li>
+      </ul>
+      <table>
+        <tr>
+          <th>Comparison category</th> <th>Endochitinase</th> <th>Exochitinase</th>
+        </tr>
+
+        <tr>
+          <td>Site of action</td> <td>Random sites within the chitin polysaccharide chain (far from the end)</td>
+           <td>Terminal sites of chitin polysaccharide chains/oligosaccharide chains (mostly non-reducing ends)</td>
+        </tr>
+
+        <tr>
+          <td>Degradation products</td> <td>Chitooligosaccharides of different lengths (such as from chitobiose to 
+            chitohexaose)</td> <td>Mainly N-acetylglucosamine monosaccharide</td>
+        </tr>
+
+        <tr>
+          <td>Stage of action</td> <td>The initial stage of chitin degradation (first destroying the macromolecular 
+            structure)</td> <td>The subsequent stage of chitin degradation (further decomposition of small molecule 
+            fragments)</td>
+        </tr>
+      </table>
+    </li>
+    
+    <li>To predict and analyze enzyme function, amino acid sequences of Blchi and Bschi were compared by NCBI 
+      BLAST:
+    <ol type="a">
+      <li>Blchi has 92% homology with Pseudoalteromonas piscicida's endochitinase (UniProtKB: P32823.1) and 
+        is predicted to be an endochitinase.</li>
+      <li>Bschi has 91% homology with Niallia circulans's endochitinase (UniProtKB: P20533.1), and is predicted
+        to be an endochitinase.</li>
+      <li>Optimization plan: Review literature to screen for methods suitable for endochitinase activity detection <a href="#ref1">[1]</a>.
+      </li>
+      <li>Based on this, we believe that Blchi and Bschi are highly likely to be endochitinases. Therefore, 
+        it is difficult to detect the enzyme activity of Blchi and Bschi using the detection method that relies 
+        on NAG production.</li>
+    </ol>
+    </li>
+  </ol>
+
+  <h2>5. Design 2-2: Design of endochitinase activity detection method</h2>
+  <h3>Experimental design for chitinase:</h3>
+  <p>
+    To further verify whether the successfully secreted chitinase has biological activity, we designed a colloidal chitin 
+    plate hydrolysis experiment: The engineered strain bacterial liquid (recombinant strain containing Blchi and Bschi) induced 
+    overnight by IPTG was dipped in a sterile coating rod and seeded onto a colloidal chitin plate containing 50 μg/mL kanamycin 
+    (for maintaining plasmid stability) and 0.2 mM IPTG (for continuously inducing enzyme expression). This was incubated at 37℃ 
+    for 3 to 5 days. Then, we evaluated the catalytic activity of the enzyme by observing whether a transparent circle appeared 
+    around the colonies.
+  </p>
+  <h3>Principle of Colloidal Chitin Plate Hydrolysis Assay:</h3>
+  <p>
+    Chitin is incorporated into the <b>solid medium as a substrate</b> <a href="#ref1">[1]</a>. It is a linear polysaccharide composed of N-acetylglucosamine linked
+    by β-1,4 glycosidic bonds. Due to its large molecular weight and strong intermolecular hydrogen bonds, chitin exists as <b>insoluble 
+    milky white colloidal particles in the solid medium</b>, rendering the medium turbid.
+  </p>
+  <p>
+    The Blchi and Bschi chitinases secreted by engineered <i>E. coli</i> specifically recognize and cleave the β-1,4 glycosidic bonds of chitin, gradually
+    hydrolyzing it into soluble chitooligosaccharides of different lengths. This process degrades the insoluble chitin particles around the bacterial 
+    colonies in the solid medium, forming a transparent circle that contrasts sharply with the surrounding turbid medium—thus confirming the 
+    biological activity of the chitinases (Figure 10).
+  </p>
+
+  <h2>6. Build 2-2: Design of endochitinase activity detection method</h2>
+  <h3>Bacterial culture</h3>
+  <p>
+    1.10 μL of glycerol DH5α bacteria (pET28a-ompA-sfGFP, pET28a-ompA-Blchi, pET28a-ompA-Bschi) were respectively taken from the cryopreserved 
+    glycerol tubes and inoculated into 5 shake flasks containing 4 mL LB (Kan) at 220 rpm, 37℃.
+  </p>
+  <h3>Induced expression</h3>
+  <ol type="1">
+    <li>Transfer 1 mL of the overnight culture with 1% volume to a 500 mL conical flask containing 100 mL LB (Kan). </li>
+    <li>220 rpm, 37℃, 2.5 hours (OD600 approximately 0.4 - 0.6).</li>
+    <li>Add 200 μL of IPTG (100 mM) to the culture medium, so that the final concentration of IPTG reaches 0.2 mM. 220 rpm, 37°C, 20 hours.</li>
+  </ol>
+
+  <h3>Preparation of colloidal chitin plates</h3>
+  <ol type="1">
+    <li>Preparation of the <i>Escherichia coli</i>-inducible colloidal chitin plate (100ml):<br>
+      35ml of 2% colloidal chitin;<br>
+      2g of agar powder;<br>
+      50ml of 180mM pH 6.5 phosphate buffer;<br>
+      1g of peptone;<br>
+      0.5g of yeast powder;<br>
+      1g of sodium chloride.<br>
+    </li>
+    <li>Sterilize at 121 degrees for 20 minutes. </li>
+    <li>After the culture medium temperature reaches 55-60 ℃, add 200 μL of sterile IPTG solution (100 mM) and 100 μL of
+      kanamycin antibiotic solution (50 mg/mL). Mix well and pour the plate.</li>
+  </ol>
+
+  <h3>Chitinase activity assay</h3>
+  <p>
+    Take the induced <i>E. coli</i> culture solution and drop it onto the colloidal chitin plate.<br>
+    Incubate at 37℃ for 4 days.
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-3-4-x.webp" alt="">
+    <p class="caption">Figure 10. The experimental scheme of Colloidal Chitin Plate Hydrolysis Assay</p>
+  </div>
+
+  <h2>7. Test 2-2: Feasibility of the detection method and enzyme activity verification</h2>
+  <p>
+    The experimental results showed that obvious transparent hydrolytic circles were formed around the colonies of <i>E. coli</i>
+    expressing Blchi and Bschi (Figure 11) , while no transparent circles appeared around the negative control (a strain only 
+    harbored a GFP generator ).
+  </p>
+  <p>
+    The above results not only confirmed that the ompA signal peptide-mediated secreted Blchi and Bschi have the correct spatial 
+    folding (a key to maintaining enzyme activity), but also directly demonstrated their efficient catalytic function for chitin 
+    decomposition. Chitinase can destroy its structural integrity, laying an important experimental foundation.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig11.webp" alt="">
+    <p class="caption">Figure 11. The effect of chitin decomposition by different secreted chitin enzymes</p>
+  </div>
+
+  <h2>8. Learn 2-2: </h2>
+  <p>
+    The results not only confirmed that the ompA signal peptide-mediated secreted Blchi and Bschi have the correct spatial folding 
+    (a key to maintaining enzyme activity), but also directly demonstrated their efficient catalytic function for chitin decomposition. 
+    Chitinase can destroy its structural integrity, laying an important experimental foundation.
+  </p>
+</section>
+
+<section>
+  <h1>DBTL Cycle Three: Metabolic Engineering Modification Enhances β-amyrin Production</h1>
+  <h2>1. Design 3-1: Design of the β-amyrin synthetic pathway</h2>
+  <h3>Reasons for choosing β-amyrin</h3>
+  <p>
+    The construction of a chitinase biosynthetic factory in <i>E. coli</i> is an important application of synthetic biology
+    in the field of agricultural biological control.Through literature research, we found that the study by Granada and Skariyachan <a href="#ref2">[2]</a>
+    demonstrated that the endophytic Bacillus velezensis strain B. velezensis CBMB205 exhibited significant antifungal activity against 
+    <i>Fusarium oxysporum</i>. One of the key factors is precisely the effect of the metabolite β-amyrin. The multi-factor synergistic 
+    antibacterial mechanism it expounded provides profound inspiration for introducing β-amyrin into the design of engineered bacteria. 
+    The introduction of β-amyrin not only holds scientific significance but also provides strong support at the application level in terms of 
+    enhancing the overall antifungal efficacy and environmental adaptability of engineered bacteria from multiple dimensions in a coordinated manner.
+  </p>
+  <p>
+    The research by Granada and Skariyachan elucidated the antifungal potential of β-amyrin through two dimensions: in vitro 
+    experiments and in silico molecular simulation. The results show that β-amyrin has a strong binding ability with two key 
+    enzymes related to the synthesis of fungal cell walls: chitin synthase-1 (CS-1) and 1,3-β-glucan synthase (1,3-GS/Fks1). 
+    The binding energy to CS-1 can reach -10.17 kcal/mol.
+  </p>
+  <p>
+    These results indicate that β-amyrin can exert antifungal effects by inhibiting the synthesis of cell wall polysaccharides 
+    and disrupting the structural stability of fungi. This mechanism forms a complementary relationship with the mode of action 
+    of chitinase. The synergy of the two can significantly enhance the antifungal effect. In conclusion, we speculate that β-amyrin 
+    has the function of inhibiting chitin synthesis.
+  </p>
+  <p>
+    To enhance the antagonistic effect against fungi, we plan to construct a synthesis pathway of β-amyrin. <i>E. coli</i> has become an
+    ideal host for the construction of heterologous metabolic pathways due to its clear genetic background, convenient gene manipulation 
+    and low fermentation cost. Further literature research revealed that the endogenous methylerythritol phosphate (MEP) pathway exists 
+    in <i>E. coli</i> <a href="#ref3">[3]</a>. This pathway can synthesize farnesyl pyrophosphate (FPP), the key precursor of β-amyrin, through multiple enzymatic reactions
+    (Figure 12).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-4-1-fig10.webp" alt="">
+    <p class="caption">Figure 12. Endogenous FPP metabolic pathways in <i>E. coli</i></p>
+  </div> 
+
+  <p>
+    Based on this, we do not need to reconstruct the complete precursor synthesis pathway. We only need to 
+    introduce the three key enzyme genes downstream of β-amyrin synthesis to complete the synthesis link from 
+    FPP to β-amyrin: the Homo sapiens farnesyl-diphosphate farnesyltransferase 1 gene (hSQS) to catalyze FPP 
+    dimerization to squalene, the Arabidopsis thaliana squalene monooxygenase gene (AtSQE) to catalyze squalene 
+    oxidation to 2, 3-oxidized squalene, and the β-amyrin synthase gene of the Euphorbia tirucalli plant (EtAs) 
+    to catalyze 2, 3-oxidative squalene cyclization to β-amyrin (Figure 13).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig13.webp" alt="">
+    <p class="caption">Figure 13. Metabolic pathway of β-amyrin synthesis in <i>E. coli</i></p>
+  </div>
+
+  <h3>Vector and Gene Design:</h3>
+  <ul type="disc">
+    <li>Select the pTYT vector (containing the inducible pTac promoter, which can regulate the expression
+      intensity through IPTG and contains RBS to ensure translation efficiency).</li>
+    <li>Tandem clone the human squalene synthase gene (hSQS), the Arabidopsis thaliana oxidative squalene
+      cyclase gene (AtSQE), and Euphorbia amyrin synthase gene (EtAs) into the pTYT vector to construct a
+      one-step synthetic pathway by designing Gibson primers through SnapGene (Figure 14).
+      <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig14.webp" alt="">
+        <p class="caption">Figure 14. Gene expression modules of pTYT plasmid</p>
+      </div>
+    </li>
+  </ul>
+
+  <h2>2. Build 3-1: Constructing the β-amyrin strain</h2>
+    <h3>Experimental operation:</h3>
+    <ol type="1">
+      <li>Vector linearization: The pTYT vector was amplified by PCR using Gibson primers to obtain a linearized 
+        vector with homologous arms at both ends.</li>
+      <li>Fragment assembly: The hSQS, AtSQE, and EtAs gene fragments (tandem fragments obtained through 
+        overlapping extension PCR) were mixed with the linearized pTYT vector and recombined according to the 
+        Gibson assembly system (reaction at 50 ° C for 1 h).</li>
+      <li>Transformation and validation: Recombinant plasmid was transformed into DH5α competent cells. 
+        Colony PCR screening was conducted (primers were respectively targeted at hSQS and EtAs, with amplification 
+        fragments approximately 3.5 kb), agarose gel electrophoresis was used to verify the band size, and DNA 
+        sequencing was used to confirm the correctness of the gene sequence and direction.</li>
+      <li><b>Construction results</b>: The recombinant plasmid pTYT-hSQS-AtSQE-EtAs was successfully obtained and 
+        transformed into DH5α to obtain the β-amyrin synthesis engineering bacteria(Figure 15).
+        <div class="img">
+          <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig15.webp" alt="">
+          <p class="caption">Figure 15. DH5α plasmid with pTYT-Kan-pTac-hSQS-AtSQE-EtAs</p>
+        </div>
+      </li>
+    </ol>
+
+  <h2>3. Test 3-1: Detection and evaluation of β-amyrin production</h2>
+  <ol type="1">
+    <li>Engineered bacteria fermentation: Inoculate the engineered bacteria into LB medium (containing
+      ampicillin), and cultivate at 37°C until OD600=0.6. Add IPTG (final concentration 1 mM) and induce
+      for 24 hours.</li>
+    <li>Sample preparation: Centrifuge the fermentation broth at 8000 rpm for 10 minutes to separate the
+      supernatant. Extract the supernatant three times with an equal volume of ethyl acetate. After merging
+      the extracts, dry by rotary evaporation. Reconstitute the residue with 100 μL of methanol and passed
+      through a 0.22 μm filter membrane for testing.</li>
+    <li>Yield detection: β-amyrin product detection: To accurately verify whether the engineered strain successfully
+      synthesized β-amyrin, we established a liquid chromatography-mass spectrometry (LC-MS) detection method for β-amyrin
+      (Figure 16) through literature research <a href="#ref4">[4,5]</a> and optimization (Table 1):</li>
+  </ol>
+  <table>
+    <caption>Table 1. Parameters of LC-MS detection method for β-amyrin</caption>
+      <tr>
+          <th colspan="2">UPLC conditions</th>
+          <th colspan="2">MS conditions</th>
+      </tr>
+      <tr>
+          <td>Chromatographic column</td>
+          <td>ACQUITY UPLC BEH C18 1.7μm 2.1×100mm Column</td>
+          <td>Runtime</td>
+          <td>0-15 min</td>
+      </tr>
+      <tr>
+          <td>Mobile phase</td>
+          <td>A: 0.1% aqueous formic acid<br>B: Methanol (0.1% formic acid)</td>
+          <td>Polarity</td>
+          <td>positive</td>
+      </tr>
+      <tr>
+          <td>Gradient elution procedure</td>
+          <td>0-8 minutes: 60% B<br>8-12 minutes: 100% B<br>12-15 minutes: 60% B</td>
+          <td>Full MS</td>
+          <td>Resolution: 120000<br>AGC target: 3e6<br>Maximum IT: 200 ms<br>Scan range: 150 to 2000 m/z</td>
+      </tr>
+      <tr>
+          <td>Flow velocity</td>
+          <td>0.3 mL/min</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Column oven temperature</td>
+          <td>45</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </table>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig16.webp" alt="">
+    <p class="caption">Figure 16. Experimental flowchart for the synthesis and detection of β-amyrin in <i>E. coli</i></p>
+  </div>
+
+  <p><b>Results:</b>
+    The results showed that a specific chromatographic peak appeared at a retention time of 12.18 min, and the characteristic target ion
+    peak of β-amyrin (m/z 427.39389) was clearly detected in the corresponding mass spectrum. This value is in complete agreement with the
+    m/z corresponding to the hydrogenated exact molecular weight (m/z = 427.39417 for [M+H]⁺ ions) of β-amyrin (molecular formula: C<sub>30</sub>H<sub>50</sub>O)
+    (Figure 17). Meanwhile, parallel detection was performed using the β-amyrin standard substance, and its retention time and characteristic
+    ion peak were completely matched with those of the sample. This further confirms that we have successfully constructed an engineered Escherichia
+    coli strain(pTYT group: pTYT plasmid with Kan-pTac-hSQS-AtSQE-EtAS) capable of efficiently synthesizing β-amyrin (Figure 18).
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-ta1.webp" alt="">
+    <p class="caption">Figure 17. Mass spectrum of β-amyrin in positive ion mode</p>
+  </div>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-ta2.webp" alt="">
+    <p class="caption">Figure 18. Extracted Ion Chromatogram (EIC) of β-amyrin, including the
+    following groups: Control group, pTYT group, and β-amyrin standard group</p>
+  </div>
+
+  <h2>4. Learn 3-1: Analysis of yield bottleneck and precursor enhancement strategies</h2>
+  <p>
+    Because the endogenous methylerythritol phosphate (MEP) pathway in <i>E. coli</i> mainly provides precursors for the synthesis of
+    necessary terpenoids (such as quinones, isoprene, etc.) by the cells themselves, and its metabolic flow distribution is oriented 
+    towards meeting basic physiological needs, the endogenous accumulation of farnesyl pyrophosphate (FPP) is relatively low 
+    (usually only at the microgram level per liter of fermentation liquid). It has become a key bottleneck restricting the synthesis of 
+    β-amyrin.
+  </p>
+
+  <h2>5. Design 3-2: Design of the new β-amyrin synthetic pathway </h2>
+  <p>
+    To break through this limitation, through systematic literature research, we found that the mevalonate (MVA) pathway 
+    in eukaryotes (such as yeast) has a stronger ability to synthesize terpene precursors-this pathway uses acetyl-CoA as the starting material <a href="#ref6">[6,7]</a>(Figure 19).
+    Through multi-step enzymatic reactions, isopentenyl pyrophosphate (IPP) and dimethylallyl pyrophosphate (DMAPP) can be efficiently generated. Further 
+    polymerization of the two can produce FPP, and its metabolic flow can be directionally enhanced by regulating the expression of key enzymes. Therefore, 
+    we plan to introduce the complete key enzyme genes of the endogenous MVA pathway of yeast (Saccharomyces cerevisiae) into the constructed β-amyrin 
+    synthesis engineering strain, and construct a metabolic network of the synergistic effect of the "MEP+MVA" dual pathway(Figure 22), significantly increasing 
+    the intracellular accumulation of FPP, and thereby enhancing the synthetic efficiency of β-amyrin.
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig19.webp" alt="">
+    <p class="caption">Figure 19. Endogenous FPP synthesis pathway in <i>S. cerevisiae</i></p>
+  </div>
+  <p>
+    Introduce the key enzyme genes for FPP synthesis in the complete MVA pathway of Saccharomyces cerevisiae (<i>S. cerevisiae</i>) to construct a dual-plasmid system:
+  </p>
+
+  <p>
+    pMevT plasmid: It contains acetyl-CoA acetyltransferase (AtoB), hydroxymethylglutaryl-CoA synthase (HMGS), and hydroxymethylglutaryl-CoA reductase (tHMGR) genes, 
+    which catalyze the generation of mevalonic acid from acetyl-CoA (Figure 20).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig20.webp" alt="">
+    <p class="caption">Figure 20. Gene expression modules of pMevT plasmid</p>
+  </div>
+  <p>
+  pMBIS plasmid: It contains the 1) mevalonate kinase gene (ERG12), which catalyzes the phosphorylation of mevalonate to mevalonate-5-phosphate, 2) the phosphomevalonate
+  kinase gene (ERG8), which catalyzes the generation of mevalonate-5-pyrophosphate, 3) the mevalonate pyrophosphate decarboxylase gene (MVD1), which catalyzes the decarboxylation
+  of mevalonate-5-pyrophosphate to isopentenyl pyrophosphate (IPP), and 4) the  isopentenyl pyrophosphate isomerase gene (IDI1), which catalyzes the mutual transformation of
+  IPP and dimethylallyl pyrophosphate (DMAPP). The aforementioned genes can efficiently flow from mevalonic acid to IPP/DMAPP through a cascade reaction, providing sufficient precursors 
+  for FPP synthesis (Figure 21).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig21.webp" alt="">
+    <p class="caption">Figure 21. Gene expression modules of pMBIS plasmid</p>
+  </div>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig22.webp" alt="">
+    <p class="caption">Figure 22. β-amyrin synthetic pathway in optimized strain</p>
+  </div>
+
+  <h2>6. Build 3-2: Constructing the β-amyrin strain</h2>
+  <p>
+    To achieve the co-expression of the MVA pathway and the original β-amyrin synthesis pathway, we designed a dual-plasmid co-expression system: 1)
+    retain the original plasmid pTYT(Kan-PTac-hSQS-AtSQE-EtAS) with kanamycin resistance to ensure the stable expression of the downstream pathways of 
+    β-amyrin synthesis, 2) construct new recombinant plasmids pMevT(Cm-Plac-atoB-HMGS-tHMGR) with chloramphenicol resistance and pMBIS(TcR-Plac-ERG12
+    -ERG8-MVD1-idi-ispA ) with tetracycline resistance, and 3) express the seven MVA pathway genes in tandem in the metabolic flow sequence. Also,
+    rrnBT1 terminators are added downstream of the gene cluster to ensure complete transcription. This three-plasmid design not only avoids the problem of 
+    unstable replication caused by overly large single plasmids, but also ensures the stable coexistence of the three plasmids through screening with three 
+    antibiotics (kanamycin, chloramphenicol, and tetracycline).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig23.webp" alt="">
+    <p class="caption">Figure 23. DH5α with pTYT + pMevT + pMBIS</p>
+  </div>
+  <p>
+    After the construction is completed(Figure 23), we will conduct fermentation on the new engineered strain DH5α with pTYT plasmid (Kan-pTac-hSQS-AtSQE-EtAS) , 
+    pMevT plasmid (Cm-Plac-atoB-HMGS-tHMGR) and pMBIS plasmid (TcR-Plac-ERG12-ERG8-MVD1-idi-ispA )
+  </p>
+
+  <h2>7. Test 3-2: Detection and evaluation of β-amyrin production</h2>
+  <h3>Experimental results:</h3>
+  <p>
+    Consistent with this design, our data demonstrated that the introduction of the MVA pathway (pMevT-pMBIS-pTYT group) resulted in a 4-fold increase in β-amyrin production 
+    compared to the single-plasmid group (pTYT group) (Figure 24 and 25). 
+  </p>
+
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig24.webp" alt="">
+    <p class="caption">Figure 24. Extracted Ion Chromatogram (EIC) of β-amyrin, including the following groups: Control group, pTYT group, pMevT-pMBIS-pTYT group, and β-amyrin 
+      standard group</p>
+  </div>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig25.webp" alt="">
+    <p class="caption">Figure 25. Relative abundance comparison diagram of β-amyrin product peaks</p>
+  </div>
+
+  <h2>8. Learn 3-2: </h2>
+  <p>
+    This finding further confirms that the exogenous yeast MVA pathway can effectively enhance the supply of FPP in engineered <i>Escherichia coli</i>, and in turn, significantly improve the efficiency
+    of heterologous β-amyrin synthesis—validating the rationality of our metabolic engineering strategy for boosting β-amyrin yield.
+  </p>
+</section>
+
+<section>
+  <h1>DBTL Cycle Four: Iterative Optimization of Yeast Antagonism Detection Tools</h1>
+  <h2>1. Design 4-1: Design of quantification tool for antagonistic effects</h2>
+  <h3>Background</h3>
+  <p>
+    To address the core issue of "no signal response" in the traditional plate antagonism method and verify the synergistic antagonistic effect 
+    between chitinases (Blchi, Bschi) and β-amyrin in this project, we have significantly improved this method, thereby developing a novel antagonistic 
+    assay approach that is still based on yeast cell rupture signals. 
+  </p>
+  <h3>Design basis:</h3>
+  <p>
+    During the CCiC Conference, we obtained a strain of <i>S. cerevisiae</i> capable of producing red fluorescent protein
+    (RFP) from the Tsinghua-M team and designed the following experimental protocol based on this. During the fermentation 
+    process of <i>S. cerevisiae</i>, two key substances will be simultaneously added to the fermentation broth–one is the secretion
+    supernatant solution containing chitinase secreted by <i>E. coli</i> (with chitinase as the core active component), and the
+    other is β-amyrin.
+  </p>
+  <p>
+    Our core speculative mechanism is as follows. On one hand, chitinase can directly break down chitin, the main component of the 
+    cell wall of <i>S. cerevisiae</i>, and on the other hand, β-amyrin can inhibit the process of chitin synthesis by <i>S. cerevisiae</i> itself.
+    These two pathways of action will eventually jointly lead to a reduction in chitin content in the yeast cell wall, and the 
+    decrease in chitin will disrupt the structural integrity of the cell wall, thereby altering its permeability. When the permeability 
+    of the cell wall changes, the yeast protoplasts that have lost effective protection will be exposed to the hypotonic environment of 
+    the fermentation broth. Affected by the difference in osmotic pressure, the protoplasts will rupture, and the RFP within their 
+    cells will also be released into the fermentation broth.
+  </p>
+  <p>
+    Subsequently, the supernatant of the fermentation broth was collected through centrifugation. The fluorescence intensity of RFP in the 
+    supernatant was detected using a microplate reader, which could indirectly determine the experimental effect: if the detected fluorescence 
+    intensity was significantly higher than that of the control group, it indicated that the number of ruptured yeast cells was greater, and 
+    the antagonistic effect of chitinase and β-amyrin on yeast was stronger.
+  </p>
+
+  <h2>2. Build 4-1: Construction of the antagonistic detection system</h2>
+  <h3>Obtaining the antagonist</h3>
+  <ol type="1">
+    <li>Obtaining the chitinase solution: The cultures of strain BL21 (DE3) with pET28a-ompA-Blchi and BL21 (DE3) with pET28a-ompA-Blchi
+      were cultivated. After the fermentation process was completed, 10 mL of the culture was centrifuged (at 8000 rpm for 5 minutes) to
+      obtain the supernatant. The supernatant was the chitinase solution.</li>
+    <li>Preparation of β-amyrin solution: The strain DH5α with pTYT-hSQS-AtSQE-EtAs was subjected to fermentation. After the fermentation
+      process was completed for 16h, 30 mL of the bacterial solution was placed in a 50 mL centrifuge tube and centrifuged at 8,000 rpm and
+      4°C for 10 minutes, after which the supernatant was collected. Then, 30 mL of ethyl acetate was added for shaking extraction (3000 rpm,
+      10 minutes). Next, the ethyl acetate layer was transferred to a new centrifuge tube and left at 50°C until it dried. Finally, 1 mL of water
+      was added to resuspend, resulting in a concentrated β-amyrin solution.</li>
+  </ol>
+
+  <h3>Bacterial culture</h3>
+  <ol type="1">
+    <li>Take 10 μL of the yeast expressing RFP from the glycerol tube and inoculate it into a shake flask containing 4 mL of SD-Ura broth, at 200 rpm
+      and 30℃ for 16h.</li>
+  </ol>
+
+  <h3>Antagonism process:</h3>
+  <ol type="1">
+    <li>Transfer 100 μL of the yeast cells that have been cultured overnight to a shaking flask containing 2 mL of the antagonistic system,
+      and add 10 μL of 1M cyanamide (final concentration 5 mM). </li>
+    <li>The experimental group is set up as follows,<br>
+      Control group:0.1 mL yeast culture + 1.9 mL SD-Ura broth + 0.025 mL water<br>
+      Chitinase group:0.1 mL yeast culture + 1.9 mL SD-Ura broth + 0.025 mL chitinase solution<br>
+      β-amyrin group:0.1 mL yeast culture + 1.9 mL SD-Ura broth + 0.025 mL β-amyrin solution<br>
+      Chitinase+β-amyrin group:0.1 mL yeast culture +1.9 mL SD-Ura broth+0.025 mL chitinase + 0.025 mL β-amyrin solution
+    </li>
+    <li>Culture conditions: 30 ℃, 200 rpm,12h.</li>
+  </ol>
+
+  <h3>Fluorescence detection</h3>
+  <ol type="1">
+    <li>Centrifuge (8000 rpm for 2 minutes), transfer 1 mL of the supernatant of the culture medium to a new 1.5 mL centrifuge tube
+      and centrifuge again (12000 rpm for 1 minute). </li>
+    <li>Add 200 μL to a 96-well microplate (black background), and perform red fluorescence detection in the microplate reader (excitation
+      wavelength 585 nm, emission wavelength 610 nm)</li>
+  </ol>
+
+  <h2>3. Test 4-1: Preliminary verification of antagonistic effects</h2>
+  <h3>Test result:</h3>
+  <p>
+    The experimental results show that when chitinase and β-amyrin are added respectively, an enhancement of the RFP fluorescence signal can be observed. 
+    However, for the control group, the extent of this enhancement is limited(Figure 26). 
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig5-3.webp" alt="">
+    <p class="caption">Figure 26. The comparison chart of fluorescence intensity in the supernatant of <i>S. cerevisiae</i> (RFP) culture medium after treatment with chitinase
+      and β-amyrin</p>
+  </div> 
+
+  <h2>4. Learn 4-1: Iteration of detection methods </h2>
+  <p>
+    <b>In the face of the inability to determine the antagonistic effects of chitinase and β-amyrin, we hope to modify the <i>S. cerevisiae</i> system to enable it to test the activity of our
+    engineered bacteria.</b> Through <b>literature research</b>, we found that the cell wall of <i>S. cerevisiae</i> is composed of 30-60% β -glucan, 20-40% mannan, 10-30% protein, 1-2% chitin and 5-20%
+    lipids (including phospholipids, ergosterol, etc.) by its dry weight, and also contains trace amounts of inorganic salts, minerals and other auxiliary components <a href="#ref8">[8,9]</a>. <b>We speculate that
+    this might be related to the fact that the chitinase content in <i>S. cerevisiae</i> only accounts for 1% of the cell wall. In other words, even if the chitin in <i>S. cerevisiae</i> completely
+    disappears, it will not lead to the death of <i>S. cerevisiae</i>. Therefore, it's difficult to observe a significant increase in the RFP signal.</b>
+  </p>
+
+  <h2>5. Design 4-2: Design of Optimized quantification tool for antagonistic effects</h2>
+  <p>
+    <b>Optimization direction:</b> Through literature reading, we have discovered that snailase, a mixed enzyme extracted and prepared from the sacs and digestive tract of snails, contains over 20 enzymes 
+    such as cellulase, hemicellulase, pectinase, amylase, decarboxylase, and protease <a href="#ref10">[10,11]</a>. <b>It can be used to dissolve the cell walls of yeast</b> and is widely applied in cell biology and genetic engineering
+    research. We hypothesize that if <i>S. cerevisiae</i> is pretreated with snailase, <b>the overall strength of its cell wall will be reduced, and the cell wall's sensitivity to chitin content will be increased.
+    This may allow the structural importance of chitin in the cell wall to be manifested</b>, which in turn enables the yeast to respond to chitinase and β-amyrin—thus achieving an antagonistic effect against S. 
+    cerevisiae(Figure 27).
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/eng-fig27.webp" alt="">
+    <p class="caption">Figure 27. Method based on microplate reader detection: Experimental flowchart for the synthesis and detection of β-amyrin</p>
+  </div>
+
+  <h2>6. Build 4-2: Construction of Optimized the antagonistic detection system</h2>
+  <h3>Bacterial culture</h3>
+  <ol type="1">
+    <li>Take 10 μL of the yeast expressing RFP from the glycerol tube and inoculate it into a shake flask containing 4 mL of SD-Ura broth, at 200 rpm and 30℃ for 16h.</li>
+  </ol>
+
+  <h3>Antagonism process:</h3>
+  <ol type="1">
+    <li>Transfer 100 μL of the yeast cells that have been cultured overnight to a shaking flask containing 2 mL of the antagonistic system, and add 10 μL of 1M cyanamide (final concentration
+      5 mM). </li>
+    <li>The experimental group is set up as follows,<br>
+      With snailase treatment group: with 0.025 mL 100g/L snailase:<br>
+      0.1 mL yeast + 1.9 mL YPD broth + 0.025 mL water<br>
+      0.1 mL yeast + 1.9 mL YPD + 0.025 mL chitinase solution<br>
+      0.1 mL yeast + 1.9 mL YPD + 0.025 mL β-amyrin solution<br>
+      0.1mL yeast+1.9mL YPD +0.025mL chitinase solution +0.025mL β-amyrin solution</li>
+    <li>Culture conditions: 30 ℃, 200 rpm,12h.</li>
+  </ol>
+
+  <h3>Fluorescence detection</h3>
+  <ol type="1">
+    <li>Centrifuge (8000 rpm for 2 minutes), transfer 1 mL of the supernatant of the culture medium to a new 1.5 mL centrifuge tube and centrifuge again (12000 rpm for 1 minute). </li>
+    <li>Add 200 μL to a 96-well microplate (black background), and perform red fluorescence detection in the microplate reader (excitation wavelength 585 nm, emission wavelength 610 nm)</li>
+  </ol>
+
+  <h2>7. Test 4-2: Verification of antagonistic effects</h2>
+  <p>
+    This experiment optimized the treatment steps based on the original plan: Firstly, <b>snail enzyme</b> was used to pre-treat <i>S. cerevisiae</i>. Then, during the fermentation process of <i>S. cerevisiae</i>, two key
+    substances-chitinase and β-amyrin-were simultaneously added to the fermentation broth. To present the experimental effect more intuitively and accurately, we designed the detection method: The vertical 
+    axis uses fluorescence intensity difference (Δfluorescence intensity) as the index, and the fluorescence intensity value of the control group is set as the origin on the vertical axis. The experimental 
+    effect is quantified through the increment of fluorescence intensity. The horizontal axis corresponds to the different treatment conditions of the experimental group.
+  </p>
+  <p>
+    The experimental results showed that the fluorescence intensity increment of the <i>S. cerevisiae</i> group pretreated with snail enzyme was significantly increased compared with the original experimental step group.
+    This result indicates that the snail enzyme pretreatment of the <i>S. cerevisiae</i> system is a superior detection system: it can effectively transform the originally insensitive <i>S. cerevisiae</i> strains to chitin into
+    strains with chitin response capabilities, significantly enhancing the effectiveness of the detection system.
+  </p>
+  <p>
+    Meanwhile, the experimental results also confirmed the effect of the target substances: when chitinase or β-amyrin is added alone, both can exert antagonistic effects on <i>S. cerevisiae</i>. <b>When chitinase and β-amyrin
+    are added together, the antagonistic effects of the two are further superimposed, presenting a more significant inhibitory effect (Figure 28).</b>
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/engineering/engineering-fig5-4-1.webp" alt="">
+    <p class="caption">Figure 28. Relative fluorescence intensities of RFP detected by the microplate reader under different antagonistic conditions</p>
+  </div> 
+
+  <h2>8. Learn 4-2:</h2>
+  <p>
+    We successfully pretreated <i>S. cerevisiae</i> with snail enzyme to transform it into a chitin-sensitive strain, enabling it to respond to chitinase and β-amyrin. This detection method is easy to operate: it only requires the
+    use of a conventional microplate reader. By detecting the content of red fluorescent protein (RFP) in the supernatant of the fermentation broth, the antagonistic effect of the target protein (such as chitinase) or metabolite 
+    (such as β-amyrin) can be directly evaluated. <b>In addition, this method also has the advantages of a short testing cycle and low requirements for experimental equipment, providing potential application value for high-throughput 
+    screening of the efficacy of chitin-related proteins and metabolites.</b>
+  </p>
+</section>
+
+<section>
+  <h1>References</h1>
+  <table id="ref-table">
+    <tr>
+      <td>
+        <div id="ref1">[1]</div>
+      </td>
+      <td>
+        Howard MB, Ekborg NA, Weiner RM, Hutcheson SW. Detection and characterization of chitinases and other chitin-modifying enzymes. <i>J Ind Microbiol Biotechnol</i>. 2003;30(11):627-635.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref2">[2]</div>
+      </td>
+      <td>
+        R V, Granada DL, Skariyachan S, et al. In vitro and in silico investigation deciphering novel antifungal activity of endophyte <i>Bacillus velezensis</i> CBMB205 against <i>Fusarium oxysporum. Sci Rep</i>. 2025;15:684.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref3">[3]</div>
+      </td>
+      <td>
+        Wang C, Park JE, Choi ES, Kim SW. Farnesol production in <i>Escherichia coli</i> through the construction of a farnesol biosynthesis pathway: application of PgpB and YbjG phosphatases. <i>Biotechnol J</i>. 2016;11(10):1291-1297.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref4">[4]</div>
+      </td>
+      <td>
+        Gobo LA, Viana C, Lameira OA, de Carvalho LM. A liquid chromatography-atmospheric pressure photoionization tandem mass spectrometric (LC-APPI-MS/MS) method for the determination of triterpenoids in medicinal plant extracts. <i>J Mass Spectrom</i>. 2016;51(8):558-565.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref5">[5]</div>
+      </td>
+      <td>
+        Martelanc M, Vovk I, Simonovska B. Determination of three major triterpenoids in epicuticular wax of cabbage (Brassica oleracea L.) by high-performance liquid chromatography with UV and mass spectrometric detection. <i>J Chromatogr A</i>. 2007;1164(1-2):145-152.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref6">[6]</div>
+      </td>
+      <td>
+        Yu Y, Li J, Zhang Y, et al. Engineering <i>Saccharomyces cerevisiae</i> for high-yield production of α-amyrin via synergistic remodeling of α-amyrin synthase and expanding the storage pool. <i>Metab Eng</i>. 2020;62:72-83.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref7">[7]</div>
+      </td>
+      <td>
+        Yu Y, Zhang Y, Li J, et al. Productive amyrin synthases for efficient α-amyrin synthesis in engineered <i>Saccharomyces cerevisiae. ACS Synth Biol</i>. 2018;7(9):2391-2402.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref8">[8]</div>
+      </td>
+      <td>
+        Lesage G, Shapiro J, Specht CA, et al. An interactional network of genes involved in chitin synthesis in <i>Saccharomyces cerevisiae. BMC Genet</i>. 2005;6:8.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref9">[9]</div>
+      </td>
+      <td>
+        Klis FM, Mol P, Hellingwerf K, Brul S. Dynamics of cell wall structure in <i>Saccharomyces cerevisiae. FEMS Microbiol Rev</i>. 2002;26(3):239-256.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref10">[10]</div>
+      </td>
+      <td>
+        You JY, Peng C, Liu X, et al. Enzymatic hydrolysis and extraction of arachidonic acid rich lipids from <i>Mortierella alpina. Bioresour Technol</i>. 2011;102(11):6088-6094.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div id="ref11">[11]</div>
+      </td>
+      <td>
+        National Center for Biotechnology Information. PubChem patent summary for CN-103669006-B: a kind of method utilizing Snailase that cotton fabrics is carried out bio-pretreatment. <i>PubChem</i>. 2025. 
+      </td>
+    </tr>
+
+  </table>
+</section>
+
+{% endblock %}

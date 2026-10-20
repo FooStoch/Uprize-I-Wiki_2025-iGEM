@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+  
+{% block title %}Contribution{% endblock %}
+{% block lead %}Make a useful contribution for future iGEM teams and document it on this page.{% endblock %}
+
+{% block page_content %}
+<section>
+  <h1>Summary</h1>
+    <p>
+        Our team made significant contributions by adding new parts to the iGEM Parts Registry, enriching the BioBrick collections for future iGEM teams, and providing functional evidence to support their application. We contributed four chitinase parts—<strong>Bacillus licheniformis DMS 13 chitinase (Blchi)</strong>, <strong><i>Bacillus subtilis</i> chitinase (Bschi)</strong>, <strong>Bacillus licheniformis J24 chitinase (BlJ24, gh18A)</strong>, and <strong>Serratia marcescens strain GEI chitinase A (Smchi)</strong>—all of which were successfully cloned into <i>E. coli</i> strains DH5α and BL21(DE3), with protein expression verified via Coomassie Brilliant Blue staining. We supplemented functional data for these chitinase parts, including confirmation of chitin-degrading ability through solid medium assays and bacterial growth-inhibiting capacity with a <i>Saccharomyces cerevisiae</i>-based system.
+    </p>
+    <p>
+        Additionally, we contributed six other elements (ompA, Amy, ydhT, FAEE, TRAT3, LYS2) and validated their distinct effects on GFP secretion after fusion, offering references for secretory protein research.
+    </p>
+    <p>
+        Beyond these contributions, we developed two practical algorithms: one for predicting secretion efficiency of different secretory peptides, which was built by testing 2000 secretory peptides and validated via wet experiments to match high-efficiency peptides for target protein fusion in <i>E. coli</i>; and a biosafety algorithm that identifies substitute strains from the iGEM whitelist (e.g., <i>Saccharomyces cerevisiae</i> as a replacement for non-whitelisted Fusarium spp.) based on protein structure similarity, solving the problem of verifying engineered bacteria’s antagonistic ability under biosafety requirements.
+    </p>
+    <p>
+      We also developed a chitin-responsive, sensitive <strong>measurement tool</strong> based on <i>Saccharomyces cerevisiae</i>. To address the low chitin content in yeast cell walls (1%-2%) that hindered antagonism detection, we pretreated yeast with snailase (a mixed enzyme for cell wall dissolution) to highlight chitin’s structural importance. This tool not only enabled the verification of chitinase and β-amyrin’s antagonistic effects on yeast but also resolved the issue that GEMS Taiwan (iGEM 2022) faced in establishing a yeast-based antagonism system.
+      These efforts aim to facilitate research and innovation within the iGEM community and provide critical technical support for the biological control of soybean root rot.
+    </p>
+</section>
+
+      
+<section>
+    <h1>Part Collection</h1>
+    <h2>Protein</h2>
+    <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/contribution/1n.webp" alt="">
+        <p class="caption">Figure 1. Gene expression modules of different signal peptides and chitinases</p>
+    </div>
+    <h3>[Blchi] Bacillus licheniformis DMS 13 (chitinase) /[Bschi] Bacillus subtilis chitinase<br><a href="https://registry.igem.org/parts/bba-25k3p716" target="_blank">BBa_25K3P716</a>/<a href="https://registry.igem.org/parts/bba-25zd70vg" target="_blank">BBa_25ZD70VG</a></h3>
+    <p>
+        Findings from our research on Blchi/ Bschi not only contribute a new biological part to the toolkit but also offer valuable insights for future iGEM teams and the broader scientific community—with key functional data supporting its potential applications.
+    </p>
+    <p>
+        To establish a workable experimental system for Blchi/ Bschi, we first focused on cloning and validating protein expression. We successfully achieved the cloning of Blchi/ Bschi into two common Escherichia coli strains: DH5α and BL21(DE3). Following the cloning process, we employed Coomassie Brilliant Blue staining to confirm that Blchi proteins were effectively expressed in these <i>E. coli</i> hosts, laying a solid foundation for subsequent activity tests. We then investigated two core functional properties of Blchi. For its chitin-degrading ability, we designed an assay where chitin was added to solid culture medium. Through this experiment, we clearly observed that Blchi could break down chitin, directly demonstrating its chitinolytic activity. Additionally, to explore its impact on microbial growth, we utilized a chitin-responsive, sensitive measurement tool based on Saccharomyces cerevisiae. In this system, our results verified that Blchi is capable of inhibiting the growth of bacterial strains, expanding our understanding of its functional scope beyond chitin degradation. The results from our Blchi have shown both impact on future iGEM teams and the wider global community.
+    </p>
+    <h3>[BlJ24] Bacillus licheniformis J24 chitinase (gh18A) /[Smchi] Serratia marcescens strain GEI chitinase A<br><a href="https://registry.igem.org/parts/bba-25y1t7o4" target="_blank">BBa_25Y1T7O4</a>/<a href="https://registry.igem.org/parts/bba-25ga0h7e" target="_blank">BBa_25GA0H7E</a></h3>
+    <p>
+        BlJ24 and Smchi are another new part we contributed to the iGEM Part Registry. We have successfully cloned BlJ24 and Smchi in <i>E. coli</i> strains of DH5α and BL21(DE3). We have also provided details on the usage and function of the fragments.
+    </p>
+</section>
+
+<div></div>
+
+<section>
+    <h1>Signal Peptide</h1>
+    <ul>
+      <li><strong>ompA</strong>: <i>E. coli</i> ompA gene (codes for the outer membrane protein II) / <a href="https://registry.igem.org/parts/bba-25pgqt1d" target="_blank">BBa_25PGQT1D</a></li>
+      <li><strong>Amy</strong>: Bacillus licheniformis 584 alpha-amylase gene / <a href="https://registry.igem.org/parts/bba-25g71ydm" target="_blank">BBa_25G71YDM</a></li>
+      <li><strong>ydhT</strong>: <i>Bacillus subtilis</i> DNA for phoB-rrnE-groESL region, complete cds. / <a href="https://registry.igem.org/parts/bba-25kcpkbb" target="_blank">BBa_25KCPKBB</a></li>
+      <li><strong>faeE</strong>: <i>E.coli</i> Chaperone protein / <a href="https://registry.igem.org/parts/bba-252ankam" target="_blank">BBa_252ANKAM</a></li>
+      <li><strong>TRAT3</strong>: <i>E.coli</i> TraT complement resistance protein / <a href="https://registry.igem.org/parts/bba-25fmkh14" target="_blank">BBa_25FMKH14</a></li>
+      <li><strong>LYS2</strong>: <i>E.coli</i> Lysis protein for colicins E2 and E3 / <a href="https://registry.igem.org/parts/bba-25kqm55e" target="_blank">BBa_25KQM55E</a></li>
+    </ul>
+    <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/contribution/2n.webp" alt="">
+        <p class="caption">Figure 2. Gene expression modules of different signal peptides and sfGFP</p>
+    </div>
+    <p>
+      We fused these new elements—ompA, B.lichen8785Amy, ydhT, faeE, TRAT3, and LYS2—to the model protein GFP, respectively. We then compared the performance of GFP after being linked to different secretory peptides. Our results confirmed that different secretory peptides exhibit distinct secretion effects: some peptides can enhance extracellular secretion efficiency, while others reduce extracellular secretion, leading to more intracellular localization of the protein.
+    </p>
+</section>
+
+<div></div>
+
+<section>
+    <h1>Algorithms</h1>
+    <div>
+        <h2>Developed a pipeline capable of predicting the secretion efficiency of secretory peptides</h2>
+        <p>
+            <strong>Our research aims to improve the secretion efficiency of chitinase in <i>Escherichia coli</i>.</strong> To achieve this, we utilized several bioinformatics tools and established a prediction pipeline that assessed the secretion performance of signal peptides based on secretion pathways and sequence features. Using over 2,000 signal peptide sequences, we tested the pipeline and validated its predictions in wet-lab experiments. This workflow enables future iGEM teams to efficiently identify high-performance signal peptides for fusion with their target proteins in <i>E. coli</i>, thereby enhancing protein secretion and improving experimental efficiency.
+        </p>
+    </div>
+    <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/contribution/eng-fig4-new.webp" alt="">
+        <p class="caption">Figure 3. Pipeline overview diagram</p>
+    </div>
+</section>
+<section>
+    <h1>Biosafety Tool</h1>
+    <div>
+        <h2>Developed a biosafety tool that uses protein similarity to find safety strains from the iGEM whitelist as substitutes for pathogenic bacteria in experiments</h2>
+        <p>
+            Since the iGEM whitelist does not include any Fusarium strains available to us, it has been difficult for us to verify whether the engineered bacteria we constructed have the potential to serve as a new type of biological agent for soybean root rot. <strong>To establish a laboratory system for verifying the antagonistic ability of engineered bacteria while complying with iGEM's official biosafety requirements, we developed a workflow.</strong> Based on protein structure similarity and homology, this algorithm can search whitelist organisms for proteins homologous to those from non-whitelist species, offering safe alternatives for experimental use, and provides a new approach for subsequent iGEM activities in the research on Fusarium spp. Using our tool, we found that the chitin synthase of <i>Saccharomyces cerevisiae</i> shares a certain degree of structural similarity with that of Fusarium, which can be used to validate the antagonism assay of β-amyrin in our project. The idea behind our algorithm is to provide an experimental reference for subsequent iGEM teams, helping them identify safety strains from the iGEM whitelist that are more similar to real pathogenic bacteria as substitutes, thereby ensuring the safe and effective implementation of experiments.
+        </p>
+    </div>
+    <div class="img">
+        <img src="https://static.igem.wiki/teams/5937/contribution/4.webp" alt="">
+        <p class="caption">Figure 4. Workflow of the pipeline</p> 
+    </div>
+</section>
+<section>
+    <h1>Measurement Tool</h1>
+    <div>
+        <h2>Developed a measurement tool based on safer antifungal indicator strains</h2>
+        <p>Through a biosafety algorithm, we identified <i>Saccharomyces Cerevisiae</i> as a substitute for Fusarium spp. (the common pathogenic fungi causing root rot, which are not included in the official iGEM whitelist) for our experiments. <strong>However, no antagonistic effect was observed when our engineered bacterial strains were tested against <i>Saccharomyces cerevisiae</i>, which was inconsistent with the results of enzyme activity assays or docking.</strong> Our wet experiments have confirmed that chitinases can degrade chitin, and β-amyrin can target chitin synthase. We therefore hypothesized that this discrepancy may be related to the low proportion of chitin in the cell wall of <i>Saccharomyces cerevisiae</i> (only 1%)—even if all chitin in <i>Saccharomyces cerevisiae</i> were eliminated, it would not cause cell death.</p>
+        <p>To address the inability to determine the antagonistic effects of chitinases and β-amyrin, we aimed to modify the Saccharomyces cerevisiae system so that it could test the activity of our engineered bacteria. Literature research revealed that the cell wall of Saccharomyces cerevisiae is mainly composed of the following components (by dry weight): 30%-60% β-glucan, 20%-40% mannan, 10%-30% protein, 1%-2% chitin, and 5%-20% lipids (including phospholipids, ergosterol, etc.), along with trace amounts of inorganic salts, minerals, and other auxiliary components.</p>
+        <p>Snailase is a mixed enzyme extracted from the crop and digestive tract of snails, containing over 20 enzymes such as cellulase, hemicellulase, pectinase, amylase, decarboxylase, and protease. It can dissolve yeast cell walls and is widely used in cell biology and genetic engineering research. Thus, we hypothesized that pretreating Saccharomyces cerevisiae with Snailase might highlight the structural importance of chitin in the cell wall, enabling it to respond to chitinases and β-amyrin and thereby achieving the expected efficacy.</p>
+        <div class="img">
+            <img src="https://static.igem.wiki/teams/5937/contribution/5.webp" alt="">
+            <p class="caption">Figure 5. The principle of the antagonistic assay based on PI stain</p>
+        </div>
+        <p>Our experimental results demonstrated that this sensitive <i>Saccharomyces cerevisiae</i>—specifically engineered to reduce the overall strength of its cell wall, thereby making the cell wall more sensitive to chitin content—can replace Fusarium spp., which are not listed on the official iGEM whitelist, for antagonism experiments. This modification, by weakening the cell wall’s structural integrity and heightening its responsiveness to chitin, not only facilitated the conduct of our experiments but also successfully resolved the issue faced by GEMS Taiwan in iGEM 2022—their failure to establish an antagonism system in yeast. Their previous challenge likely stemmed from using unmodified yeast, whose robust cell wall masked subtle antagonistic effects; in contrast, our strain’s reduced cell wall strength and enhanced chitin sensitivity make even mild interactions detectable. </p>
+        <div class="img">
+            <img src="https://static.igem.wiki/teams/5937/contribution/6.webp" alt="">
+            <p class="caption">Figure 6.  The experimental scheme of the Antagonistic Assay based on based on PI stain with flow cytometry</p>
+        </div>
+        <p>Additionally, this engineered yeast system confirmed that both chitinases and β-amyrin exhibit antagonistic effects against yeast: chitinases, which target chitin, act more potently due to the cell wall’s increased sensitivity, while β-amyrin, with its cell wall-disrupting properties, benefits from the weakened structural barrier to exert stronger inhibitory effects.</p>
+    </div>    
+</section>
+
+{% endblock %}

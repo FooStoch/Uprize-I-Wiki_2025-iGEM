@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+
+<!-- HERO - full width, full image visible (This is for the home-background.png background picture.) -->
+<div class="position-relative" id="part1">
+  <img src="https://static.igem.wiki/teams/5937/home/bg1a.webp" alt="" class="w-100">
+  <img src="https://static.igem.wiki/teams/5937/home/vine.webp" alt="" class="position-absolute" id="vine">
+  <div id="para1-group" class="position-absolute">
+    <img src="https://static.igem.wiki/teams/5937/home/seed1.webp" alt="" class="position-absolute" id="seed">
+    <img src="https://static.igem.wiki/teams/5937/home/vege1.webp" alt="" class="position-absolute" id="vege">
+
+    <img src="https://static.igem.wiki/teams/5937/home/para1.webp" alt="" class="position-absolute" id="para1">
+  </div>
+  <img src="https://static.igem.wiki/teams/5937/home/para2.webp" alt="" class="position-absolute" id="para2">
+  <img src="https://static.igem.wiki/teams/5937/home/para3.webp" alt="" class="position-absolute" id="para3">
+  <img src="https://static.igem.wiki/teams/5937/home/sun.webp" alt="" class="position-absolute" id="sun">
+</div>
+<div>
+  <img src="https://static.igem.wiki/teams/5937/home/bg2.webp" alt="" class="w-100">
+</div>
+<div class="hero-wrap">
+  <div class="carousel-wrapper">
+    <img src="https://static.igem.wiki/teams/5937/home/carousel.webp" alt="" id="carousel">
+  </div>
+</div>
+<script>
+    var animation = function() {
+        const targetElements = document.querySelectorAll('#para1-group,#para2,#para3');
+        const windowHeight = window.innerHeight;
+
+        targetElements.forEach((row, index) => {
+            if (row.getBoundingClientRect().top < windowHeight) {
+                row.classList.add('active')
+            }
+        });
+    }
+
+    window.addEventListener('scroll', animation);
+    window.addEventListener('resize', animation);
+
+</script>
+
+{% endblock %}

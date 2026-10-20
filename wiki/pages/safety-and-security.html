@@ -1,0 +1,494 @@
+{% extends "layout.html" %}
+  
+{% block title %}Safety{% endblock %}
+{% block lead %}Detail the safety and security considerations of your project, adressing potential risks and outlining the measures taken to mitigate them.{% endblock %}
+
+{% block page_content %} 
+
+<section>
+  <h1>Safety: Our Commitment to Responsible Science</h1>
+  <p>At Team Uprize-I, we believe that scientific innovation must be built upon a foundation of safety and responsibility. 
+    Throughout our project, we have implemented comprehensive safety protocols to protect our team members, the public, 
+    and the environment. In addition, we introduced a novel <i>in silico</i> (see <a href="#in-silico-biosafety-tool"><i>In silico</i> Biosafety Tool</a>) and <i>in vivo</i> (see <a href="#in-vivo-biosafety-applications"><i>In vivo</i> Biosafety Applications</a>) method to help us 
+    maximize project completion while ensuring biosafety. We have also made our biosafety tool publicly available, and 
+    we warmly welcome future iGEM teams to explore and apply it in their own projects.</p>
+</section>
+<section>
+  <h1>Laboratory Safety Protocols</h1>
+  <h2>Comprehensive Safety Training</h2>
+  <p>All team members completed an intensive safety preparation program before entering the laboratory. This training encompassed 
+    five key areas: laboratory fundamentals, personal protective equipment usage, biosafety principles, emergency spill 
+    management, and laboratory regulations.</p>
+  <p>Following the training, team members underwent a rigorous safety assessment. Only those demonstrating complete 
+    mastery of safety protocols through a perfect score were granted laboratory access. The evaluation covered emergency 
+    response procedures, molecular biology techniques, and safety equipment operation. We also received specialized 
+    instruction in handling biological materials including <i>E. coli</i> cultures and yeast strains.</p>
+  <p>To ensure full awareness of potential risks, all participants and their guardians provided written 
+    confirmation acknowledging understanding of laboratory hazards through signed consent forms.</p>
+  <h2>Laboratory Skills Development</h2>
+  <p>We dedicated the entire month of May to developing and refining essential laboratory techniques. 
+    Through hands-on practice, we mastered critical methods, including precise pipetting, polymerase chain 
+    reaction (PCR), gel electrophoresis, and aseptic techniques. This training ensured that every team member 
+    could operate laboratory equipment competently and safely.</p>
+  <p>Our training extended to proper sample management, covering appropriate storage conditions, transfer protocols, 
+    and usage procedures. We studied biosafety classification systems, chemical spill response protocols, and 
+    emergency situation management. These comprehensive preparations have instilled a deep-rooted culture of 
+    safety awareness throughout our team.</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure1.webp">
+    <p class="caption">Figure 1: Our team maintains the highest safety standards through proper equipment usage and 
+  personal protective measures</p>
+  </div>
+  <h2>Project Safety Design</h2>
+  <p>Our research initiative, Uprize-I, addresses plant root rot through engineered chitinase production. We have 
+    designed our experimental approach with multiple layers of safety considerations. Guided by our biosafety tool, 
+    we decided to replace the pathogenic fungus <i>Fusarium oxysporum</i> with yeast (<i>Saccharomyces cerevisiae</i>) as a safe
+    model organism, leveraging their similar chitin-based cell wall structures.</p>
+  <p>The modified <i>E. coli</i> DH5α strain we employed is classified as a Risk Group 1 organism, requiring Biosafety 
+    Level 1 containment. The chitinase gene incorporated into our system originates from natural sources and presents 
+    minimal environmental risk when handled according to established safety protocols.</p>
+  <p>All experimental work was conducted under the direct supervision of qualified instructors, with strict 
+    adherence to institutional biosafety guidelines and iGEM safety standards.</p>
+</section>
+<section>
+  <h1 id="in-silico-biosafety-tool"><i>In silico</i> Biosafety Tool</h1>
+  <h2>Background</h2>
+  <p>In synthetic biology experiments, ensuring that biological materials comply with biosafety regulations is crucial. 
+    iGEM clearly stipulates that teams must use Risk Group 1 (RG1) organisms or Risk Group 2 (RG2) organisms only 
+    after approval from the Safety and Security Committee. However, our research target is a plant pathogenic fungus 
+    that did not pass iGEM’s biosafety review due to its risk classification. This compelled us to search for a safe
+    substitute organism within the iGEM whitelist that could serve as a functional replacement for experimental validation.</p>
+  <p>To achieve this, we developed a safety recommendation system based on protein similarity and species 
+    risk group evaluation, which helps us identify safe and scientifically valid alternatives.</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure2.webp">
+    <p class="caption">Figure 2: Biosafety Risk Groups in iGEM<br><small>Risk Group 1 and 2 organisms are permitted under iGEM guidelines (with restrictions for 
+      Risk Group 2), while Risk Group 3 and 4 organisms are not permitted due to their potential to cause serious or lethal 
+      human diseases.</small></p>
+  </div>
+  <h2 id="our-solution">Our Solution</h2>
+  <p>To assist iGEM teams in identifying safe substitute organisms for their experiments, we designed a three-step 
+    computational pipeline. Starting from the input core protein sequence, the pipeline systematically downloads, aligns, 
+    screens, and evaluates candidate proteins for both functional and structural conservation, ultimately outputting 
+    recommended safe substitutes.</p>
+  <p>The pipeline consists of five main steps: 
+    <ol>
+      <li>Defining a whitelist and preparing a core protein.</li>
+      <li>Downloading candidate sequences.</li>
+      <li>Screening candidates by homology.</li>
+      <li>Pocket mapping and structural quality control.</li>
+      <li>Integrated scoring for final selection.</li>
+    </ol>
+  </p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/igemigem.webp">
+    <p class="caption">Figure 3: Workflow of the pipeline</p>
+  </div>
+  <h3>Step1: Defining a whitelist and preparing a core protein</h3>
+  <p>Because there is no globally unified biosafety organism list, and the scope and classification criteria vary 
+    across different countries and organizations, we referred to commonly used safe strains in previous iGEM projects 
+    and cross-validated them against the American Biological Safety Association (ABSA) Risk Group Database. Finally, 
+    we selected a set of Risk Group 1 fungi that are widely used in synthetic biology and have been experimentally 
+    validated as safe, forming our whitelist of organisms.</p>
+  <table>
+    <caption>Table 1: Whitelist of safe organisms</caption>
+    <thead>
+      <tr>
+        <th>Species</th>
+        <th>Common Applications</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>Baker’s yeast, expression host</td>
+      </tr>
+      <tr>
+        <td><i>Yarrowia lipolytica</i></td>
+        <td>Lipid metabolism, fermentation</td>
+      </tr>
+      <tr>
+        <td><i>Pichia pastoris</i> (<i>Komagataella</i>)</td>
+        <td>High-yield protein expression</td>
+      </tr>
+      <tr>
+        <td><i>Candida utilis</i></td>
+        <td>Feed additive, food fermentation</td>
+      </tr>
+      <tr>
+        <td><i>Kluyveromyces lactis</i></td>
+        <td>Lactose metabolism, dairy research</td>
+      </tr>
+      <tr>
+        <td><i>Penicillium chrysogenum</i></td>
+        <td>Penicillin production, industrial fermentation</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Based on our <a href="https://2025.igem.wiki/uprize-i/model#molecular-docking">docking results</a>, which demonstrated the potential interaction between β-amyrin and <i>Fusarium oxysporum</i> chitin synthase (CHS), we reasoned that a structurally similar CHS from a whitelist species should be selected as a substitute for subsequent antagonism experiments. This approach would allow us to evaluate the system's effectiveness while ensuring biosafety, and at the same time provide strong evidence that our system is also likely effective against <i>Fusarium oxysporum</i>. To this end, we designated <i>Fusarium oxysporum</i> chitin synthase as the core protein for the following safety substitution analysis.</p>
+  <p>After that, we obtained the core protein structure of <i>Fusarium oxysporum</i> chitin synthase from AlphafoldDB
+    (CHS3, Entry: A0A0J9VPT0). Previous studies have reported that the chitin synthase of <i>Phytophthora sojae</i> 
+    (PDB: 7WJO, solved in complex with an inhibitor) shares structural homology with <i>F. oxysporum</i> in the functional
+    pocket region. To further verify and delimit this pocket in CHS3, we took three steps. We first ran fpocket on 
+    the AlphaFold2 CHS3 model to predict candidate pockets. We then extracted the inhibitor-binding residues from the 
+    PDB: 7WJO and mapped them onto CHS3 by MSA. Finally, we inspected the mapped residues against the fpocket pocket 
+    in PyMOL and observed substantial overlap, which we used to finalize the pocket definition.</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure4.webp">
+    <p class="caption">Figure 4: CHS3 Pocket Residue Mapping and fpocket Overlap<br><small>Yellow sticks indicate residues found in both the mapped functional pocket and 
+      fpocket-predicted pocket69, green sticks mark residues unique to fpocket, and red sticks mark residues unique to 
+      the mapped set. The CHS3 protein surface is shown in semi-transparent white. This overlap demonstrates the 
+      consistency between homology-based mapping (from PDB: 7WJO) and fpocket prediction, confirming the reliability of 
+      the defined CHS3 binding pocket.</small></p>
+  </div>
+  <h3>Step2: Downloading candidate sequences</h3>
+  <p>We input the core protein sequence, whitelist species, pocket information, and query keywords into our tool. 
+    The tool then uses the UniProt API to retrieve protein sequences related to the target keyword (<i>e.g.</i>, chitin synthase) 
+    from the predefined whitelist species and downloads the corresponding sequence information.</p>
+  <h3>Step3: Screening candidates by homolog</h3>
+  <p>At this stage, our tool first applies MMseqs2 to perform rapid homology searches to quickly eliminate 
+    obviously unrelated or redundant proteins. We then run MAFFT for MSA, examining whether critical functional 
+    motifs are conserved across sequences. By doing this, we can retain only high-confidence candidates with 
+    preserved functional features for downstream analysis.</p>
+  <h3>Step4: Pocket mapping and structural quality control</h3>
+  <p>In this stage, we move beyond sequence-level screening and directly evaluate the structural comparability of 
+    candidates against the core protein. To achieve this, we first obtained the candidate 3D structures from AlphaFold 
+    DB and used our MSA alignment to project the pocket residues of the core protein onto each candidate.</p>
+  <p>Since AlphaFold predictions vary in reliability, the first step was to control for structural quality. 
+    For each candidate pocket, we calculated the mean pLDDT and the proportion of residues with confidence below 70. 
+    The quality filter required that</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/image1.webp" width="300">
+  </div>
+  <p style="text-indent: 0;">ensuring that at least 70% of pocket residues were predicted with high reliability. 
+    Candidates failing this test were excluded.</p>
+  <p>We next assessed structural similarity. To reduce the influence of low-confidence sites and highlight 
+    functional anchors, each aligned residue pair was weighted by its pLDDT and motif importance. Weighted Kabsch 
+    alignment then yielded a normalized RMSD score,</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/image2.webp" width="300">
+  </div>
+  <p style="text-indent: 0;">which smoothly maps smaller deviations to higher similarity. In parallel, we calculated a weighted 
+    shape-overlap metric to evaluate how completely the candidate pocket geometry reproduced the core pocket.</p>
+  <p>Finally, we examined sidechain chemistry. For each aligned residue pair, identical amino acids scored 1.0, 
+    residues from the same chemical category 0.7, conservative substitutions 0.5, and mismatches 0.0. The chemistry 
+    score was then defined as the weighted mean across all aligned residues:</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/image3.webp" width="250">
+  </div>
+  <p>By combining pLDDT-based QC, geometry-based alignment, and sidechain chemistry evaluation, we ensured that 
+    only candidates both structurally reliable and functionally comparable to the core pocket were retained for 
+    downstream analysis.</p>
+  <h3>Step5: Integrated scoring</h3>
+  <p>To provide a single ranking metric, we defined the Pocket3D_Score as a weighted sum of geometry, alignment, 
+    chemistry, and confidence terms:</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/image4.webp">
+  </div>
+  <p>The weights were chosen empirically to emphasize geometric similarity while still accounting for chemical 
+    conservation and model confidence. Although approximate, this composite score allowed us to prioritize candidates 
+    that balance structural fidelity, functional plausibility, and prediction reliability.</p>
+  <h2>Results</h2>
+  <p>Our protein of interest is CHS3 (Chitin Synthase 3) from <i>Fusarium oxysporum</i>. CHS3 displays the typical structural
+    features of the chitin synthase family. Its C-terminal region contains the catalytic core, which harbors the essential QRRRW conserved motif required for 
+    enzymatic activity, while the N-terminal region is more variable, likely involved in protein localization or 
+    cytoskeletal interactions. Functionally, CHS3 is an integral membrane enzyme that catalyzes the transfer of 
+    UDP-N-acetylglucosamine (UDP-GlcNAc) to β-(1,4)-GlcNAc chains, thereby producing chitin. Moreover, CHS3 is associated 
+    with specialized vesicles known as chitosomes, which are responsible for the intracellular synthesis, transport, and 
+    secretion of chitin fibers into the fungal cell wall, playing a critical role in fungal growth and cell wall integrity.</p>
+  <p>After defining the whitelist species and core protein information (as described in <a href="#our-solution">Our Solution</a>), we proceeded 
+    with sequence retrieval and analysis. Using “chitin synthase” as the query keyword, our tool accessed the 
+    UniProt API and downloaded a series of candidate protein sequences restricted to whitelist organisms.</p>
+  <table>
+    <caption>Table 2: Homologous CHS protein sequences retrieved from whitelist organisms via UniProt (Part)</caption>
+    <thead>
+      <tr>
+        <th>Accession</th>
+        <th>Gene</th>
+        <th>Description</th>
+        <th>Organism</th>
+        <th>Length (aa)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>P08004</td>
+        <td>CHS1</td>
+        <td>Chitin synthase 1</td>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>1131</td>
+      </tr>
+      <tr>
+        <td>P14180</td>
+        <td>CHS2</td>
+        <td>Chitin synthase 2</td>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>963</td>
+      </tr>
+      <tr>
+        <td>P29465</td>
+        <td>CHS3</td>
+        <td>Chitin synthase 3</td>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>1165</td>
+      </tr>
+      <tr>
+        <td>P34226</td>
+        <td>SKT5</td>
+        <td>Chitin synthase regulator SKT5</td>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>696</td>
+      </tr>
+      <tr>
+        <td>P38843</td>
+        <td>CHS7</td>
+        <td>Chitin synthase export chaperone</td>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>316</td>
+      </tr>
+      <tr>
+        <td>Q08054</td>
+        <td>CSI2</td>
+        <td>Chitin synthase 3 complex protein</td>
+        <td><i>Saccharomyces cerevisiae</i></td>
+        <td>341</td>
+      </tr>
+      <tr>
+        <td>Q6C8U1</td>
+        <td>CHS7</td>
+        <td>Chitin synthase export chaperone</td>
+        <td><i>Yarrowia lipolytica</i></td>
+        <td>335</td>
+      </tr>
+      <tr>
+        <td>Q6CRM6</td>
+        <td>CHS7</td>
+        <td>Chitin synthase export chaperone</td>
+        <td><i>Kluyveromyces lactis</i></td>
+        <td>317</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Within the initial dataset, we applied MMseqs2 to rapidly align candidates against the core protein, retaining only 
+    significant homologs with identity ≥ 25% and coverage ≥ 70%. An MSA was then generated with 
+    MAFFT, and the previously defined functional pocket and conserved motifs (<i>e.g.</i>, QRRRW) were examined. At this stage, 
+    low-quality sequences were filtered out, leaving only candidates that preserved the essential catalytic motifs.</p>
+  <p>For the surviving candidates, structural models were obtained from AlphaFoldDB. Using the MSA as a guide, the 
+    functional pocket residues from CHS3 were mapped onto each candidate protein, and their confidence was evaluated. 
+    Candidates with >30% of pocket residues below pLDDT 70 were marked as failed, while reliable ones proceeded to 3D 
+    similarity evaluation. We then calculated RMSD (rigid-body deviation), Pocket Shape Overlap, and Sidechain Chemistry 
+    Similarity, and integrated them into a final composite score, Pocket3D_Score, to identify the most reliable substitutes.</p>
+  <table>
+    <caption>Table 3: Final screening result</caption>
+    <tbody>
+      <tr>
+        <td style="text-align:center;font-weight:bold">accession</td>
+        <td>P14180</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">protein_id</td>
+        <td>sp|P14180|CHS2_YEAST</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">motifs_ok</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">pocket_pLDDT_mean</td>
+        <td>91.40</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">RMSD</td>
+        <td>0.483</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">ShapeOverlap</td>
+        <td>1.000</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">SidechainChem</td>
+        <td>0.928</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">Pocket3D_Score</td>
+        <td>0.978</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-weight:bold">pass</td>
+        <td>✔</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>This result indicates that the CHS2 protein of <i>Saccharomyces cerevisiae</i> is highly consistent with the core 
+    CHS3 protein in both functional motifs and pocket structure. The pocket region shows very high confidence 
+    (mean pLDDT = 91.40, with no low-confidence residues) and the 3D pocket similarity is close to 1 (ShapeOverlap = 1.0, 
+    SidechainChem = 0.928).</p>
+  <p><b>Therefore, the tool recommended <i>S. cerevisiae</i> CHS2 as a safe substitute for the core CHS3 protein and we chose 
+    to use <i>Saccharomyces cerevisiae</i> in subsequent antagonism experiments.</b></p>
+  <h2>Significance</h2>
+  <p>This project not only enabled us to achieve our research goals under safe conditions but also resulted in a reusable and 
+    extensible computational tool. We have open-sourced the pipeline in <a href="https://gitlab.igem.org/2025/uprize-i/-/tree/main/safety-code?ref_type=heads" target="_blank">our iGEM Gitlab repository</a> and <a href="https://github.com/iGEM-Uprize-I/Biosafety-Alternative-Recommendation-Tool-BART" target="_blank">our Github repository</a>, allowing 
+    future iGEM teams to quickly determine whether their protein of interest can be substituted with a safe organism, thereby 
+    avoiding redundant construction and review processes. By lowering the barrier to biosafety assessment, this shared resource 
+    can significantly improve the efficiency of synthetic biology research and has the potential to benefit broader scientific 
+    and educational communities.</p>
+</section>
+<section>
+  <h1 id="in-vivo-biosafety-applications"><i>In vivo</i> Biosafety Applications</h1>
+  <p>In <a href="#in-silico-biosafety-tool"><i>In silico</i> Biosafety Tool</a>, we developed a safety recommendation system based on protein similarity and species 
+    risk group evaluation, which helps us identify safe and scientifically valid alternatives. This tool recommended 
+    <i>S. cerevisiae</i> CHS2 as a safe substitute for the core CHS3 protein, and we chose to use <i>Saccharomyces cerevisiae</i> 
+    in subsequent antagonism experiments. We established two quantitative antagonistic assay based on <i>Saccharomyces cerevisiae</i></p>
+  <h2>Establishment of a Semi-quantitative Antagonistic Assay based on Extracellular Fluorescent Protein with Microplate Reader</h2>
+  <h3>Background</h3>
+  <p>The pathogenic bacteria of root rot and other filamentous fungi capable of producing spores are not 
+    included in the iGEM official whitelist of permitted experimental organisms and pose certain biosafety risks. 
+    Therefore, some iGEM teams (such as <a href="https://2022.igem.wiki/gems-taiwan/" target="_blank">GEMS_Taiwan, 2022</a>) had 
+    attempted to use yeast as an indicator strain for 
+    chitin antagonists in agar petri dish, but the expected phenomena were not observed. After attempting the same 
+    method, our project also confirmed that the constructed engineered strains cannot exert antagonistic effects. 
+    We speculate that the possible reason lies in the fact that, unlike filamentous fungi, yeast cells contain very 
+    little chitin in their cell walls (1%~2%), and a small amount of chitin antagonist is insufficient to disrupt
+    the cell wall structure and subsequently trigger cell rupture. (Figure 5)</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure5.webp">
+    <p class="caption">Figure 5. The cell wall of yeast can’t be fully disrupted by small amount of chintin antagonist.</p>
+  </div>
+  <p>To address the core issue of "no signal response" in the traditional plate antagonism method and verify 
+    the synergistic antagonistic effect between chitinases (Blchi, Bschi) and β-amyrin in this project, we have 
+    significantly improved this method, thereby developing a novel antagonistic assay approach that is still 
+    based on yeast cell rupture signals.</p>
+  <h3>Principle</h3>
+  <p><i>Saccharomyces cerevisiae</i> was selected as the target strain, considering its high biological safety and the 
+    presence of chitin in its cell wall. Specifically, we used a cyanamine-induced red fluorescent protein 
+    (RFP)-expressing strain obtained via CCiC activity from <a href="https://2025.igem.wiki/tsinghua-m/index.html" target="_blank">Tsinghua-M</a> Team—this strain releases RFP upon cell 
+    rupture, and the fluorescence intensity reflects the cell rupture rate.</p>
+  <p>Our speculative mechanism is as follows: On one hand, chitinase can directly decompose chitin, the main 
+    component of <i>S. cerevisiae</i>’s cell wall; on the other hand, β-amyrin can inhibit the process of chitin synthesis 
+    in <i>S. cerevisiae</i> itself. These two action pathways will eventually jointly lead to a reduction in chitin content 
+    in the yeast cell wall. The decrease in chitin disrupts the structural integrity of the cell wall, thereby 
+    altering its permeability. When the cell wall permeability changes, the yeast protoplasts (which have lost 
+    effective protection) are exposed to the hypotonic environment of the fermentation broth. Affected by the 
+    osmotic pressure difference, the protoplasts rupture, and the RFP inside the cells is also released into the 
+    fermentation broth. The RFP signal in the solution can then be sensitively detected by a microplate reader (Figure 6).</p>
+  <p>We also noticed that the chitin content in the yeast cell wall is only 1%. Through literature research, 
+    we found that snailase is a mixed enzyme extracted and prepared from the sacs and digestive tracts of snails, 
+    containing more than 20 types of enzymes such as cellulase, hemicellulase, pectinase, amylase, decarboxylase, 
+    and protease. It can be used to dissolve fungal cell wall and is widely applied in cell biology and genetic 
+    engineering research.</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure6.webp">
+    <p class="caption">Figure 6. The Principle of the antagonistic assay based on extracellular fluorescent protein</p>
+  </div>
+  <p>We hypothesize that if <i>S. cerevisiae</i> is pretreated with snailase, <b>the overall strength of its cell wall will be 
+    reduced, and the cell wall’s sensitivity to chitin content will be increased. This may allow the structural 
+    importance of chitin in the cell wall to be manifested</b>, which in turn enables the yeast to respond to chitinase 
+    and β-amyrin—thus achieving an antagonistic effect against <i>S. cerevisiae</i> (Figure 7).</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure7.webp">
+    <p class="caption">Figure 7. The experimental scheme of the Antagonistic Assay based on extracellular fluorescent protein with microplate Reader</p>
+  </div>
+  <h3>Results</h3>
+  <p>To present the experimental effect more intuitively and accurately, we designed the detection method: The vertical 
+    axis uses fluorescence intensity difference (Δfluorescence intensity) as the index, and the fluorescence intensity 
+    value of the control group is set as the origin on the vertical axis. The experimental effect is quantified through 
+    the increment of fluorescence intensity. The horizontal axis corresponds to the different treatment conditions of the 
+    experimental group.</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure8.webp">
+    <p class="caption">Figure 8. Comparison of fluorescence intensity in the supernatant of the antagonistic yeast (RFP) culture medium (with or without snail enzyme treatment)</p>
+  </div>
+  <p>The experimental results showed that the fluorescence intensity increment of the <i>S. cerevisiae</i> group pretreated with 
+    snailase was significantly increased compared with the original experimental step group. This result indicates that the 
+    snailase pretreatment of the <i>S. cerevisiae</i> system is a superior detection system: it can effectively transform the 
+    originally insensitive <i>S. cerevisiae</i> strains to chitin into strains with chitin response capabilities, significantly 
+    enhancing the effectiveness of the detection system (Figure 8).</p>
+  <p>Meanwhile, the experimental results also confirmed the effect of the target substances: when chitinase or 
+    β-amyrin is added alone, both can exert antagonistic effects on <i>S. cerevisiae</i>. <b>When chitinase and β-amyrin are 
+    added together, the antagonistic effects of the two are further superimposed, presenting a more significant 
+    inhibitory effect.</b></p>
+  <h3>Conclusion and Discussion</h3>
+  <p>We successfully pretreated <i>S. cerevisiae</i> with snailase to <b>transform it into a chitin-sensitive strain, 
+    enabling it to respond to chitinase and β-amyrin.</b> This detection method is easy to operate: it only requires the 
+    use of a conventional microplate reader. By detecting the content of red fluorescent protein (RFP) in the supernatant 
+    of the fermentation broth, the antagonistic effect of the target protein (such as chitinase) or metabolite 
+    (such as β-amyrin) can be directly evaluated. <b>In addition, this method also has the advantages of a short testing 
+    cycle and low requirements for experimental equipment, providing potential application value for high-throughput 
+    screening of the efficacy of chitin-related proteins and metabolites.</b></p>
+  <p>However, during the actual testing process, we found that there were two problems in this system that might 
+    interfere with the detection results: First, even in the control group system, <i>S. cerevisiae</i> itself would still
+    secrete RFP outward, resulting in the presence of basic fluorescence signals in the blank background; Secondly, 
+    the current RFP quantification relies on the specific wavelength detection of the microplate reader (excitation 
+    wavelength 585 nm, emission wavelength 610 nm), but the supernatant of the fermentation broth contains complex 
+    cellular metabolic products, which can cause background interference and directly affect the accuracy of the 610 
+    nm emission wavelength detection. These two factors jointly lead to a higher detection background value, ultimately 
+    interfering with the accuracy of the RFP quantitative results.</p>
+  <h2>Establishment of a quantitative antagonistic assay based on PI stain with flow cytometry</h2>
+  <h3>Background</h3>
+  <p>To develop a more accurate detection method, we attempted to establish a flow cytometry-based assay and 
+    optimized the detection system to eliminate interference from other substances in the culture supernatant on 
+    RFP fluorescence detection.</p>
+  <h3>Principle</h3>
+  <p>The specific protocol and results are as follows: We selected <i>Saccharomyces cerevisiae</i> CEN.PK2-1C as the target 
+    for antagonism detection, and used PI dye (propidium iodide) to stain the treated yeast cells. As a nuclear staining 
+    reagent that specifically binds to DNA, PI can only enter dead cells with ruptured cell membranes and stain them, 
+    thereby enabling accurate distinction of the viability status of <i>Saccharomyces cerevisiae</i> (Figure 9).</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure9.webp">
+    <p class="caption">Figure 9. The principle of the antagonistic assay based on PI stain</p>
+  </div>
+  <p>Subsequently, we quantitatively analyzed the proportion and number of live/dead cells using flow cytometry to 
+    evaluate the antagonistic effect of chitinase and β-amyrin. Meanwhile, drawing on the experience from the previous 
+    development of the microplate reader detection method, we simultaneously introduced the system of "pretreating 
+    <i>Saccharomyces cerevisiae</i> with snailase" into the flow cytometry detection method (Figure 10).</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure10.webp">
+    <p class="caption">Figure 10. The experimental scheme of the Antagonistic Assay based on based on PI stain with flow cytometry</p>
+  </div>
+  <h3>Results</h3>
+  <ol>
+    <li>In the flow cytometry analysis, the "Control group without snailase" was used as the reference standard to
+      define the boundary between "PI-positive dead cells" and "PI-negative live cells". The proportion of background 
+      particles (non-specific staining or impurities) in the negative control (without chitinase, β-amyrin, and snailase 
+      pretreatment) was only 4.17%, indicating low background interference in the system.</li>
+    <li>In the "all group without snailase pretreatment", after treating cells with chitinase or β-amyrin alone, 
+      the proportion of dead <i>Saccharomyces cerevisiae</i> did not increase significantly (Figure 11). This result was 
+      consistent with our previous findings based on the microplate reader assay.</li>
+    <div class="img">
+      <img src="https://static.igem.wiki/teams/5937/safety/figure11.webp">
+      <p class="caption">Figure 11. Histogram showing the distribution of the proportion of dead cells with no snailase by PI stain</p>
+    </div>
+    <li>When "Snailase pretreatment of <i>Saccharomyces cerevisiae</i>" was introduced into the detection system, 
+      the proportion of background particles in the system increased to 14.1% compared with the "control group". 
+      Furthermore, in the "Snailase pretreatment" system, the antagonistic promotion effects of three treatment 
+      combinations were compared t(Figure 12): the proportion of dead cells in the chitinase alone group was 26.2%, 
+      32.4% in the β-amyrin alone group, while that in the chitinase and β-amyrin combined treatment group significantly 
+      increased to 65.8%, clearly demonstrating their synergistic antagonistic effect (Figure 13).</li>
+  </ol>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure12.webp">
+    <p class="caption">Figure 12. Histogram showing the distribution of the proportion of dead cells with snailase by PI stain</p>
+  </div>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure13.webp">
+    <p class="caption">Figure 13. Percentage Graph of dead cells stained with PI stain under different antagonistic conditions</p>
+  </div>
+  <h3>Conclusion</h3>
+  <p>We developed a quantitative flow cytometry-based detection assay to evaluate the antagonistic effect of 
+    chitinase and β-amyrin on <i>Saccharomyces cerevisiae</i> CEN.PK2-1C, which involved optimizing the system to eliminate 
+    interference from other substances in the culture supernatant on RFP fluorescence detection, using PI dye 
+    (that specifically binds to DNA and only enters dead cells with ruptured membranes) to distinguish PI-positive dead 
+    cells from PI-negative live cells, quantitatively analyzing the proportion and number of live/dead cells via flow cytometry.</p>
+</section>
+<section>
+  <h1>Engaging in Biosafety Dialogue</h1>
+  <p>As part of our commitment to responsible innovation, we actively sought conversations with biosafety experts and academic researchers. 
+    These discussions provided valuable insights into the ethical 
+    considerations and safety aspects of synthetic biology applications.</p>
+  <div class="img">
+    <img src="https://static.igem.wiki/teams/5937/safety/figure14.webp">
+    <p class="caption">Figure 14. Team members engaging in biosafety discussions with experts</p>
+  </div>
+</section>
+
+{% endblock %}
