@@ -1,3 +1,5 @@
+*This repository was cloned from the official Gitlab repository (https://gitlab.igem.org/2025/uprize-i) for the Wiki page of Uprize-I team's project PATRONUM because not everyone has an iGEM account.*
+
 # Team Uprize-I 2025 Wiki
 
 This repository **MUST** contain all coding assets to generate your team's wiki (HTML, CSS, JavaScript, TypeScript, Python, etc).
